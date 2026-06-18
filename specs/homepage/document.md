@@ -73,5 +73,5 @@ The homepage is the digital zawiya itself. It introduces the world, centers the 
 
 ## Status / open questions
 
-- Status: planned
-- Open questions: none for initialization phase
+- Status: done (milestone 2). Asset placeholders for `low_demand_faith_cover.png` and `sanctuary_map.png` are in place and will be swapped automatically once those files land in `public/images/`.
+- Open questions: none

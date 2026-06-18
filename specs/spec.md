@@ -45,13 +45,26 @@ This site is not a portfolio, generic blog, or shop. It should feel like enterin
 
 | Feature | Status | Spec |
 |---|---|---|
-| Homepage / Digital Zawiya | planned | `specs/homepage/document.md` |
-| Sanctuary First | planned | `specs/sanctuary-first/document.md` |
-| Spiritual Underground | planned | `specs/spiritual-underground/document.md` |
-| Safe Passage | planned | `specs/safe-passage/document.md` |
-| About | planned | `specs/about/document.md` |
-| Content & Platform Foundations | planned | `specs/platform-foundations/document.md` |
+| Homepage / Digital Zawiya | done (asset placeholders pending) | `specs/homepage/document.md` |
+| Sanctuary First | stub live | `specs/sanctuary-first/document.md` |
+| Spiritual Underground | stub live | `specs/spiritual-underground/document.md` |
+| Safe Passage | stub live | `specs/safe-passage/document.md` |
+| About | stub live | `specs/about/document.md` |
+| Content & Platform Foundations | done (homepage milestone) | `specs/platform-foundations/document.md` |
 
 ## Current phase
 
-Phase 1 in this session: initialize the project, create the spec set, make the first commit, and push to GitHub before any design or page-building work.
+Milestone 1 (initialization): pushed to GitHub as commit `9fa58f8`.
+
+Milestone 2 (homepage): complete in code. Includes:
+- All six homepage sections in brief order (welcome, book, inside the zawiya, map, patronage, signup)
+- Brief-correct palette and typography
+- Cormorant Garamond + EB Garamond
+- Mobile-first layout, tested at 360 / 390 / 768 / 1280
+- Lightweight stub pages for `/sanctuary`, `/underground`, `/passage`, `/about` so strand navigation never 404s
+- Typographic placeholders for the brief-named images (book cover, sanctuary map), flagged in-place
+- No carousels, popups, social embeds, white background, or card grids
+
+Up next:
+- Sanctuary First content build (intro, post index, filters, post pages)
+- Replacement of asset placeholders once real images land in `public/images/`
