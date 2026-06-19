@@ -10,8 +10,21 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ["var(--font-cormorant)", "Georgia", "serif"],
-        serif: ["var(--font-eb-garamond)", "Georgia", "serif"],
+        // Amiri is appended as a tail fallback so Arabic codepoints
+        // (e.g. ﷺ U+FDFA) render correctly when the Latin display/body
+        // fonts do not include them.
+        display: [
+          "var(--font-cormorant)",
+          "Georgia",
+          "var(--font-amiri)",
+          "serif",
+        ],
+        serif: [
+          "var(--font-eb-garamond)",
+          "Georgia",
+          "var(--font-amiri)",
+          "serif",
+        ],
       },
       colors: {
         // Brief tokens (direct names — easier to read in JSX than HSL refs)

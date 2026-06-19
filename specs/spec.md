@@ -46,7 +46,7 @@ This site is not a portfolio, generic blog, or shop. It should feel like enterin
 | Feature | Status | Spec |
 |---|---|---|
 | Homepage / Digital Zawiya | done (asset placeholders pending) | `specs/homepage/document.md` |
-| Sanctuary First | done (3 placeholder posts pending real migration) | `specs/sanctuary-first/document.md` |
+| Sanctuary First | done (12 real posts migrated from Session 4 docx) | `specs/sanctuary-first/document.md` |
 | Spiritual Underground | stub live | `specs/spiritual-underground/document.md` |
 | Safe Passage | stub live | `specs/safe-passage/document.md` |
 | About | stub live | `specs/about/document.md` |
@@ -58,7 +58,19 @@ Milestone 1 (initialization): pushed to GitHub as commit `9fa58f8`.
 
 Milestone 2 (homepage): pushed to GitHub as commit `e7b277e`.
 
-Milestone 3 (Sanctuary First): complete in code. Includes:
+Milestone 3 (Sanctuary First infrastructure): pushed to GitHub as commit `e0511ad`.
+
+Milestone 4 (Sanctuary First content migration): complete in code. Includes:
+- All twelve canonical posts migrated from `Sanctuary_Session4_Final.docx`
+- Three placeholder/seeded posts removed
+- "Before you enter" and "Welcome Note" intros migrated into `SanctuaryIntro` (Welcome Note's numbered references translated to arc names per the no-numbering rule)
+- ﷺ honorific (U+FDFA) restored everywhere it was corrupted to `★` in the source
+- Amiri loaded as a Unicode-range fallback so Arabic codepoints render as real glyphs (no tofu) in body and display fonts site-wide
+- Per-post taxonomy assigned by close reading of body + Zawiya Discussion sections
+- Post body, "Turn to look at the world" italic closer, and full Zawiya Discussion (Wide Lens / Devotional Lens / Questions) all included verbatim
+- Dates assigned so Post 1 sits newest and Post 12 sits oldest, leaving "today" free for new posts the author will write — narrative reading order is preserved without numbers being shown anywhere
+
+Milestone 3 details (Sanctuary First infrastructure):
 - Sanctuary intro section (open-and-ongoing framing, no numbered framing per author override)
 - Filesystem content loader for markdown posts (frontmatter + readingMinutes + neighbours)
 - Brief-verbatim taxonomies: 9 experience tags, 8 theme tags, 5 tradition tags, 3 arc tags

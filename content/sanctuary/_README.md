@@ -47,11 +47,27 @@ distraction-free.
 Use the exact `id` strings from `src/content/sanctuary/taxonomies.ts` —
 TypeScript will refuse to build if a tag is misspelled.
 
-## Pending migration
+## Migration status
 
-The brief notes that 12 Sanctuary collection posts already exist on
-sanctuary-blog.vercel.app and should be migrated into this folder as
-markdown files. Until those are dropped in, three placeholder posts
-sit here marked `awaitingMigration: true` so the index, filters, and
-reading view can be reviewed against the real layout — no surprises
-when the real text replaces them.
+The original twelve Sanctuary posts have been migrated from
+`Sanctuary_Session4_Final.docx` (Session 4 Updated Edition). All
+twelve are real, canonical text — not placeholders. The
+`awaitingMigration` flag is no longer set on any of them.
+
+Notes from the migration:
+
+- The ﷺ honorific after "Muhammad" was corrupted to `★` in a
+  previous round-trip of the source. It has been restored to the
+  correct Unicode codepoint U+FDFA in all six places it appears.
+- The "Before you enter" and "Welcome Note" intros from the docx
+  are rendered by the `SanctuaryIntro` component, not stored as
+  posts.
+- Dates were assigned so Post 1 (the author's narrative opener)
+  sits at the top of the chronological index and Post 12 sits at
+  the bottom. New posts written today simply use today's date and
+  appear above all twelve. The author can override any date.
+- The original document references the posts by number in the
+  Welcome Note ("Posts 1–7 / Post 8 / Posts 9–12"). Per the
+  author's instruction that the live collection should not be
+  numbered, those references are rendered as arc names in the
+  intro: Arrival / Threshold / Practice.

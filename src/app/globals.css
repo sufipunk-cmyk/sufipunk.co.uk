@@ -64,7 +64,11 @@
   body {
     background: hsl(var(--parchment));
     color: hsl(var(--ink));
-    font-family: var(--font-eb-garamond), Georgia, "Times New Roman", serif;
+    /* Amiri is appended as a tail fallback so Arabic codepoints
+       (e.g. ﷺ U+FDFA) render correctly when the Latin body font
+       does not include them. */
+    font-family: var(--font-eb-garamond), Georgia, "Times New Roman",
+      var(--font-amiri), serif;
     font-feature-settings: "kern", "liga", "onum";
     font-size: 1.0625rem;
     line-height: 1.65;
@@ -75,7 +79,8 @@
 
   /* Display headings — Cormorant Garamond per brief */
   h1, h2, h3, h4 {
-    font-family: var(--font-cormorant), "EB Garamond", Georgia, serif;
+    font-family: var(--font-cormorant), "EB Garamond", Georgia,
+      var(--font-amiri), serif;
     color: hsl(var(--green));
     font-weight: 500;
     letter-spacing: -0.005em;
@@ -264,8 +269,12 @@
 }
 
 @layer utilities {
-  .font-display { font-family: var(--font-cormorant), Georgia, serif; }
-  .font-body { font-family: var(--font-eb-garamond), Georgia, serif; }
+  .font-display {
+    font-family: var(--font-cormorant), Georgia, var(--font-amiri), serif;
+  }
+  .font-body {
+    font-family: var(--font-eb-garamond), Georgia, var(--font-amiri), serif;
+  }
   .text-ink { color: hsl(var(--ink)); }
   .text-ink-soft { color: hsl(var(--ink-soft)); }
   .text-green-deep { color: hsl(var(--green)); }

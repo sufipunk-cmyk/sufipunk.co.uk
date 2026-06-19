@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, EB_Garamond } from "next/font/google";
+import { Cormorant_Garamond, EB_Garamond, Amiri } from "next/font/google";
 import "./globals.css";
 import ClientBody from "./ClientBody";
 
@@ -16,6 +16,23 @@ const ebGaramond = EB_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   style: ["normal", "italic"],
+  display: "swap",
+});
+
+/**
+ * Amiri carries the full set of Arabic presentation forms — including
+ * U+FDFA, the ligature for "sallallahu alayhi wa sallam" (ﷺ) used after
+ * the Prophet Muhammad's name. The Latin body fonts do not include this
+ * codepoint, so without a fallback the glyph renders as a tofu box.
+ *
+ * We expose this as a CSS variable and attach it as a tail fallback in
+ * the global font stacks so it kicks in automatically for any Arabic
+ * codepoint anywhere in the site, with no per-element markup needed.
+ */
+const amiri = Amiri({
+  variable: "--font-amiri",
+  subsets: ["arabic"],
+  weight: ["400", "700"],
   display: "swap",
 });
 
@@ -56,7 +73,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${ebGaramond.variable}`}
+      className={`${cormorant.variable} ${ebGaramond.variable} ${amiri.variable}`}
     >
       <body suppressHydrationWarning className="antialiased">
         <ClientBody>{children}</ClientBody>
