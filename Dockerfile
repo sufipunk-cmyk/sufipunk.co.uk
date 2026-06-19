@@ -49,9 +49,9 @@ RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
 # Copy standalone server (includes server.js and node_modules)
-COPY --from=builder --chown=nextjs:nodejs /app/.next-build/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 # Copy static files to .next/static (required path for standalone server)
-COPY --from=builder --chown=nextjs:nodejs /app/.next-build/static ./.next-build/static
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 # Copy public folder
 COPY --from=builder /app/public ./public
 

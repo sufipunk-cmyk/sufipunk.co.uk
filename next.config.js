@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Use different output dir ONLY for local production builds
-  output: 'standalone',
-  distDir: process.env.NODE_ENV === 'production'
-    ? (process.env.BUILD_DIR || '.next-build')
-    : '.next',
+  // Use Next.js defaults for both `output` and `distDir`. We do not
+  // set `output: 'standalone'` here: that mode produces a self-contained
+  // Node.js server bundle for self-hosting (e.g. Docker), not a folder
+  // Vercel can serve as static output. Combined with a `distDir`
+  // override and a `vercel.json` pointing at that override, every
+  // route 404'd in production. Removed in milestone 12.
   // Enable CORS for Design Mode to load resources cross-origin (dev only)
   // Note: Do NOT set allowedDevOrigins - the default allows all origins in dev mode
   async headers() {

@@ -54,7 +54,7 @@ This site is not a portfolio, generic blog, or shop. It should feel like enterin
 | Spiritual Underground | done (M10 — full page replacing the StrandStub) | `specs/spiritual-underground/document.md` |
 | Safe Passage | done (M10 — Version A page text in full, with the documented "a family member" override) | `specs/safe-passage/document.md` |
 | About | done (M11 — full page replacing the StrandStub) | `specs/about/document.md` |
-| Content & Platform Foundations | done (homepage milestone) | `specs/platform-foundations/document.md` |
+| Content & Platform Foundations | done (M12 — Vercel build path corrected) | `specs/platform-foundations/document.md` |
 
 ## Current phase
 
@@ -116,6 +116,17 @@ Milestone 11 (About page): complete in code. Includes:
 - The booklet's mosaic-doorway photograph is dropped into `public/images/about/mosaic-doorway.jpg` and embedded with its booklet caption preserved verbatim.
 - The page closes with a plain `❁` divider (not place-named) and a "Return to the home page" link, since About does not live at one of the four named places. This keeps the standing rule intact: only the map's named places carry place-name flower dividers.
 - `StrandStub` is no longer referenced from any page route. The component is kept in the codebase for any future placeholder needs.
+
+Milestone 12 (production build configuration fix): complete in code. Includes:
+- Removed `output: 'standalone'` and the `distDir` override from `next.config.js`. The standalone output mode produces a self-contained Node.js server bundle for self-hosting (e.g. Docker), not a folder Vercel can serve as static output. Combined with the `distDir` override and a `vercel.json` pointing at that override, every route on the production deploy was 404'ing. Default Next.js `.next/` output is restored.
+- Deleted `vercel.json`. A standard Next.js project on Vercel needs no `vercel.json` for the build/serve path to work.
+- Stripped `BUILD_DIR=.next-build` from both `package.json` build scripts (`build` and `build:local`).
+- Removed `.next-build/types/**/*.ts` from the `tsconfig.json` `include` list — only the default `.next/types/**/*.ts` is needed now.
+- Updated the `Dockerfile`'s standalone-server `COPY` lines to reference `/app/.next/standalone` and `/app/.next/static` instead of the old `/app/.next-build/...` paths. The Dockerfile's defensive sed step that injects `output: 'standalone'` into `next.config.js` inside the Docker build context is preserved — that's correct behaviour for Docker self-hosting and only fires inside Docker builds. It does not affect Vercel.
+- Verified: a clean `bun run build` succeeds, output goes to the default `.next/` directory, all 20 routes generate as static (`/`, `/about`, `/passage`, `/sanctuary`, `/sanctuary/[slug]` ×12, `/underground`, plus `_not-found`), no `.next-build/` directory is created anywhere, no `.next/standalone/` directory is created (confirming standalone mode is fully off), and the project-wide grep for `BUILD_DIR`, `.next-build`, and `outputDirectory` returns zero matches outside the historical specs trail.
+- Browser-tested in dev: home (welcome / map / book), Sanctuary First, About — all M11 content baseline preserved with no drift. The fix is content-invisible, as required.
+
+Note flagged for later (not in M12 scope): `package.json` still has `prisma generate;` at the start of the `build` script. The project carries no Prisma schema and no `prisma` dependency, so on each build that command prints `prisma: command not found` before falling through to `next build`. The `;` continuation means it is non-blocking, so the build still succeeds. Dead leftover from the project template — easy to drop in a future milestone, but explicitly out of scope here under "do not touch any copy, layout, or content — this is purely a build configuration correction" if interpreted strictly. Including the note here so it doesn't get lost.
 
 Up next:
 - Migrate the real twelve Sanctuary posts from `sanctuary-blog.vercel.app`
