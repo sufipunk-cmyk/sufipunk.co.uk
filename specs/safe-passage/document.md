@@ -70,5 +70,6 @@ These are deliberate tweaks the brief author has confirmed since the master brie
 
 ## Status / open questions
 
-- Status: planned
-- Open questions: none for initialization phase
+- Status: built (M10) — full page replaces the StrandStub placeholder. Renders the Version A "Before you enter" + "Welcome Note" texts verbatim from the master brief, with the documented author override applied (the words "a family member" removed from the welcome list). Closes with a quiet `mailto:sufipunkmusic@gmail.com` line and a "From the Gathering Place" flower divider that ties the page to its place on the overview map.
+- Version B (the more institutionally-pitched alternative) remains held in reserve per the brief and is not built here.
+- Open questions: none.

@@ -1,6 +1,10 @@
-import { StrandStub } from "@/components/site/StrandStub";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { SafePassageIntro } from "@/components/passage/SafePassageIntro";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Safe Passage",
   description:
     "In the world but not of it. Walking alongside neurodivergent people inside systems not built for them.",
@@ -8,11 +12,23 @@ export const metadata = {
 
 export default function PassagePage() {
   return (
-    <StrandStub
-      kicker="In the world but not of it"
-      title="Safe Passage"
-      intro="The work turning outward — toward the people supporting a neurodivergent person, not just the person themselves. Younger than the other strands, but the lived experience underneath it is not theoretical."
-      upNext="The next push will bring the confirmed Version A page text from the brief, in full, with the simple contact link. Version B is held in reserve, per brief, and is not built until explicitly instructed."
-    />
+    <div className="bg-parchment text-ink">
+      <SiteHeader />
+
+      <SafePassageIntro />
+
+      <div className="container py-12 text-center">
+        <p className="font-serif text-sm">
+          <Link
+            href="/#the-map"
+            className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
+          >
+            ← Return to The Gathering Place
+          </Link>
+        </p>
+      </div>
+
+      <SiteFooter />
+    </div>
   );
 }

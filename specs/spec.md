@@ -51,8 +51,8 @@ This site is not a portfolio, generic blog, or shop. It should feel like enterin
 |---|---|---|
 | Homepage / Digital Zawiya | done (M9 — real visuals in for map, four named places, and book cover) | `specs/homepage/document.md` |
 | Sanctuary First | done (12 real posts migrated from Session 4 docx) | `specs/sanctuary-first/document.md` |
-| Spiritual Underground | stub live | `specs/spiritual-underground/document.md` |
-| Safe Passage | stub live | `specs/safe-passage/document.md` |
+| Spiritual Underground | done (M10 — full page replacing the StrandStub) | `specs/spiritual-underground/document.md` |
+| Safe Passage | done (M10 — Version A page text in full, with the documented "a family member" override) | `specs/safe-passage/document.md` |
 | About | stub live | `specs/about/document.md` |
 | Content & Platform Foundations | done (homepage milestone) | `specs/platform-foundations/document.md` |
 
@@ -99,8 +99,13 @@ Milestone 9 (real visual assets): complete in code. Includes:
 - `SanctuaryMap` rebuilt around a data-driven layout: the threshold place (`resident === null`) is rendered as a wide landscape hero (~2.6:1, full-width, centre-cropped from its source); the remaining places render as a uniform 3:4 portrait row (centre-cropped). This stays compatible with adding a future fourth strand without code changes — only the data file would need to grow.
 - Homepage Book section swapped from `AssetPlaceholder` to a real `next/image` of the cover; `MosaicRow` import removed where it was only used for the placeholder ornament. `AssetPlaceholder` itself is kept in the codebase for any later asset slots that haven't yet been delivered.
 
+Milestone 10 (Spiritual Underground + Safe Passage full pages): complete in code. Includes:
+- `/underground` rebuilt as a full-content page replacing the M3 `StrandStub`. Renders the two confirmed concepts from the master brief in this order: a short "Before you enter" framing in the site voice, the Low-Demand Faith definition as a quotation in Naz's voice, the Spiritual Parallel Play definition as plain copy with the brief's exact wording, an "Inspiring the Sufi" demonstrated-example block linking out to inspiringthesufi.com with the brief-specified link text "This is where it started. Come and see.", and a restrained "An invitation" block opening expressions of interest from faith, arts, and cultural organisations with the project email and a Substack tail. Closes with a "From the Devotional Corner" flower divider.
+- `/passage` rebuilt as a full-content page replacing the M3 `StrandStub`. Renders the master brief's confirmed Version A text verbatim — both the "Before you enter" and "Welcome Note" sections — with the author override applied (the words "a family member" removed from the Welcome Note's welcome list). Closes with a quiet `sufipunkmusic@gmail.com` contact line and a "From the Gathering Place" flower divider.
+- Both pages mirror the existing `SanctuaryIntro` pattern: header kicker, display title, sectioned body using `prose-zawiya sanctuary-prose`, a place-named flower divider that ties the strand back to its home on the overview map.
+- Page routes are kept thin; component bodies live in `src/components/underground/SpiritualUndergroundIntro.tsx` and `src/components/passage/SafePassageIntro.tsx`. `StrandStub` is retained for `/about`, which is still in stub state per its spec.
+- Two flagged ambiguities recorded in `specs/spiritual-underground/document.md` for the author to settle when she's ready: (a) whether to swap the Spiritual Parallel Play definition to the longer first-person passage that exists in `ITS_Master_Brief.md`, and (b) whether organisational expressions-of-interest should remain at `sufipunkmusic@gmail.com` or move to a different inbox.
+
 Up next:
 - Migrate the real twelve Sanctuary posts from `sanctuary-blog.vercel.app`
-- Spiritual Underground full content with the two confirmed definitions
-- Safe Passage Version A (with the families override)
 - About page full copy

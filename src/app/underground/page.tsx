@@ -1,6 +1,10 @@
-import { StrandStub } from "@/components/site/StrandStub";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { SpiritualUndergroundIntro } from "@/components/underground/SpiritualUndergroundIntro";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Spiritual Underground",
   description:
     "Low-demand faith and Spiritual Parallel Play. Inspiring the Sufi as the demonstrated example.",
@@ -8,11 +12,23 @@ export const metadata = {
 
 export default function UndergroundPage() {
   return (
-    <StrandStub
-      kicker="Parallel Play"
-      title="Spiritual Underground"
-      intro="The cultural and creative strand. Low-demand faith and Spiritual Parallel Play, with Inspiring the Sufi held as the demonstrated example — fifty Names, one practice, fully documented."
-      upNext="The next push will bring the two confirmed definitions in Naz's exact words, the link out to inspiringthesufi.com (‘This is where it started. Come and see.’), and the invitation for expressions of interest from faith, arts, and cultural organisations."
-    />
+    <div className="bg-parchment text-ink">
+      <SiteHeader />
+
+      <SpiritualUndergroundIntro />
+
+      <div className="container py-12 text-center">
+        <p className="font-serif text-sm">
+          <Link
+            href="/#the-map"
+            className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
+          >
+            ← Return to The Devotional Corner
+          </Link>
+        </p>
+      </div>
+
+      <SiteFooter />
+    </div>
   );
 }
