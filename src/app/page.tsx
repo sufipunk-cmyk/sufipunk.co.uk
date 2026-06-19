@@ -1,7 +1,8 @@
-import Link from "next/link";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { AssetPlaceholder } from "@/components/site/AssetPlaceholder";
+import { SanctuaryMap } from "@/components/site/SanctuaryMap";
+import { InsideTheZawiya } from "@/components/site/InsideTheZawiya";
 import {
   FlowerDivider,
   ArchOutline,
@@ -12,6 +13,20 @@ const SUBSTACK_SUBSCRIBE =
   "https://sufipunksanctuaryfirst.substack.com/subscribe";
 const KOFI = "https://ko-fi.com/sufipunk";
 
+/**
+ * Homepage — the digital zawiya itself.
+ *
+ * Section order, in the voice of the brief:
+ *   1. The Welcome — atmospheric, no nav clutter.
+ *   2. The Book — Low-Demand Faith, featured prominently.
+ *   3. The Map — the conceptual key. Carries the historical
+ *      grounding for the word "zawiya" and names the rooms before
+ *      "Inside the Zawiya" presents the strands as their residents.
+ *   4. Inside the Zawiya — the strands as the activities living
+ *      inside the rooms shown in the map.
+ *   5. The Patronage Ask — the Fountain.
+ *   6. Quiet Letters — the email signup.
+ */
 export default function HomePage() {
   return (
     <div className="bg-parchment text-ink">
@@ -44,8 +59,8 @@ export default function HomePage() {
             <p>
               A low-demand sanctuary for neurodivergent seekers, overwhelmed
               caregivers, exhausted believers, and anyone living close to the
-              edges of capacity — and for the professionals, families,
-              communities, and faith leaders walking alongside them.
+              edges of capacity — and for the professionals, organisations,
+              and faith leaders walking alongside them.
             </p>
             <p className="font-display text-xl italic text-green sm:text-2xl">
               Come as you are. Move as you can. Return without apology.
@@ -139,81 +154,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. INSIDE THE ZAWIYA — three strands, equal sections, not cards. */}
-      <section
-        id="inside-the-zawiya"
-        className="border-t border-b border-hairline/60 bg-parchment-deep/40 py-20 sm:py-28"
-      >
-        <div className="container">
-          <header className="text-center">
-            <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber">
-              The Three Strands
-            </p>
-            <h2 className="mt-3 font-display text-3xl text-green sm:text-5xl">
-              Inside the Zawiya
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl font-serif text-[1.02rem] text-ink-soft">
-              Three rooms inside one home. Move between them as your capacity
-              allows. Each strand is its own continuous voice; none is more
-              important than the others.
-            </p>
-          </header>
+      {/* 3. THE MAP — the conceptual key. Comes before "Inside the Zawiya"
+          so the historical grounding for the word lands first. */}
+      <SanctuaryMap />
 
-          <div className="mt-14 divide-y divide-hairline/60 border-y border-hairline/60">
-            <Strand
-              kicker="Witness Writing"
-              name="Sanctuary First"
-              href="/sanctuary"
-              description="The writing. An open, ongoing library of arrival, threshold, and practice. Move through it quietly — filtered by the experience, theme, tradition, or arc that meets you where you are."
-            />
-            <Strand
-              kicker="Parallel Play"
-              name="Spiritual Underground"
-              href="/underground"
-              description="A cultural and creative strand. The space where low-demand faith and Spiritual Parallel Play meet — and where Inspiring the Sufi, the demonstrated example, is held."
-            />
-            <Strand
-              kicker="In the world but not of it"
-              name="Safe Passage"
-              href="/passage"
-              description="The work turning outward — toward professionals, faith leaders, families, and communities walking alongside someone navigating systems not built for them. Forming, but real."
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* 4. THE MAP — the illustrated zawiya map. */}
-      <section className="bg-parchment py-20 sm:py-28" id="the-map">
-        <div className="container">
-          <header className="text-center">
-            <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber">
-              Explore the Zawiya
-            </p>
-            <h2 className="mt-3 font-display text-3xl text-green sm:text-5xl">
-              The complete map of our sanctuary.
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl font-serif text-[1.02rem] text-ink-soft">
-              An illustrated zawiya — the Golden Door, the garden, the
-              fountain, the named micro-sanctuaries inside. Wander as you can.
-            </p>
-          </header>
-
-          <div className="mt-12">
-            <AssetPlaceholder
-              filename="sanctuary_map.png"
-              label="The Sanctuary Map"
-              aspect="4 / 3"
-              className="mx-auto max-w-4xl"
-              ornament={<MosaicRow />}
-            />
-            <p className="mx-auto mt-4 max-w-xl text-center font-serif text-xs italic text-ink-soft">
-              Placeholder until <code>sanctuary_map.png</code> /{" "}
-              <code>Final_map.png</code> is added to <code>public/images/</code>.
-              Per brief, this is the primary visual asset for this section.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* 4. INSIDE THE ZAWIYA — strands as residents of the rooms above. */}
+      <InsideTheZawiya />
 
       {/* 5. THE PATRONAGE ASK — Supporting Sanctuary, the Fountain. */}
       <section
@@ -303,54 +249,5 @@ export default function HomePage() {
 
       <SiteFooter />
     </div>
-  );
-}
-
-/**
- * One strand inside "Inside the Zawiya".
- * Brief: "Three equal sections — not cards, not a grid."
- * Implemented as horizontal rows with hairline dividers and a generous
- * left rule that visually echoes a column of light through a doorway.
- */
-function Strand({
-  kicker,
-  name,
-  description,
-  href,
-}: {
-  kicker: string;
-  name: string;
-  description: string;
-  href: string;
-}) {
-  return (
-    <Link
-      href={href}
-      className="group block py-10 transition-colors hover:bg-parchment/60"
-    >
-      <div className="grid items-baseline gap-4 sm:grid-cols-12 sm:gap-8">
-        <div className="sm:col-span-4">
-          <p className="font-serif text-xs uppercase tracking-[0.35em] text-amber">
-            {kicker}
-          </p>
-          <h3 className="mt-2 font-display text-2xl text-green sm:text-4xl">
-            {name}
-          </h3>
-        </div>
-        <div className="sm:col-span-7">
-          <p className="font-serif text-[1.02rem] leading-relaxed text-ink">
-            {description}
-          </p>
-        </div>
-        <div className="sm:col-span-1 sm:text-right">
-          <span
-            aria-hidden
-            className="font-display text-2xl text-amber transition-transform group-hover:translate-x-1"
-          >
-            →
-          </span>
-        </div>
-      </div>
-    </Link>
   );
 }

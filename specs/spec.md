@@ -2,7 +2,9 @@
 
 ## Project overview
 
-Build `sufipunk.co.uk` as the main Sufi Punk site: a digital zawiya that presents the living practice, featured book, sanctuary map, patronage invitation, and the three core strands of the work.
+Build `sufipunk.co.uk` as the main Sufi Punk site: a digital zawiya that presents the living practice, featured book, sanctuary map, patronage invitation, and the named strands of the work that live inside the rooms of that map.
+
+The map is the conceptual key. The micro-sanctuaries (The Golden Door, The Lantern Library, The Devotional Corner, The Gathering Place) are the rooms; the strands (Sanctuary First, Spiritual Underground, Safe Passage) are the activities that happen inside specific rooms. Both are kept open-ended on purpose — the site structure must not hard-code a count of strands or rooms, since the zawiya is alive and may grow.
 
 This site is not a portfolio, generic blog, or shop. It should feel like entering a place.
 

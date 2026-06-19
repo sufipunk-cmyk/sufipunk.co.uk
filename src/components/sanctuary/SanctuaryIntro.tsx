@@ -5,14 +5,23 @@ import { FlowerDivider } from "@/components/site/Ornaments";
  * migrated from Sanctuary_Session4_Final.docx. Both pieces sit at the
  * top of the page, before the post index begins.
  *
- * One small editorial change has been applied to the Welcome Note: the
- * original document references the posts by number ("Posts 1–7 will
- * bring you here. Post 8 is the threshold. Posts 9–12 are the practice
- * of coming back…"). Since the live site is built around the open,
- * unnumbered collection per the author's instruction, those references
- * are translated into the arc names already used throughout the
- * filters: Arrival → Threshold → Practice. Same structure. Same map.
- * No numbers.
+ * Editorial notes:
+ *
+ *  - The original Welcome Note references posts by number (Posts 1–7,
+ *    Post 8, Posts 9–12). Per the author's standing rule that the
+ *    collection should feel open and non-finite, those references
+ *    are translated into the arc names already used in the filters:
+ *    Arrival → Threshold → Practice.
+ *
+ *  - The closing line that introduces the index is phrased as a
+ *    movement through arcs rather than a count of them, again per
+ *    the no-numbering rule.
+ *
+ *  - The flower divider that closes this intro names the room this
+ *    section lives inside on the map: The Lantern Library. This
+ *    makes the relationship between the map's named room and the
+ *    Sanctuary First post index explicit, rather than letting the
+ *    bare label "The library" duplicate the room's name.
  */
 export function SanctuaryIntro() {
   return (
@@ -102,7 +111,7 @@ export function SanctuaryIntro() {
               soul that is looking for somewhere to sit.
             </p>
             <p>
-              The library moves through three arcs. <em>Arrival</em> will
+              The collection moves through arcs. <em>Arrival</em> will
               bring you here. <em>Threshold</em> is the door you cross. And{" "}
               <em>Practice</em> is the work of coming back — and recognising
               what the world did to the soul.
@@ -116,7 +125,7 @@ export function SanctuaryIntro() {
         </div>
       </div>
 
-      <FlowerDivider label="The library" />
+      <FlowerDivider label="Inside the Lantern Library" />
     </section>
   );
 }
