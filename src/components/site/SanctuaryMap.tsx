@@ -34,10 +34,10 @@ export function SanctuaryMap() {
             <p>
               This site is one of those lodges made digital. Not a building
               — a garden. A stone path through flowers and mountains.
-              Lanterns lit at the gate. Named places along the path: a
-              lookout, a wisteria terrace, a stone bridge. Some places are
-              home to a strand of the work. The gate belongs to anyone who
-              arrives.
+              Lanterns lit at the gate. Named places along the path:
+              the Golden Door, the Lantern Library, the Devotional
+              Corner, the Gathering Place. Some places are home to a
+              strand of the work. The gate belongs to anyone who arrives.
             </p>
             <p className="text-center font-display italic text-green">
               Not a linear path. A living field.

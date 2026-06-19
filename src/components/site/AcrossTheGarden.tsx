@@ -10,12 +10,10 @@ import { strands, type Strand } from "@/content/site/zawiya";
  * is hard-coded around a count; the section will quietly grow if a
  * new strand is added.
  *
- * NOTE — kicker pending. The previous kicker for this section
- * ("THE THREE STRANDS") was retired because (a) it hard-coded a
- * count and (b) it carried the older "doors / rooms" framing that
- * the booklet's garden vocabulary replaces. A replacement is
- * awaiting the author's wording; until then the section opens with
- * the heading alone.
+ * Kicker: "WHAT HAPPENS HERE" — the section names the activities
+ * (the strands) that take place at the named places shown on the
+ * map above, so the kicker frames the section as activity rather
+ * than count.
  */
 export function AcrossTheGarden() {
   return (
@@ -25,11 +23,10 @@ export function AcrossTheGarden() {
     >
       <div className="container">
         <header className="text-center">
-          {/*
-            Kicker intentionally absent — flagged for replacement.
-            See note in component header above.
-          */}
-          <h2 className="font-display text-3xl text-green sm:text-5xl">
+          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber">
+            What Happens Here
+          </p>
+          <h2 className="mt-3 font-display text-3xl text-green sm:text-5xl">
             Across the Garden
           </h2>
           <p className="mx-auto mt-4 max-w-xl font-serif text-[1.02rem] text-ink-soft">

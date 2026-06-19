@@ -87,11 +87,11 @@ The homepage is the digital zawiya itself. Per the Sanctuary First print booklet
 
 - Use reusable section wrappers and typography tokens.
 - Avoid generic card-grid treatment for strands; places use a quiet two-column hairline grid.
-- The section kicker for Across the Garden is currently empty pending the author's wording. Previous kickers ("THE THREE STRANDS") referenced a strand count and older "doors" framing, both retired.
+- The section kicker for Across the Garden is **WHAT HAPPENS HERE**, framing the section as the activities (strands) that take place at the named places on the map above. (Earlier "THE THREE STRANDS" kicker was retired because it hard-coded a count and used older "doors" framing.)
 
 ## Status / open questions
 
 - Status: in progress (milestone 7 — strand-resident place names reverted to the overview-map asset's names: The Lantern Library, The Devotional Corner, The Gathering Place; The Golden Door retained. Booklet detail kept as flavour inside descriptions; "Across the Garden" section, four-line welcome refrain, and "the gate is open" all retained from milestone 6).
 - Open questions:
-  - Final wording for the Across the Garden kicker (pending author).
+  - Across the Garden kicker confirmed as "What Happens Here" (M8).
   - Final illustrated map asset (`sanctuary_map.png` / `Final_map.png`) still pending. The booklet's full-spread imagery (mountain valley, hanging-chair terrace, wisteria archways, stone bridge with signpost) is a strong candidate brief for that asset.
