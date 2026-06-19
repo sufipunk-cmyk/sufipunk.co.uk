@@ -2,7 +2,7 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { AssetPlaceholder } from "@/components/site/AssetPlaceholder";
 import { SanctuaryMap } from "@/components/site/SanctuaryMap";
-import { InsideTheZawiya } from "@/components/site/InsideTheZawiya";
+import { AcrossTheGarden } from "@/components/site/AcrossTheGarden";
 import {
   FlowerDivider,
   ArchOutline,
@@ -20,10 +20,12 @@ const KOFI = "https://ko-fi.com/sufipunk";
  *   1. The Welcome — atmospheric, no nav clutter.
  *   2. The Book — Low-Demand Faith, featured prominently.
  *   3. The Map — the conceptual key. Carries the historical
- *      grounding for the word "zawiya" and names the rooms before
- *      "Inside the Zawiya" presents the strands as their residents.
- *   4. Inside the Zawiya — the strands as the activities living
- *      inside the rooms shown in the map.
+ *      grounding for the word "zawiya" and names the places along
+ *      the path (the gate, the lookout, the wisteria terrace, the
+ *      stone bridge) before the next section presents the strands
+ *      that live there.
+ *   4. Across the Garden — the strands as the activities that
+ *      happen at the places named in the map.
  *   5. The Patronage Ask — the Fountain.
  *   6. Quiet Letters — the email signup.
  */
@@ -63,10 +65,11 @@ export default function HomePage() {
               and faith leaders walking alongside them.
             </p>
             <p className="font-display text-xl italic text-green sm:text-2xl">
-              Come as you are. Move as you can. Return without apology.
+              Come as you are. Move as you can. Disappear when needed.
+              Return without apology.
             </p>
             <p className="text-ink-soft">
-              The roots are Islamic. The language is human. The door is open.
+              The roots are Islamic. The language is human. The gate is open.
             </p>
           </div>
 
@@ -154,12 +157,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. THE MAP — the conceptual key. Comes before "Inside the Zawiya"
-          so the historical grounding for the word lands first. */}
+      {/* 3. THE MAP — the conceptual key. Comes before "Across the
+          Garden" so the historical grounding for the word lands
+          first, and so the named places exist before strands are
+          introduced as their residents. */}
       <SanctuaryMap />
 
-      {/* 4. INSIDE THE ZAWIYA — strands as residents of the rooms above. */}
-      <InsideTheZawiya />
+      {/* 4. ACROSS THE GARDEN — strands as the activities that happen
+          at the places shown in the map above. */}
+      <AcrossTheGarden />
 
       {/* 5. THE PATRONAGE ASK — Supporting Sanctuary, the Fountain. */}
       <section

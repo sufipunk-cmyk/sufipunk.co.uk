@@ -81,7 +81,7 @@ export function SiteFooter() {
 
         <div className="mt-10 border-t border-hairline/60 pt-6 text-center font-serif text-xs text-ink-soft">
           <p className="italic">
-            The roots are Islamic. The language is human. The door is open.
+            The roots are Islamic. The language is human. The gate is open.
           </p>
           <p className="mt-2">
             © {new Date().getFullYear()} Sufi Punk. All writing is the author&apos;s own.

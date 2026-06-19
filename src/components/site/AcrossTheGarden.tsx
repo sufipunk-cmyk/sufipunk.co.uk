@@ -2,24 +2,25 @@ import Link from "next/link";
 import { strands, type Strand } from "@/content/site/zawiya";
 
 /**
- * Inside the Zawiya.
+ * Across the Garden.
  *
- * Each strand is the *activity* that happens inside one of the rooms
- * shown in the map above. The rooms and strands stay in sync via the
- * shared data module at `src/content/site/zawiya.ts`. Nothing here is
- * hard-coded around a count; the section will quietly grow if a new
- * strand is added.
+ * The strands as the activities that happen at the named places
+ * shown in the map above. Places and strands stay in sync via the
+ * shared data module at `src/content/site/zawiya.ts`. Nothing here
+ * is hard-coded around a count; the section will quietly grow if a
+ * new strand is added.
  *
  * NOTE — kicker pending. The previous kicker for this section
- * ("THE THREE STRANDS") was retired because (a) it hard-codes a
- * count and (b) it carried older "doors" framing that no longer
- * fits the rooms vocabulary. A replacement is awaiting the author's
- * wording; until then this section opens with the heading alone.
+ * ("THE THREE STRANDS") was retired because (a) it hard-coded a
+ * count and (b) it carried the older "doors / rooms" framing that
+ * the booklet's garden vocabulary replaces. A replacement is
+ * awaiting the author's wording; until then the section opens with
+ * the heading alone.
  */
-export function InsideTheZawiya() {
+export function AcrossTheGarden() {
   return (
     <section
-      id="inside-the-zawiya"
+      id="across-the-garden"
       className="border-t border-b border-hairline/60 bg-parchment-deep/40 py-20 sm:py-28"
     >
       <div className="container">
@@ -29,11 +30,11 @@ export function InsideTheZawiya() {
             See note in component header above.
           */}
           <h2 className="font-display text-3xl text-green sm:text-5xl">
-            Inside the Zawiya
+            Across the Garden
           </h2>
           <p className="mx-auto mt-4 max-w-xl font-serif text-[1.02rem] text-ink-soft">
-            Different voices inside one home. Each strand has its own
-            room in the map above; move between them as your capacity
+            Different voices along the path. Each strand has its own
+            place in the map above; move between them as your capacity
             allows. None is more important than the others.
           </p>
         </header>
@@ -49,7 +50,7 @@ export function InsideTheZawiya() {
 }
 
 /**
- * One strand row inside "Inside the Zawiya".
+ * One strand row.
  * Brief: equal sections — not cards, not a grid.
  */
 function StrandRow({ strand }: { strand: Strand }) {
@@ -67,7 +68,7 @@ function StrandRow({ strand }: { strand: Strand }) {
             {strand.name}
           </h3>
           <p className="mt-2 font-serif text-xs italic text-ink-soft">
-            Lives in {strand.roomName}
+            Found at {strand.placeName}
           </p>
         </div>
         <div className="sm:col-span-7">

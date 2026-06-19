@@ -17,11 +17,13 @@ import { FlowerDivider } from "@/components/site/Ornaments";
  *    movement through arcs rather than a count of them, again per
  *    the no-numbering rule.
  *
- *  - The flower divider that closes this intro names the room this
- *    section lives inside on the map: The Lantern Library. This
- *    makes the relationship between the map's named room and the
- *    Sanctuary First post index explicit, rather than letting the
- *    bare label "The library" duplicate the room's name.
+ *  - The flower divider that closes this intro names the place this
+ *    section lives at on the map: The Lookout. The Sanctuary First
+ *    print booklet describes the lookout as "a place to pause, a
+ *    place to see clearly, a place to remember what matters most" —
+ *    a terrace overlooking the valley with a hanging chair, a
+ *    telescope, an open book, and a coffee cup. That is the home
+ *    of witness writing, and so it is the home of this collection.
  */
 export function SanctuaryIntro() {
   return (
@@ -112,7 +114,7 @@ export function SanctuaryIntro() {
             </p>
             <p>
               The collection moves through arcs. <em>Arrival</em> will
-              bring you here. <em>Threshold</em> is the door you cross. And{" "}
+              bring you here. <em>Threshold</em> is the gate you cross. And{" "}
               <em>Practice</em> is the work of coming back — and recognising
               what the world did to the soul.
             </p>
@@ -125,7 +127,7 @@ export function SanctuaryIntro() {
         </div>
       </div>
 
-      <FlowerDivider label="Inside the Lantern Library" />
+      <FlowerDivider label="From the Lookout" />
     </section>
   );
 }

@@ -1,19 +1,17 @@
 import Link from "next/link";
 import { AssetPlaceholder } from "./AssetPlaceholder";
 import { ArchOutline, MosaicRow } from "./Ornaments";
-import { rooms, type Room } from "@/content/site/zawiya";
+import { places, strands, type Place } from "@/content/site/zawiya";
 
 /**
  * The Sanctuary Map.
  *
- * Per the brief and a recent author note: the map is the conceptual
- * key to the whole site, and it has to come *before* "Inside the
- * Zawiya" — readers need the historical grounding for the word
- * before they meet it as a structural concept.
+ * Per the Sanctuary First print booklet, the zawiya is a mountain
+ * garden — not a building. The map carries the historical grounding
+ * for the word "zawiya", then names the places along the path.
  *
- * The map intro carries that grounding (a zawiya is, historically, a
- * place where Allah was remembered). It then names the rooms — the
- * micro-sanctuaries — and points to which strand lives in each.
+ * Each place that has a resident strand links to that strand. The
+ * gate has no single resident — it belongs to anyone who arrives.
  */
 export function SanctuaryMap() {
   return (
@@ -29,17 +27,20 @@ export function SanctuaryMap() {
 
           <div className="prose-zawiya mx-auto mt-6 text-[1.02rem] text-ink-soft">
             <p>
-              A <em>zawiya</em>, historically, is a place where Allah was
-              remembered. A small room kept apart from the noise of the
-              world, where seekers sat, prayed, learned, and rested. This
-              site is one of those rooms made digital — a corner of the
-              internet kept for the same purpose.
+              Historically, a <em>zawiya</em> was a humble Sufi lodge — a
+              retreat space where travellers could step away from the
+              demands of the world, remember God, and catch their breath.
             </p>
             <p>
-              Inside, the zawiya holds named micro-sanctuaries. Each is a
-              room of its own: a doorway, a library, a corner, a place to
-              gather. Some rooms are home to a strand of the work. One —
-              the door — belongs to everyone who arrives.
+              This site is one of those lodges made digital. Not a building
+              — a garden. A stone path through flowers and mountains.
+              Lanterns lit at the gate. Named places along the path: a
+              lookout, a wisteria terrace, a stone bridge. Some places are
+              home to a strand of the work. The gate belongs to anyone who
+              arrives.
+            </p>
+            <p className="text-center font-display italic text-green">
+              Not a linear path. A living field.
             </p>
           </div>
         </header>
@@ -61,15 +62,18 @@ export function SanctuaryMap() {
           </p>
         </div>
 
-        {/* The named rooms — data-driven, no hard-coded count. */}
+        {/* Named places — data-driven, no hard-coded count. */}
         <div className="mx-auto mt-16 max-w-4xl">
+          <p className="text-center font-serif text-xs uppercase tracking-[0.35em] text-amber">
+            Places along the path
+          </p>
           <ul
-            className="grid gap-px bg-hairline/60 sm:grid-cols-2"
-            aria-label="Rooms of the zawiya"
+            className="mt-6 grid gap-px bg-hairline/60 sm:grid-cols-2"
+            aria-label="Places in the zawiya"
           >
-            {rooms.map((room) => (
-              <li key={room.slug} className="bg-parchment">
-                <RoomCard room={room} />
+            {places.map((place) => (
+              <li key={place.slug} className="bg-parchment">
+                <PlaceCard place={place} />
               </li>
             ))}
           </ul>
@@ -79,48 +83,38 @@ export function SanctuaryMap() {
   );
 }
 
-function RoomCard({ room }: { room: Room }) {
-  const strandHref =
-    room.resident === "sanctuary"
-      ? "/sanctuary"
-      : room.resident === "underground"
-        ? "/underground"
-        : room.resident === "passage"
-          ? "/passage"
-          : null;
-
-  const strandName =
-    room.resident === "sanctuary"
-      ? "Sanctuary First"
-      : room.resident === "underground"
-        ? "Spiritual Underground"
-        : room.resident === "passage"
-          ? "Safe Passage"
-          : null;
+function PlaceCard({ place }: { place: Place }) {
+  const strand = place.resident
+    ? strands.find((s) => s.slug === place.resident)
+    : null;
 
   return (
     <article className="relative h-full overflow-hidden p-8 sm:p-10">
       <ArchOutline className="pointer-events-none absolute -right-10 -top-6 h-44 w-32 text-green/[0.07]" />
 
       <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
-        {room.role}
+        {place.terrain}
       </p>
       <h3 className="mt-2 font-display text-2xl text-green sm:text-[1.75rem]">
-        {room.name}
+        {place.name}
       </h3>
 
-      <p className="mt-4 font-serif text-[0.98rem] leading-relaxed text-ink">
-        {room.description}
+      <p className="mt-4 font-display italic text-[1rem] leading-snug text-green-soft">
+        {place.echo}
       </p>
 
-      {strandHref && strandName ? (
+      <p className="mt-4 font-serif text-[0.98rem] leading-relaxed text-ink">
+        {place.description}
+      </p>
+
+      {strand ? (
         <p className="mt-5 font-serif text-sm">
           <span className="text-ink-soft">Home of </span>
           <Link
-            href={strandHref}
+            href={strand.href}
             className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
           >
-            {strandName}
+            {strand.name}
           </Link>
         </p>
       ) : (
