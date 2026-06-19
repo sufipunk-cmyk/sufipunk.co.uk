@@ -1,18 +1,67 @@
-import { StrandStub } from "@/components/site/StrandStub";
+import { Suspense } from "react";
+import type { Metadata } from "next";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { SanctuaryIntro } from "@/components/sanctuary/SanctuaryIntro";
+import { SanctuaryLibrary } from "@/components/sanctuary/SanctuaryLibrary";
+import type { PostListEntry } from "@/components/sanctuary/PostList";
+import { getAllSanctuaryPosts } from "@/content/sanctuary/loader";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Sanctuary First",
   description:
-    "Witness writing — twelve posts of arrival, threshold, and practice. Forming.",
+    "Witness writing — an open, ongoing library of arrival, threshold, and practice. Filtered by experience, theme, tradition, and arc.",
 };
 
 export default function SanctuaryPage() {
+  const posts: PostListEntry[] = getAllSanctuaryPosts().map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    excerpt: p.excerpt,
+    date: p.date,
+    arc: p.arc,
+    experience: p.experience,
+    theme: p.theme,
+    tradition: p.tradition,
+    readingMinutes: p.readingMinutes,
+    awaitingMigration: p.awaitingMigration,
+  }));
+
   return (
-    <StrandStub
-      kicker="Witness Writing"
-      title="Sanctuary First"
-      intro="A library of twelve posts that move through arrival, threshold, and practice. The intro text, the post index, and the filtered reading view are being prepared as the next milestone of this build."
-      upNext="The next push will bring the sanctuary intro, the post list, and the experience / theme / tradition / arc filters described in the brief — followed by the twelve posts themselves with previous and next navigation."
-    />
+    <div className="bg-parchment text-ink">
+      <SiteHeader />
+
+      <SanctuaryIntro />
+
+      {/*
+        SanctuaryLibrary uses useSearchParams; per Next 15 client
+        components reading search params must sit inside <Suspense>.
+      */}
+      <Suspense fallback={<LibraryFallback count={posts.length} />}>
+        <SanctuaryLibrary posts={posts} />
+      </Suspense>
+
+      {posts.length === 0 ? (
+        <div className="container py-20 text-center">
+          <p className="font-display text-2xl italic text-green">
+            The library is being prepared.
+          </p>
+          <p className="mt-3 font-serif text-ink-soft">
+            Markdown posts go in <code>/content/sanctuary/</code>. See{" "}
+            <code>_README.md</code> there for the frontmatter schema.
+          </p>
+        </div>
+      ) : null}
+
+      <SiteFooter />
+    </div>
+  );
+}
+
+function LibraryFallback({ count }: { count: number }) {
+  return (
+    <div className="container py-12 text-center font-serif text-sm text-ink-soft">
+      Preparing the library… ({count} {count === 1 ? "post" : "posts"})
+    </div>
   );
 }

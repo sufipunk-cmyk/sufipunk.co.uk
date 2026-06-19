@@ -46,7 +46,7 @@ This site is not a portfolio, generic blog, or shop. It should feel like enterin
 | Feature | Status | Spec |
 |---|---|---|
 | Homepage / Digital Zawiya | done (asset placeholders pending) | `specs/homepage/document.md` |
-| Sanctuary First | stub live | `specs/sanctuary-first/document.md` |
+| Sanctuary First | done (3 placeholder posts pending real migration) | `specs/sanctuary-first/document.md` |
 | Spiritual Underground | stub live | `specs/spiritual-underground/document.md` |
 | Safe Passage | stub live | `specs/safe-passage/document.md` |
 | About | stub live | `specs/about/document.md` |
@@ -56,15 +56,24 @@ This site is not a portfolio, generic blog, or shop. It should feel like enterin
 
 Milestone 1 (initialization): pushed to GitHub as commit `9fa58f8`.
 
-Milestone 2 (homepage): complete in code. Includes:
-- All six homepage sections in brief order (welcome, book, inside the zawiya, map, patronage, signup)
-- Brief-correct palette and typography
-- Cormorant Garamond + EB Garamond
-- Mobile-first layout, tested at 360 / 390 / 768 / 1280
-- Lightweight stub pages for `/sanctuary`, `/underground`, `/passage`, `/about` so strand navigation never 404s
-- Typographic placeholders for the brief-named images (book cover, sanctuary map), flagged in-place
-- No carousels, popups, social embeds, white background, or card grids
+Milestone 2 (homepage): pushed to GitHub as commit `e7b277e`.
+
+Milestone 3 (Sanctuary First): complete in code. Includes:
+- Sanctuary intro section (open-and-ongoing framing, no numbered framing per author override)
+- Filesystem content loader for markdown posts (frontmatter + readingMinutes + neighbours)
+- Brief-verbatim taxonomies: 9 experience tags, 8 theme tags, 5 tradition tags, 3 arc tags
+- Post index with the four filter groups (URL-state, OR within group / AND across groups)
+- Reading view per post with arc kicker, taxonomy chips, awaiting-migration banner where flagged, and prev/next navigation
+- Three seeded placeholder posts (one per arc), all flagged `awaitingMigration: true`, ready to be replaced when the real twelve are migrated
+
+Author overrides applied:
+- Sanctuary posts are NOT numbered anywhere in UI or copy
+- Homepage welcome's "who this is for" repetition trimmed
+- Safe Passage professional audience list no longer mentions families
 
 Up next:
-- Sanctuary First content build (intro, post index, filters, post pages)
+- Migrate the real twelve Sanctuary posts from `sanctuary-blog.vercel.app`
+- Spiritual Underground full content with the two confirmed definitions
+- Safe Passage Version A (with the families override)
+- About page full copy
 - Replacement of asset placeholders once real images land in `public/images/`

@@ -28,8 +28,19 @@
 
 ## Functional requirements
 
-- Render the confirmed Version A text.
+- Render the confirmed Version A text — with one author override applied (see "Author overrides" below).
 - Include `mailto:sufipunkmusic@gmail.com`.
+
+## Author overrides (post-brief, applied)
+
+These are deliberate tweaks the brief author has confirmed since the master brief was written. Honour them when building the page.
+
+1. **Remove "families" from the professional welcome list.**
+   The Version A welcome paragraph reads:
+   > "If you are a professional, a faith leader, a family member, or part of a wider community trying to walk alongside someone — you are welcome here too..."
+   The published page must instead read:
+   > "If you are a professional, a faith leader, or part of a wider community trying to walk alongside someone — you are welcome here too..."
+   Reasoning (from author): Safe Passage is aimed at professionals and institutions, not families. Including "a family member" disrupts the flow and miscasts the audience.
 
 ## Data model / schema
 

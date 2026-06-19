@@ -154,6 +154,60 @@
     );
   }
 
+  /* Sanctuary post body — long-form reading, narrow measure, generous air. */
+  .sanctuary-prose {
+    font-size: 1.085rem;
+    line-height: 1.78;
+    color: hsl(var(--ink));
+  }
+  .sanctuary-prose > * + * { margin-top: 1.1em; }
+  .sanctuary-prose p { margin-top: 1.05em; }
+  .sanctuary-prose p:first-child { margin-top: 0; }
+  .sanctuary-prose h2 {
+    margin-top: 2.4em;
+    font-size: 1.7rem;
+    line-height: 1.2;
+    color: hsl(var(--green));
+  }
+  .sanctuary-prose h3 {
+    margin-top: 2em;
+    font-size: 1.35rem;
+    line-height: 1.25;
+    color: hsl(var(--green));
+  }
+  .sanctuary-prose blockquote {
+    border-left: 2px solid hsl(var(--amber) / 0.65);
+    padding: 0.25em 0 0.25em 1.25em;
+    margin: 1.6em 0;
+    color: hsl(var(--ink-soft));
+    font-style: italic;
+  }
+  .sanctuary-prose em { color: hsl(var(--green)); }
+  .sanctuary-prose a {
+    color: hsl(var(--green));
+    text-decoration-color: hsl(var(--amber) / 0.65);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+  .sanctuary-prose a:hover { color: hsl(var(--amber)); }
+  .sanctuary-prose ul,
+  .sanctuary-prose ol {
+    margin-top: 1.05em;
+    padding-left: 1.4em;
+  }
+  .sanctuary-prose li { margin-top: 0.4em; }
+  .sanctuary-prose code {
+    font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-size: 0.9em;
+    background: hsl(var(--parchment-deep));
+    padding: 0.1em 0.35em;
+    border-radius: 0.2em;
+  }
+  .sanctuary-prose hr {
+    margin: 2.5em auto;
+    width: 80%;
+  }
+
   /* Asset placeholder — a flagged typographic stand-in for missing brief images. */
   .asset-placeholder {
     position: relative;

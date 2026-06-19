@@ -55,16 +55,6 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="mt-12 prose-zawiya text-left">
-            <p>
-              This space is for people who are carrying burnout, overwhelm,
-              shutdown, or demand fatigue. Trying to stay connected to faith
-              without coercion. Exhausted by performance-based belonging. You
-              do not need to arrive coherent, productive, articulate, socially
-              fluent, or spiritually certain to belong here.
-            </p>
-          </div>
-
           <FlowerDivider />
         </div>
       </section>
@@ -174,7 +164,7 @@ export default function HomePage() {
               kicker="Witness Writing"
               name="Sanctuary First"
               href="/sanctuary"
-              description="The writing — twelve posts now, more coming. A library of arrival, threshold, and practice. Posts you can move through quietly, filtered by the experience, theme, tradition, or arc that meets you where you are."
+              description="The writing. An open, ongoing library of arrival, threshold, and practice. Move through it quietly — filtered by the experience, theme, tradition, or arc that meets you where you are."
             />
             <Strand
               kicker="Parallel Play"
