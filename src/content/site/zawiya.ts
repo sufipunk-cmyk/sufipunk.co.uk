@@ -63,7 +63,22 @@ export type Place = {
    * under the canonical overview-map name.
    */
   description: string;
+  /**
+   * Public path to the photograph that lives at this place.
+   */
+  image: string;
+  /**
+   * Short alt text for the place photo.
+   */
+  imageAlt: string;
 };
+
+/**
+ * Path to the illustrated overview map asset.
+ */
+export const mapImage = "/images/places/sanctuary-map.jpg";
+export const mapImageAlt =
+  "Illustrated overview map of the digital zawiya — a stone path winding through flowers and mountains, with the named places labelled along the way.";
 
 export type Strand = {
   slug: StrandSlug;
@@ -88,6 +103,9 @@ export const places: Place[] = [
     echo: "The door remains open.",
     description:
       "Where you arrive. Lanterns lit beside the entrance, a stone path through flowers and mountains waiting on the other side. The door belongs to no single strand — it belongs to anyone who crosses it. You are free to stay, to rest, to return, to begin again.",
+    image: "/images/places/the-golden-door.jpg",
+    imageAlt:
+      "A yellow mosaic-tiled door standing open in a multicoloured tiled arch, jasmine and roses climbing the sides, lanterns at the threshold and a stone path winding toward distant mountains in golden-hour light.",
   },
   {
     slug: "the-lantern-library",
@@ -98,6 +116,9 @@ export const places: Place[] = [
       "A place to pause. A place to see clearly. A place to remember what matters most.",
     description:
       "Home of Sanctuary First. A lamp-lit terrace high enough to hold the whole valley — a hanging chair, an open book, a coffee cup, a telescope angled toward the snow-capped mountains. Witness writing happens here, slowly, where attention is allowed to follow itself instead of productivity.",
+    image: "/images/places/the-lantern-library.jpg",
+    imageAlt:
+      "A green-and-white mosaic lantern arched over a carved white stone pedestal, with a stack of books beside it and daisies and pink cosmos in the surrounding garden.",
   },
   {
     slug: "the-devotional-corner",
@@ -107,6 +128,9 @@ export const places: Place[] = [
     echo: "You do not join this. You recognise yourself in it.",
     description:
       "Home of the Spiritual Underground. Stone archways draped in wisteria, a small fountain audible through them, terrace seating that overlooks the valley. A low-pressure cultural and spiritual field for people practising faith, creativity, and survival outside traditional expectations.",
+    image: "/images/places/the-devotional-corner.jpg",
+    imageAlt:
+      "A cut-glass vase of pussy-willow stems threaded with small lights, two golden domed lanterns with crescent-moon finials, votive candles and prayer beads spilled across a deep-red carpet — a candle-lit, evening scene.",
   },
   {
     slug: "the-gathering-place",
@@ -116,6 +140,9 @@ export const places: Place[] = [
     echo: "We are in the world, but not of it.",
     description:
       "Home of Safe Passage. A stone bridge over a stream, and a wooden signpost along the path naming what must not be lost in the crossing — dignity, autonomy, boundaries, belonging, safety. The strand of movement through systems that were never built with our nervous systems in mind.",
+    image: "/images/places/the-gathering-place.jpg",
+    imageAlt:
+      "A sheltered cobblestone corner with a clay chiminea, an ornate Moroccan lantern hanging on a weathered wooden gate, jasmine and lavender at the base, and a small tile-edged board leaning against the fence.",
   },
 ];
 

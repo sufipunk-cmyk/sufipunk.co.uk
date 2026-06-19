@@ -91,7 +91,13 @@ The homepage is the digital zawiya itself. Per the Sanctuary First print booklet
 
 ## Status / open questions
 
-- Status: in progress (milestone 7 — strand-resident place names reverted to the overview-map asset's names: The Lantern Library, The Devotional Corner, The Gathering Place; The Golden Door retained. Booklet detail kept as flavour inside descriptions; "Across the Garden" section, four-line welcome refrain, and "the gate is open" all retained from milestone 6).
+- Status: in progress (milestone 9 — real visual assets dropped in for the four named places, the overview map, and the Low-Demand Faith book cover, replacing all earlier typographic placeholders).
 - Open questions:
   - Across the Garden kicker confirmed as "What Happens Here" (M8).
-  - Final illustrated map asset (`sanctuary_map.png` / `Final_map.png`) still pending. The booklet's full-spread imagery (mountain valley, hanging-chair terrace, wisteria archways, stone bridge with signpost) is a strong candidate brief for that asset.
+  - Real visual assets in place (M9):
+    - Overview map: `/images/places/sanctuary-map.jpg` (from Final map.webp).
+    - The Golden Door: `/images/places/the-golden-door.jpg` (from `golden_door_FINAL_brightened.webp`, brightened version superseding the earlier upload).
+    - The Lantern Library, The Devotional Corner, The Gathering Place: 1:1 photo-to-place mapping confirmed by author against the overview map's bottom strip. The Devotional Corner deliberately retains its candle-lit darker tone — a brighter retake was tested and discarded because it washed the candlelight out, which is the point of that scene.
+    - Book cover: `/images/book/low-demand-faith-cover.jpg` (rendered from Cover.pdf at 240 DPI).
+  - Layout decision recorded: the threshold place is rendered as a wide landscape hero (~2.6:1, full-width), centre-cropped from its source, sitting above the remaining places. The remaining places render as a uniform 3:4 portrait row, centre-cropped from their sources. This is data-driven via `Place.resident === null` so adding a future fourth strand keeps working without code changes.
+  - `AssetPlaceholder` is no longer referenced from the homepage or map; it remains in the codebase for future asset work and for any later Strand pages still in placeholder state.

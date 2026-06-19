@@ -1,7 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
-import { AssetPlaceholder } from "./AssetPlaceholder";
-import { ArchOutline, MosaicRow } from "./Ornaments";
-import { places, strands, type Place } from "@/content/site/zawiya";
+import { ArchOutline } from "./Ornaments";
+import {
+  mapImage,
+  mapImageAlt,
+  places,
+  strands,
+  type Place,
+} from "@/content/site/zawiya";
 
 /**
  * The Sanctuary Map.
@@ -11,9 +17,17 @@ import { places, strands, type Place } from "@/content/site/zawiya";
  * for the word "zawiya", then names the places along the path.
  *
  * Each place that has a resident strand links to that strand. The
- * gate has no single resident — it belongs to anyone who arrives.
+ * threshold place (the gate) belongs to anyone who arrives, and is
+ * given a wider hero treatment because everyone passes through it.
+ *
+ * Layout is data-driven: the threshold place (resident === null) is
+ * promoted to the hero; the remaining places fill a uniform row
+ * underneath. Adding a future place keeps working without changes.
  */
 export function SanctuaryMap() {
+  const heroPlace = places.find((p) => p.resident === null) ?? places[0];
+  const otherPlaces = places.filter((p) => p !== heroPlace);
+
   return (
     <section className="bg-parchment py-20 sm:py-28" id="the-map">
       <div className="container">
@@ -45,83 +59,156 @@ export function SanctuaryMap() {
           </div>
         </header>
 
-        {/* The illustrated map asset itself. */}
-        <div className="mt-14">
-          <AssetPlaceholder
-            filename="sanctuary_map.png"
-            label="The Sanctuary Map"
-            aspect="4 / 3"
-            className="mx-auto max-w-4xl"
-            ornament={<MosaicRow />}
-          />
-          <p className="mx-auto mt-4 max-w-xl text-center font-serif text-xs italic text-ink-soft">
-            Placeholder until <code>sanctuary_map.png</code> /{" "}
-            <code>Final_map.png</code> is added to{" "}
-            <code>public/images/</code>. Per brief, this is the primary
-            visual asset for this section.
-          </p>
-        </div>
+        {/* The illustrated overview map. */}
+        <figure className="mx-auto mt-14 max-w-4xl">
+          <div className="relative w-full overflow-hidden border border-hairline bg-parchment shadow-[0_2px_30px_-20px_rgba(0,0,0,0.35)]">
+            <Image
+              src={mapImage}
+              alt={mapImageAlt}
+              width={2200}
+              height={1467}
+              priority
+              sizes="(min-width: 1024px) 56rem, 100vw"
+              className="h-auto w-full"
+            />
+          </div>
+          <figcaption className="mx-auto mt-4 max-w-xl text-center font-serif text-xs italic text-ink-soft">
+            The overview map of the zawiya — the named places along the path.
+          </figcaption>
+        </figure>
 
         {/* Named places — data-driven, no hard-coded count. */}
-        <div className="mx-auto mt-16 max-w-4xl">
+        <div className="mx-auto mt-16 max-w-5xl">
           <p className="text-center font-serif text-xs uppercase tracking-[0.35em] text-amber">
             Places along the path
           </p>
-          <ul
-            className="mt-6 grid gap-px bg-hairline/60 sm:grid-cols-2"
-            aria-label="Places in the zawiya"
-          >
-            {places.map((place) => (
-              <li key={place.slug} className="bg-parchment">
-                <PlaceCard place={place} />
-              </li>
-            ))}
-          </ul>
+
+          {/* Hero place: the threshold. Wide landscape, full-width. */}
+          {heroPlace ? (
+            <div className="mt-8">
+              <PlaceCard place={heroPlace} variant="hero" />
+            </div>
+          ) : null}
+
+          {/* Remaining places: uniform 3:4 portrait row. */}
+          {otherPlaces.length > 0 ? (
+            <ul
+              className="mt-10 grid gap-px bg-hairline/60 sm:grid-cols-3"
+              aria-label="Resident places in the zawiya"
+            >
+              {otherPlaces.map((place) => (
+                <li key={place.slug} className="bg-parchment">
+                  <PlaceCard place={place} variant="card" />
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </div>
       </div>
     </section>
   );
 }
 
-function PlaceCard({ place }: { place: Place }) {
+function PlaceCard({
+  place,
+  variant,
+}: {
+  place: Place;
+  variant: "hero" | "card";
+}) {
   const strand = place.resident
     ? strands.find((s) => s.slug === place.resident)
     : null;
 
+  // The hero (the threshold) renders as a wide landscape banner with
+  // copy beneath it. Other places render as a uniform 3:4 portrait
+  // tile with copy beneath, sized to sit shoulder-to-shoulder.
+  if (variant === "hero") {
+    return (
+      <article className="relative overflow-hidden border border-hairline bg-parchment">
+        <div
+          className="relative w-full overflow-hidden bg-green/5"
+          style={{ aspectRatio: "2.6 / 1" }}
+        >
+          <Image
+            src={place.image}
+            alt={place.imageAlt}
+            fill
+            priority
+            sizes="(min-width: 1024px) 64rem, 100vw"
+            className="object-cover object-center"
+          />
+        </div>
+        <div className="relative px-6 py-8 sm:px-10 sm:py-10">
+          <ArchOutline className="pointer-events-none absolute -right-10 -top-6 h-44 w-32 text-green/[0.07]" />
+          <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
+            {place.terrain}
+          </p>
+          <h3 className="mt-2 font-display text-3xl text-green sm:text-[2.25rem]">
+            {place.name}
+          </h3>
+          <p className="mt-4 font-display italic text-[1.05rem] leading-snug text-green-soft">
+            {place.echo}
+          </p>
+          <p className="mt-4 max-w-3xl font-serif text-[1rem] leading-relaxed text-ink">
+            {place.description}
+          </p>
+          <p className="mt-5 font-serif text-sm italic text-ink-soft">
+            Open to anyone who arrives.
+          </p>
+        </div>
+      </article>
+    );
+  }
+
   return (
-    <article className="relative h-full overflow-hidden p-8 sm:p-10">
-      <ArchOutline className="pointer-events-none absolute -right-10 -top-6 h-44 w-32 text-green/[0.07]" />
+    <article className="relative flex h-full flex-col overflow-hidden">
+      <div
+        className="relative w-full overflow-hidden bg-green/5"
+        style={{ aspectRatio: "3 / 4" }}
+      >
+        <Image
+          src={place.image}
+          alt={place.imageAlt}
+          fill
+          sizes="(min-width: 640px) 22rem, 100vw"
+          className="object-cover object-center"
+        />
+      </div>
+      <div className="relative flex-1 p-7 sm:p-8">
+        <ArchOutline className="pointer-events-none absolute -right-10 -top-6 h-44 w-32 text-green/[0.07]" />
 
-      <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
-        {place.terrain}
-      </p>
-      <h3 className="mt-2 font-display text-2xl text-green sm:text-[1.75rem]">
-        {place.name}
-      </h3>
-
-      <p className="mt-4 font-display italic text-[1rem] leading-snug text-green-soft">
-        {place.echo}
-      </p>
-
-      <p className="mt-4 font-serif text-[0.98rem] leading-relaxed text-ink">
-        {place.description}
-      </p>
-
-      {strand ? (
-        <p className="mt-5 font-serif text-sm">
-          <span className="text-ink-soft">Home of </span>
-          <Link
-            href={strand.href}
-            className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
-          >
-            {strand.name}
-          </Link>
+        <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
+          {place.terrain}
         </p>
-      ) : (
-        <p className="mt-5 font-serif text-sm italic text-ink-soft">
-          Open to anyone who arrives.
+        <h3 className="mt-2 font-display text-2xl text-green sm:text-[1.6rem]">
+          {place.name}
+        </h3>
+
+        <p className="mt-4 font-display italic text-[0.98rem] leading-snug text-green-soft">
+          {place.echo}
         </p>
-      )}
+
+        <p className="mt-4 font-serif text-[0.95rem] leading-relaxed text-ink">
+          {place.description}
+        </p>
+
+        {strand ? (
+          <p className="mt-5 font-serif text-sm">
+            <span className="text-ink-soft">Home of </span>
+            <Link
+              href={strand.href}
+              className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
+            >
+              {strand.name}
+            </Link>
+          </p>
+        ) : (
+          <p className="mt-5 font-serif text-sm italic text-ink-soft">
+            Open to anyone who arrives.
+          </p>
+        )}
+      </div>
     </article>
   );
 }

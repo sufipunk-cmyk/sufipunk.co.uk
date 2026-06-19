@@ -1,12 +1,11 @@
+import Image from "next/image";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { AssetPlaceholder } from "@/components/site/AssetPlaceholder";
 import { SanctuaryMap } from "@/components/site/SanctuaryMap";
 import { AcrossTheGarden } from "@/components/site/AcrossTheGarden";
 import {
   FlowerDivider,
   ArchOutline,
-  MosaicRow,
 } from "@/components/site/Ornaments";
 
 const SUBSTACK_SUBSCRIBE =
@@ -82,15 +81,16 @@ export default function HomePage() {
         <div className="container grid gap-12 md:grid-cols-12 md:items-center md:gap-16">
           <div className="md:col-span-5">
             <div className="mx-auto max-w-[320px] md:mx-0">
-              <AssetPlaceholder
-                filename="low_demand_faith_cover.png"
-                label="Low-Demand Faith"
-                aspect="2 / 3"
-                ornament={<MosaicRow count={7} />}
-              />
-              <p className="mt-3 text-center font-serif text-xs italic text-ink-soft md:text-left">
-                Cover image — placeholder until <code>low_demand_faith_cover.png</code> is added.
-              </p>
+              <div className="overflow-hidden border border-hairline bg-parchment shadow-[0_8px_30px_-12px_rgba(0,0,0,0.35)]">
+                <Image
+                  src="/images/book/low-demand-faith-cover.jpg"
+                  alt="Cover of the book Low-Demand Faith — Autonomy, Neurodivergence, and the Sacred, by Sufi Punk. A cream parchment field with layered green mountain silhouettes and a small ochre sun."
+                  width={1400}
+                  height={1979}
+                  sizes="(min-width: 768px) 320px, 80vw"
+                  className="h-auto w-full"
+                />
+              </div>
             </div>
           </div>
 

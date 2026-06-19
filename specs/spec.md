@@ -49,7 +49,7 @@ This site is not a portfolio, generic blog, or shop. It should feel like enterin
 
 | Feature | Status | Spec |
 |---|---|---|
-| Homepage / Digital Zawiya | done (asset placeholders pending) | `specs/homepage/document.md` |
+| Homepage / Digital Zawiya | done (M9 — real visuals in for map, four named places, and book cover) | `specs/homepage/document.md` |
 | Sanctuary First | done (12 real posts migrated from Session 4 docx) | `specs/sanctuary-first/document.md` |
 | Spiritual Underground | stub live | `specs/spiritual-underground/document.md` |
 | Safe Passage | stub live | `specs/safe-passage/document.md` |
@@ -87,9 +87,20 @@ Author overrides applied:
 - Homepage welcome's "who this is for" repetition trimmed
 - Safe Passage professional audience list no longer mentions families
 
+Milestone 9 (real visual assets): complete in code. Includes:
+- Five real photographs and the book cover dropped into `public/images/`:
+  - `images/places/sanctuary-map.jpg` — illustrated overview map
+  - `images/places/the-golden-door.jpg` — from `golden_door_FINAL_brightened.webp` (the brightened version, replacing the original Golden Door upload)
+  - `images/places/the-lantern-library.jpg` — confirmed by author as the photo of the green-and-white mosaic lantern + Rumi/Shams books
+  - `images/places/the-devotional-corner.jpg` — confirmed by author, kept as-is at the original candle-lit warmth (a brighter retake was tested and rejected)
+  - `images/places/the-gathering-place.jpg` — confirmed by author as the chiminea/lantern hearth scene
+  - `images/book/low-demand-faith-cover.jpg` — rendered from the supplied Cover.pdf
+- `Place` type now carries `image` and `imageAlt`; a top-level `mapImage` constant carries the overview-map asset path. Both are set in `src/content/site/zawiya.ts` so the data file remains the single source of truth.
+- `SanctuaryMap` rebuilt around a data-driven layout: the threshold place (`resident === null`) is rendered as a wide landscape hero (~2.6:1, full-width, centre-cropped from its source); the remaining places render as a uniform 3:4 portrait row (centre-cropped). This stays compatible with adding a future fourth strand without code changes — only the data file would need to grow.
+- Homepage Book section swapped from `AssetPlaceholder` to a real `next/image` of the cover; `MosaicRow` import removed where it was only used for the placeholder ornament. `AssetPlaceholder` itself is kept in the codebase for any later asset slots that haven't yet been delivered.
+
 Up next:
 - Migrate the real twelve Sanctuary posts from `sanctuary-blog.vercel.app`
 - Spiritual Underground full content with the two confirmed definitions
 - Safe Passage Version A (with the families override)
 - About page full copy
-- Replacement of asset placeholders once real images land in `public/images/`
