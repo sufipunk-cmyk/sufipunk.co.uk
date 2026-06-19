@@ -143,7 +143,7 @@ export default async function SanctuaryPostPage({
               href="/sanctuary"
               className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
             >
-              ← Return to The Lookout
+              ← Return to The Lantern Library
             </Link>
           </div>
         </nav>

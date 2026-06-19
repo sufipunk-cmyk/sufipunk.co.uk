@@ -4,7 +4,9 @@
 
 Build `sufipunk.co.uk` as the main Sufi Punk site: a digital zawiya that presents the living practice, featured book, sanctuary map, patronage invitation, and the named strands of the work that live inside the rooms of that map.
 
-The map is the conceptual key. Per the Sanctuary First print booklet, the zawiya is a mountain garden — not a building. A stone path through flowers, lanterns at the gate, named places along the path. The named places (The Gate, The Lookout, The Wisteria Terrace, The Stone Bridge) are the terrain; the strands (Sanctuary First, Spiritual Underground, Safe Passage) are the activities that happen at specific places along the path. Both are kept open-ended on purpose — the site structure must not hard-code a count of strands or places, since the garden is alive and may grow. *Not a linear path. A living field.*
+The map is the conceptual key. The zawiya is a mountain garden — not a building. A stone path through flowers, lanterns at the entrance, named places along the path. The named places on the overview map (The Golden Door, The Lantern Library, The Devotional Corner, The Gathering Place) are the terrain; the strands (Sanctuary First, Spiritual Underground, Safe Passage) are the activities that happen at specific places. Both are kept open-ended on purpose — the site structure must not hard-code a count of strands or places, since the garden is alive and may grow. *Not a linear path. A living field.*
+
+Naming layers: the overview map (the existing illustrated asset) names the four canonical places listed above. The Sanctuary First print booklet describes the same world at a closer "walk-into" scale — a lookout terrace with a telescope, wisteria-draped archways with a fountain, a stone bridge with a wooden signpost. The booklet's imagery lives inside each place's description as flavour, but the canonical names are the overview-map names so site copy follows one consistent map. A more detailed zoomed-in layer may be built later.
 
 This site is not a portfolio, generic blog, or shop. It should feel like entering a place.
 

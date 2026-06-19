@@ -18,12 +18,13 @@ import { FlowerDivider } from "@/components/site/Ornaments";
  *    the no-numbering rule.
  *
  *  - The flower divider that closes this intro names the place this
- *    section lives at on the map: The Lookout. The Sanctuary First
- *    print booklet describes the lookout as "a place to pause, a
- *    place to see clearly, a place to remember what matters most" —
- *    a terrace overlooking the valley with a hanging chair, a
- *    telescope, an open book, and a coffee cup. That is the home
- *    of witness writing, and so it is the home of this collection.
+ *    section lives at on the overview map: The Lantern Library. The
+ *    Sanctuary First print booklet describes that place at a closer
+ *    scale — a terrace overlooking the valley with a hanging chair,
+ *    a telescope, an open book and a coffee cup, "a place to pause,
+ *    a place to see clearly, a place to remember what matters most".
+ *    That detailed view is the same place under a different zoom;
+ *    the overview-map name is what we use here for consistency.
  */
 export function SanctuaryIntro() {
   return (
@@ -127,7 +128,7 @@ export function SanctuaryIntro() {
         </div>
       </div>
 
-      <FlowerDivider label="From the Lookout" />
+      <FlowerDivider label="From the Lantern Library" />
     </section>
   );
 }

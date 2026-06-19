@@ -51,7 +51,7 @@ The homepage is the digital zawiya itself. Per the Sanctuary First print booklet
 - Static page data plus the shared zawiya data module.
 - `Place` records carry a `slug`, `name`, `terrain` label, `resident` strand slug (or `null` for the gate), `echo` (a short italic line in the booklet's voice), and `description`.
 - `Strand` records carry a `slug`, `name`, `href`, `kicker`, `placeSlug`, `placeName`, and `description`.
-- The named places, in their canonical form: **The Gate** (threshold), **The Lookout** (Sanctuary First), **The Wisteria Terrace** (Spiritual Underground), **The Stone Bridge** (Safe Passage).
+- The named places, in their canonical form (matching the overview map asset): **The Golden Door** (threshold), **The Lantern Library** (Sanctuary First), **The Devotional Corner** (Spiritual Underground), **The Gathering Place** (Safe Passage). The print-booklet imagery (lookout terrace + telescope, wisteria archways + fountain, stone bridge + signpost) is treated as a future zoomed-in layer; for now it lives inside each place's description as flavour, not as a name.
 
 ## API contracts
 
@@ -91,7 +91,7 @@ The homepage is the digital zawiya itself. Per the Sanctuary First print booklet
 
 ## Status / open questions
 
-- Status: in progress (milestone 6 — garden / landscape vocabulary applied; rooms→places; The Lantern Library→The Lookout; doors→gates in site geography).
+- Status: in progress (milestone 7 — strand-resident place names reverted to the overview-map asset's names: The Lantern Library, The Devotional Corner, The Gathering Place; The Golden Door retained. Booklet detail kept as flavour inside descriptions; "Across the Garden" section, four-line welcome refrain, and "the gate is open" all retained from milestone 6).
 - Open questions:
   - Final wording for the Across the Garden kicker (pending author).
   - Final illustrated map asset (`sanctuary_map.png` / `Final_map.png`) still pending. The booklet's full-spread imagery (mountain valley, hanging-chair terrace, wisteria archways, stone bridge with signpost) is a strong candidate brief for that asset.
