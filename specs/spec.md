@@ -53,7 +53,7 @@ This site is not a portfolio, generic blog, or shop. It should feel like enterin
 | Sanctuary First | done (12 real posts migrated from Session 4 docx) | `specs/sanctuary-first/document.md` |
 | Spiritual Underground | done (M10 — full page replacing the StrandStub) | `specs/spiritual-underground/document.md` |
 | Safe Passage | done (M10 — Version A page text in full, with the documented "a family member" override) | `specs/safe-passage/document.md` |
-| About | stub live | `specs/about/document.md` |
+| About | done (M11 — full page replacing the StrandStub) | `specs/about/document.md` |
 | Content & Platform Foundations | done (homepage milestone) | `specs/platform-foundations/document.md` |
 
 ## Current phase
@@ -106,6 +106,16 @@ Milestone 10 (Spiritual Underground + Safe Passage full pages): complete in code
 - Page routes are kept thin; component bodies live in `src/components/underground/SpiritualUndergroundIntro.tsx` and `src/components/passage/SafePassageIntro.tsx`. `StrandStub` is retained for `/about`, which is still in stub state per its spec.
 - Two flagged ambiguities recorded in `specs/spiritual-underground/document.md` for the author to settle when she's ready: (a) whether to swap the Spiritual Parallel Play definition to the longer first-person passage that exists in `ITS_Master_Brief.md`, and (b) whether organisational expressions-of-interest should remain at `sufipunkmusic@gmail.com` or move to a different inbox.
 
+Milestone 11 (About page): complete in code. Includes:
+- `/about` rebuilt as a full-content page replacing the M3 `StrandStub`. Same `SanctuaryIntro` pattern as the strand pages — kicker, display title, sectioned body using `prose-zawiya sanctuary-prose` — but consciously not tied to a named place on the overview map, since this page sits slightly behind the whole garden rather than at one of the four micro-sanctuaries.
+- The page integrates three confirmed sources, all reproduced verbatim:
+  - The master brief's confirmed soul-line as the header (*"A soul that prepares the ground. The holding. The place you are cherished."*).
+  - The master brief's confirmed short orienting bio quotation, with a small attribution line honouring the brief's "systems-generated trauma" note (referencing Clements & Aiello, University of Leeds / Cerebra) so the phrase reads as a research reference rather than a coinage.
+  - The Sanctuary First print booklet's "About Me" card text supplied 19 June 2026, including the four-item intersection strip ("Low-demand parenting / Neurodivergence and refusal / Faith without coercion / Culture, art, and sovereignty") and the closing line ("Devotion. Refusal. Sanctuary. Return. / This is how I make meaning. This is how I stay connected.").
+- The author-supplied pull-quote ("Writing here is simply the active record of my devotion.") sits near the close of the personal-voice body, just before the four-item strip.
+- The booklet's mosaic-doorway photograph is dropped into `public/images/about/mosaic-doorway.jpg` and embedded with its booklet caption preserved verbatim.
+- The page closes with a plain `❁` divider (not place-named) and a "Return to the home page" link, since About does not live at one of the four named places. This keeps the standing rule intact: only the map's named places carry place-name flower dividers.
+- `StrandStub` is no longer referenced from any page route. The component is kept in the codebase for any future placeholder needs.
+
 Up next:
 - Migrate the real twelve Sanctuary posts from `sanctuary-blog.vercel.app`
-- About page full copy
