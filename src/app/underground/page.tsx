@@ -8,6 +8,18 @@ export const metadata: Metadata = {
   title: "Spiritual Underground",
   description:
     "Low-demand faith and Spiritual Parallel Play. Inspiring the Sufi as the demonstrated example.",
+  openGraph: {
+    images: [
+      {
+        url: "/images/places/the-devotional-corner.jpg",
+        alt:
+          "The Devotional Corner — a candle-lit evening scene with a cut-glass vase of pussy-willow stems threaded with small lights, two golden domed lanterns, votive candles and prayer beads.",
+      },
+    ],
+  },
+  twitter: {
+    images: ["/images/places/the-devotional-corner.jpg"],
+  },
 };
 
 export default function UndergroundPage() {

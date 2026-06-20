@@ -70,10 +70,11 @@ export function SafePassageIntro() {
             <p>
               This strand is younger than the others. What’s offered here
               is still forming. But the lived experience underneath it —
-              parenting through SEND tribunals, navigating statutory
-              systems, holding a child through institutions not built for
-              him — is not theoretical, and it is not waiting to be
-              finished before it’s real.
+              parenting through SEND (Special Educational Needs and
+              Disabilities) tribunals, navigating statutory systems,
+              holding a child through institutions not built for him — is
+              not theoretical, and it is not waiting to be finished
+              before it’s real.
             </p>
           </div>
         </div>

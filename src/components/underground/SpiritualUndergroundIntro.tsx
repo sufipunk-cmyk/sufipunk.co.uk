@@ -67,9 +67,10 @@ export function SpiritualUndergroundIntro() {
           </h2>
           <div className="prose-zawiya sanctuary-prose mt-6">
             <p>
-              The Spiritual Underground is the cultural and creative strand
-              of this work — the place for people whose faith, attention,
-              and practice live a little outside the standard rooms.
+              The Spiritual Underground is the art, culture, and creative
+              practice strand of this work — the place for people whose
+              faith, attention, and making live a little outside the
+              standard rooms.
             </p>
             <p>
               It is built around two ideas that arrived slowly and
@@ -119,7 +120,10 @@ export function SpiritualUndergroundIntro() {
           </div>
         </div>
 
-        {/* Inspiring the Sufi — the demonstrated example. */}
+        {/* Inspiring the Sufi — the demonstrated example.
+            M13: promoted from a buried in-paragraph link to a proper
+            portal block, since this is a decade-plus body of work and
+            should not read as an afterthought. */}
         <div className="mt-16">
           <h2 className="font-display text-2xl italic text-green sm:text-3xl">
             The demonstrated example
@@ -133,17 +137,38 @@ export function SpiritualUndergroundIntro() {
               reflection. One practice, fully documented, freely available
               to wander.
             </p>
-            <p>
+          </div>
+
+          <aside className="mt-8 border border-hairline bg-parchment-deep/30 px-6 py-7 sm:px-8 sm:py-8">
+            <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
+              A portal · Ten years of practice
+            </p>
+            <p className="mt-2 font-display text-2xl leading-snug text-green sm:text-3xl">
+              Inspiring the Sufi
+            </p>
+            <p className="mt-2 font-display text-[1rem] italic leading-snug text-green-soft sm:text-[1.1rem]">
+              Fifty Names of Allah. Fifty songs. Fifty written reflections.
+            </p>
+            <p className="mt-4 font-serif text-[0.95rem] leading-relaxed text-ink">
+              Spiritual Parallel Play, fully documented and freely
+              available to wander — the demonstrated form this strand
+              points back to.
+            </p>
+            <div className="mt-6">
               <a
                 href={ITS_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="font-display text-[1.05rem] italic text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
+                className="inline-flex items-center gap-2 border border-green bg-green px-6 py-3 font-serif text-sm uppercase tracking-[0.18em] text-parchment transition hover:bg-green-soft"
               >
-                This is where it started. Come and see.
+                Visit Inspiring the Sufi
+                <span aria-hidden>→</span>
               </a>
-            </p>
-          </div>
+              <p className="mt-3 font-display text-[1rem] italic text-green-soft">
+                This is where it started. Come and see.
+              </p>
+            </div>
+          </aside>
         </div>
 
         {/* Invitation — expressions of interest, kept restrained. */}
@@ -178,7 +203,7 @@ export function SpiritualUndergroundIntro() {
                 rel="noreferrer"
                 className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
               >
-                join the list on Substack
+                Sanctuary First on Substack
               </a>
               .
             </p>

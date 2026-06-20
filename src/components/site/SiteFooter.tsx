@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const SUBSTACK = "https://sufipunksanctuaryfirst.substack.com";
+const SUBSTACK = "https://sufipunksanctuaryfirst.substack.com/subscribe";
 const KOFI = "https://ko-fi.com/sufipunk";
 
 export function SiteFooter() {
@@ -54,7 +54,7 @@ export function SiteFooter() {
                   rel="noreferrer"
                   className="text-green hover:text-amber"
                 >
-                  Substack — Sanctuary First
+                  Sanctuary First on Substack
                 </a>
               </li>
               <li>

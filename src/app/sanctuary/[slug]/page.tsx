@@ -58,8 +58,34 @@ export default async function SanctuaryPostPage({
     ...post.tradition.map((id) => ({ group: "tradition" as const, id })),
   ];
 
+  // Article JSON-LD (M13). Headline + author + datePublished, per
+  // schema.org/Article. Picked up by Google as a recognised article
+  // when the post is indexed.
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    author: {
+      "@type": "Person",
+      name: "Sufi Punk",
+    },
+    datePublished: post.date,
+    description: post.excerpt ?? undefined,
+    mainEntityOfPage: `https://sufipunk.co.uk/sanctuary/${post.slug}`,
+    publisher: {
+      "@type": "Organization",
+      name: "Sufi Punk",
+    },
+  };
+
   return (
     <div className="bg-parchment text-ink">
+      <script
+        type="application/ld+json"
+        // The structured-data object is built from trusted local
+        // content; safe to inline.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <SiteHeader />
 
       <main>

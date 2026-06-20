@@ -55,6 +55,7 @@ This site is not a portfolio, generic blog, or shop. It should feel like enterin
 | Safe Passage | done (M10 — Version A page text in full, with the documented "a family member" override) | `specs/safe-passage/document.md` |
 | About | done (M11 — full page replacing the StrandStub) | `specs/about/document.md` |
 | Content & Platform Foundations | done (M12 — Vercel build path corrected) | `specs/platform-foundations/document.md` |
+| Editing pass — SEO, consistency, voice | done (M13) | — |
 
 ## Current phase
 
@@ -128,5 +129,59 @@ Milestone 12 (production build configuration fix): complete in code. Includes:
 
 Note flagged for later (not in M12 scope): `package.json` still has `prisma generate;` at the start of the `build` script. The project carries no Prisma schema and no `prisma` dependency, so on each build that command prints `prisma: command not found` before falling through to `next build`. The `;` continuation means it is non-blocking, so the build still succeeds. Dead leftover from the project template — easy to drop in a future milestone, but explicitly out of scope here under "do not touch any copy, layout, or content — this is purely a build configuration correction" if interpreted strictly. Including the note here so it doesn't get lost.
 
+Milestone 13 (editing pass — SEO, consistency, hierarchy clarity, voice): complete in code. Includes:
+
+- **SEO**:
+  - Added `src/app/sitemap.ts`. Emits all static routes (`/`, `/sanctuary`, `/underground`, `/passage`, `/about`) plus every Sanctuary post URL, with `lastModified` per post pulled from frontmatter `date`. Verified at `/sitemap.xml` — 17 `<loc>` entries.
+  - Added `src/app/robots.ts`. Permissive `User-agent: *, Allow: /` plus a sitemap pointer. Verified at `/robots.txt`.
+  - Added Article JSON-LD to each Sanctuary post (`src/app/sanctuary/[slug]/page.tsx`): `@context`, `@type: "Article"`, `headline`, `author` (Person, "Sufi Punk"), `datePublished` from frontmatter, `description` from excerpt, `mainEntityOfPage` URL, `publisher` Organization. Rendered via `<script type="application/ld+json">` at the top of the page tree. Verified by curl on `/sanctuary/sufi-punk` — JSON-LD payload present and well-formed.
+  - Added a per-page Open Graph image (and matching Twitter image) using the real photographs already in `public/images/places/`, replacing the site-wide default for those routes:
+    - Homepage → `/images/places/sanctuary-map.jpg` (overview-map illustration).
+    - `/sanctuary` → `/images/places/the-lantern-library.jpg`.
+    - `/underground` → `/images/places/the-devotional-corner.jpg`.
+    - `/passage` → `/images/places/the-gathering-place.jpg`.
+  - The site-wide default OG image stays in place via `metadataBase` + `layout.tsx` for any route that doesn't override.
+
+- **Substack consistency**:
+  - URL: every Substack link across the entire site now points to `/subscribe` (previously the footer linked to the bare Substack homepage while in-page links pointed to `/subscribe`). Footer's `SUBSTACK` constant updated; homepage book CTA and inline link both routed through a single `SUBSTACK_SUBSCRIBE` constant; About page Substack link updated; Underground Substack link updated.
+  - Visible link text: standardised everywhere to read "Sanctuary First on Substack" (previously varied between "Join the list", "Quiet Letters", and the footer's "Substack — Sanctuary First").
+
+- **About page — Clements & Aiello attribution**:
+  - Removed from its previous position directly under the orienting bio quotation.
+  - Replaced inline with a small ★ footnote marker (`<sup>` linking to `#footnote-systems-generated-trauma`) on the phrase "systems-generated trauma" inside the orienting bio quotation.
+  - Reworded body added at the bottom of the About page in an `<aside id="footnote-systems-generated-trauma">`: *"Systems-generated trauma is drawn from research by Clements & Aiello (University of Leeds / Cerebra), referenced here in their language, though I apply it more broadly than their original context."*
+
+- **Safe Passage — acronym definitions on first use**:
+  - SEND first-use expansion added in body copy: "parenting through SEND (Special Educational Needs and Disabilities) tribunals". Verified rendering on desktop and mobile.
+  - PDA first-use expansion **not added on Safe Passage**: PDA does not appear anywhere in the Safe Passage body copy as written (the master-brief Version A text routes that around "navigating statutory systems" / "SEND tribunals"). Inserting an expansion would have required also inserting a fresh PDA reference, which is editing copy rather than annotating it. PDA does appear elsewhere — in the orienting bio quote on About and in the homepage Patronage section — but neither of those is the Safe Passage page. Flagged in the M13 handoff for the author to decide whether (a) Safe Passage should mention PDA and we add it, or (b) the rule was meant to apply across the site as a whole, in which case the About-page PDA reference becomes the "first use" and gets the expansion there.
+
+- **Spiritual Underground — "Inspiring the Sufi" portal**:
+  - Promoted from a buried in-paragraph link to a prominent `<aside>` portal block. Block contains: kicker "A portal · Ten years of practice", title "Inspiring the Sufi", italic line "Fifty Names of Allah. Fifty songs. Fifty written reflections.", a short body paragraph, a green primary button "Visit Inspiring the Sufi →" pointing to `https://inspiringthesufi.com`, and the original brief-required line "This is where it started. Come and see." preserved as the italic caption underneath the button.
+
+- **"Art" made explicit**:
+  - Underground lead paragraph rewritten: "the art, culture, and creative practice strand of this work — the place for people whose faith, attention, and making live a little outside the standard rooms." Naming "art" first, separately from "culture" and "creative practice".
+  - About page reinforced: a new paragraph below the four-item strip connects "culture, art, and sovereignty" explicitly to the author's decade as an Artistic Director — *"That fourth current — culture, art, and sovereignty — is not abstract. I have spent a decade as an Artistic Director, and the discipline of building accessible creative space sits inside everything written here."*
+
+- **Book section placement (experiment — flagged for author review)**:
+  - Moved the homepage "Coming Soon · A Book" section from its previous higher position (just under the welcome) to sit directly after the "Across the Garden" section. New homepage section order: Welcome → Sufi Punk three-spaces line → Map → Across the Garden (the four entry rows, including the Safe Passage row) → **Book** → Patronage → Email.
+  - Marked clearly as an experiment in the M13 handoff. Easy to revert by moving the `<BookSection />` JSX block back above `<MapSection />` in `src/app/page.tsx` if the author prefers the previous placement.
+
+- **Sufi Punk / three spaces clarifying line (draft — flagged for author review)**:
+  - Added a short clarifying section near the top of the homepage, between the Welcome and the Map, with kicker "Sufi Punk" and italic body:
+    > Sufi Punk is the creative identity behind this work. Three spaces hold it — Sanctuary First, Spiritual Underground, Safe Passage.
+  - Flagged in the M13 handoff as a draft for the author to ratify or rewrite in her own voice. The wording is mine, the structural decision (one short orienting line before the map) is the brief.
+
+- **Explicitly NOT changed in M13** (per the brief):
+  - About page's "ABOUT ME" heading next to the photograph stayed as-is (intentional repetition).
+  - Homepage book blurb register stayed as-is (deliberately bridging voice).
+  - No "start here" cue or orientation hierarchy added — the four entry points (the map and the three strands) remain deliberately undifferentiated.
+
+- **Verification**:
+  - `/sitemap.xml` and `/robots.txt` curl-verified on the dev server.
+  - JSON-LD payload curl-verified on `/sanctuary/sufi-punk`.
+  - All M13 visual changes browser-tested at desktop 1280×900 and mobile 375×812 across home, about, underground, passage, and one sanctuary post. Mobile screenshots confirm: three-spaces line renders cleanly, footer Substack text reads "Sanctuary First on Substack", About footnote ★ marker resolves to the bottom-of-page footnote, Underground "Visit Inspiring the Sufi →" portal block displays as a prominent button, Safe Passage SEND expansion renders correctly, Book section sits below "Across the Garden".
+
 Up next:
-- Migrate the real twelve Sanctuary posts from `sanctuary-blog.vercel.app`
+- Decide PDA expansion placement (flagged above).
+- Author review of (a) book-section move and (b) three-spaces clarifying line draft.
+- Continue migrating any further Sanctuary posts as they're written.

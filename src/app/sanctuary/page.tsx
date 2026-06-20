@@ -11,6 +11,18 @@ export const metadata: Metadata = {
   title: "Sanctuary First",
   description:
     "Witness writing — an open, ongoing library of arrival, threshold, and practice. Filtered by experience, theme, tradition, and arc.",
+  openGraph: {
+    images: [
+      {
+        url: "/images/places/the-lantern-library.jpg",
+        alt:
+          "The Lantern Library — a green-and-white mosaic lantern arched over a carved white stone pedestal, with a stack of books beside it and daisies and pink cosmos in the surrounding garden.",
+      },
+    ],
+  },
+  twitter: {
+    images: ["/images/places/the-lantern-library.jpg"],
+  },
 };
 
 export default function SanctuaryPage() {

@@ -8,6 +8,18 @@ export const metadata: Metadata = {
   title: "Safe Passage",
   description:
     "In the world but not of it. Walking alongside neurodivergent people inside systems not built for them.",
+  openGraph: {
+    images: [
+      {
+        url: "/images/places/the-gathering-place.jpg",
+        alt:
+          "The Gathering Place — a sheltered cobblestone corner with a clay chiminea, an ornate Moroccan lantern hanging on a weathered wooden gate, jasmine and lavender at the base.",
+      },
+    ],
+  },
+  twitter: {
+    images: ["/images/places/the-gathering-place.jpg"],
+  },
 };
 
 export default function PassagePage() {

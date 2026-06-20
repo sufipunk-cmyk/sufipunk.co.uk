@@ -74,17 +74,20 @@ export function AboutIntro() {
           <figure className="prose-zawiya sanctuary-prose">
             <blockquote className="border-l-2 border-amber/60 pl-5 font-display text-[1.1rem] italic leading-snug text-green sm:text-[1.2rem]">
               “Written by a parent navigating PDA, faith, and what
-              researchers have named systems-generated trauma. Sufi Punk
-              is the name this practice goes by — not a pen name hiding a
-              person, but a lineage statement about how the work is
-              done.”
+              researchers have named systems-generated trauma.
+              <sup className="ml-1 align-super font-serif text-[0.7em] not-italic text-amber">
+                <a
+                  href="#footnote-systems-generated-trauma"
+                  aria-label="See footnote on systems-generated trauma"
+                  className="no-underline hover:text-green"
+                >
+                  ★
+                </a>
+              </sup>{" "}
+              Sufi Punk is the name this practice goes by — not a pen
+              name hiding a person, but a lineage statement about how
+              the work is done.”
             </blockquote>
-            <figcaption className="mt-3 font-serif text-xs not-italic text-ink-soft">
-              <em>Systems-generated trauma</em> is drawn from research
-              by Clements &amp; Aiello (University of Leeds / Cerebra),
-              referenced here in their language rather than as a
-              coinage of mine.
-            </figcaption>
           </figure>
         </div>
 
@@ -180,6 +183,12 @@ export function AboutIntro() {
               </li>
             ))}
           </ul>
+          <p className="mx-auto mt-6 max-w-xl text-center font-serif text-sm leading-relaxed text-ink-soft">
+            That fourth current — <em>culture, art, and sovereignty</em> —
+            is not abstract. I have spent a decade as an Artistic Director,
+            and the discipline of building accessible creative space sits
+            inside everything written here.
+          </p>
         </div>
 
         {/* Closing — verbatim from the booklet card */}
@@ -192,6 +201,23 @@ export function AboutIntro() {
           </p>
         </div>
 
+        {/* Footnote — moved here from beneath the orienting bio quote
+            in M13. Reworded per author note: "though I apply it more
+            broadly than their original context." */}
+        <aside
+          id="footnote-systems-generated-trauma"
+          className="mt-16 border-t border-hairline/60 pt-5"
+          aria-label="Footnote on systems-generated trauma"
+        >
+          <p className="font-serif text-xs leading-relaxed text-ink-soft">
+            <span aria-hidden className="mr-1 text-amber">★</span>
+            <em>Systems-generated trauma</em> is drawn from research by
+            Clements &amp; Aiello (University of Leeds / Cerebra),
+            referenced here in their language, though I apply it more
+            broadly than their original context.
+          </p>
+        </aside>
+
         {/* Quiet outward links — Ko-fi + Substack, per brief */}
         <div className="mt-14">
           <div className="prose-zawiya sanctuary-prose text-center">
@@ -203,7 +229,7 @@ export function AboutIntro() {
                 rel="noreferrer"
                 className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
               >
-                join the list on Substack
+                Sanctuary First on Substack
               </a>{" "}
               or{" "}
               <a

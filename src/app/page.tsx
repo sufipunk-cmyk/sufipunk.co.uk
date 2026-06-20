@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SanctuaryMap } from "@/components/site/SanctuaryMap";
@@ -13,20 +14,51 @@ const SUBSTACK_SUBSCRIBE =
 const KOFI = "https://ko-fi.com/sufipunk";
 
 /**
+ * Per-page Open Graph image (M13).
+ *
+ * The site-wide OG fallback in `layout.tsx` carries no image. The
+ * homepage uses the overview map as its specific OG image so a
+ * link-preview shows the zawiya itself — the conceptual key — rather
+ * than an empty default.
+ */
+export const metadata: Metadata = {
+  openGraph: {
+    images: [
+      {
+        url: "/images/places/sanctuary-map.jpg",
+        width: 2200,
+        height: 1467,
+        alt:
+          "Illustrated overview map of the digital zawiya — a stone path winding through flowers and mountains, with the named places labelled along the way.",
+      },
+    ],
+  },
+  twitter: {
+    images: ["/images/places/sanctuary-map.jpg"],
+  },
+};
+
+/**
  * Homepage — the digital zawiya itself.
  *
- * Section order, in the voice of the brief:
+ * Section order (M13 experiment — Book moved down)
+ *
  *   1. The Welcome — atmospheric, no nav clutter.
- *   2. The Book — Low-Demand Faith, featured prominently.
- *   3. The Map — the conceptual key. Carries the historical
- *      grounding for the word "zawiya" and names the places along
- *      the path (the gate, the lookout, the wisteria terrace, the
- *      stone bridge) before the next section presents the strands
- *      that live there.
- *   4. Across the Garden — the strands as the activities that
- *      happen at the places named in the map.
- *   5. The Patronage Ask — the Fountain.
- *   6. Quiet Letters — the email signup.
+ *   2. Sufi Punk / three spaces — short clarifying line so the map
+ *      below reads as the conceptual key for a named whole, not an
+ *      orphaned diagram. (M13 draft, flagged for author review.)
+ *   3. The Map — the conceptual key. Carries the historical grounding
+ *      for the word "zawiya" and names the places along the path
+ *      (the Golden Door, the Lantern Library, the Devotional Corner,
+ *      the Gathering Place) before the next section presents the
+ *      strands that live there.
+ *   4. Across the Garden — the strands as the activities that happen
+ *      at the places named in the map.
+ *   5. The Book — Low-Demand Faith, sitting near the outward-facing
+ *      Safe Passage area rather than the top of the page. (M13
+ *      experiment — to be evaluated once live.)
+ *   6. The Patronage Ask — the Fountain.
+ *   7. Quiet Letters — the email signup.
  */
 export default function HomePage() {
   return (
@@ -76,7 +108,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. THE BOOK — featured prominently. */}
+      {/* 2. SUFI PUNK / THREE SPACES — short clarifying line, sits
+          between the welcome and the map. Quiet, not a CTA. */}
+      <section className="bg-parchment py-10 sm:py-14" aria-label="Sufi Punk and the three spaces">
+        <div className="container max-w-2xl text-center">
+          <p className="font-serif text-xs uppercase tracking-[0.35em] text-amber">
+            Sufi Punk
+          </p>
+          <p className="mt-3 font-display text-[1.25rem] italic leading-snug text-green sm:text-[1.4rem]">
+            Sufi Punk is the creative identity behind this work.
+            <br className="hidden sm:block" />
+            <span className="not-italic text-green-soft">
+              {" "}Three spaces hold it —{" "}
+            </span>
+            <span>Sanctuary First, Spiritual Underground, Safe Passage.</span>
+          </p>
+        </div>
+      </section>
+
+      {/* 3. THE MAP — the conceptual key. Comes before "Across the
+          Garden" so the historical grounding for the word lands
+          first, and so the named places exist before strands are
+          introduced as their residents. */}
+      <SanctuaryMap />
+
+      {/* 4. ACROSS THE GARDEN — strands as the activities that happen
+          at the places shown in the map above. */}
+      <AcrossTheGarden />
+
+      {/* 5. THE BOOK — featured prominently, but sitting near the
+          outward-facing Safe Passage area rather than at the top of
+          the page. M13 experiment: this position is being evaluated
+          once live. */}
       <section className="bg-parchment py-20 sm:py-28" id="the-book">
         <div className="container grid gap-12 md:grid-cols-12 md:items-center md:gap-16">
           <div className="md:col-span-5">
@@ -137,37 +200,27 @@ export default function HomePage() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 border border-green bg-green px-6 py-3 font-serif text-sm uppercase tracking-[0.18em] text-parchment transition hover:bg-green-soft"
               >
-                Join the list for updates
+                Sanctuary First on Substack
                 <span aria-hidden>→</span>
               </a>
               <span className="font-serif text-sm text-ink-soft">
                 Updates arrive via{" "}
                 <a
-                  href="https://sufipunksanctuaryfirst.substack.com"
+                  href={SUBSTACK_SUBSCRIBE}
                   target="_blank"
                   rel="noreferrer"
                   className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
                 >
-                  Sanctuary First
-                </a>{" "}
-                on Substack.
+                  Sanctuary First on Substack
+                </a>
+                .
               </span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. THE MAP — the conceptual key. Comes before "Across the
-          Garden" so the historical grounding for the word lands
-          first, and so the named places exist before strands are
-          introduced as their residents. */}
-      <SanctuaryMap />
-
-      {/* 4. ACROSS THE GARDEN — strands as the activities that happen
-          at the places shown in the map above. */}
-      <AcrossTheGarden />
-
-      {/* 5. THE PATRONAGE ASK — Supporting Sanctuary, the Fountain. */}
+      {/* 6. THE PATRONAGE ASK — Supporting Sanctuary, the Fountain. */}
       <section
         id="patronage"
         className="relative overflow-hidden bg-green py-20 text-parchment sm:py-28"
@@ -219,7 +272,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. THE EMAIL SIGNUP — quiet, no pressure. */}
+      {/* 7. THE EMAIL SIGNUP — quiet, no pressure. */}
       <section className="bg-parchment py-20 sm:py-28" id="join">
         <div className="container max-w-2xl text-center">
           <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber">
@@ -240,7 +293,7 @@ export default function HomePage() {
             rel="noreferrer"
             className="mt-8 inline-flex items-center gap-2 border border-green bg-green px-7 py-3 font-serif text-sm uppercase tracking-[0.18em] text-parchment transition hover:bg-green-soft"
           >
-            Subscribe via Substack
+            Sanctuary First on Substack
             <span aria-hidden>→</span>
           </a>
 
