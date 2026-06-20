@@ -104,20 +104,83 @@ export function SpiritualUndergroundIntro() {
           </figure>
         </div>
 
-        {/* Spiritual Parallel Play — definition as given in the master brief. */}
+        {/* Spiritual Parallel Play — M15 fuller definition.
+            Replaces the earlier short summary with the author's
+            settled four-paragraph version. The hidden-treasure
+            footnote sits at the bottom of this section, marked with
+            the same ★ pattern used on the About page in M13. */}
         <div className="mt-14">
           <h2 className="font-display text-2xl italic text-green sm:text-3xl">
             Spiritual Parallel Play
           </h2>
           <div className="prose-zawiya sanctuary-prose mt-6">
             <p>
-              Spiritual Parallel Play is a practice that grew out of a
-              decade of community arts work, applied to the practitioner’s
-              own relationship with God — contemplation of the Divine
-              outside ritual and ceremony, following intuition, longing,
-              and direct guidance rather than inherited forms alone.
+              Spiritual Parallel Play is following your own curiosity
+              into something with monotropic depth — going all the way
+              down into one thing — and discovering God already there,
+              beside you. Not directing the search. Not correcting it.
+              Just present, the way one child is present beside another
+              in parallel play: each absorbed in their own thing,
+              recognised simply by being near.
+            </p>
+            <p>
+              The world calls this kind of depth a deficiency. God made
+              it. A hidden treasure
+              <sup className="ml-1 align-super font-serif text-[0.7em] not-italic text-amber">
+                <a
+                  href="#footnote-hidden-treasure"
+                  aria-label="See footnote on the hidden-treasure saying"
+                  className="no-underline hover:text-green"
+                >
+                  ★
+                </a>
+              </sup>{" "}
+              who created the whole world to be found knows exactly
+              what the joy of finding feels like — better than a world
+              that never built the hiding place. The recognition this
+              work deserves was never the world’s to withhold. It
+              belongs to the One who designed the capacity for it, and
+              who delights in what gets excavated and carried back into
+              the light.
+            </p>
+            <p>
+              At first, this is simply lived — immersed in the
+              fascination, not yet named as devotion at all. The growth
+              is in the noticing: learning to recognise, inside the
+              depth, that the relationship was there the whole time.
+              And once that noticing is learned in one place, it
+              doesn’t stay there. It permeates outward, until attention
+              itself becomes a way of finding God anywhere, not only in
+              the original interest.
+            </p>
+            <p>
+              This is not the opposite of ritual. Ritual repeats the
+              same form many times until awareness of God becomes
+              constant. Spiritual Parallel Play goes deep into one
+              thing until that same awareness is reached by a different
+              road. Both are trying to arrive at the same place. The
+              world built infrastructure for one of these roads, and
+              forgot the other one existed.
             </p>
           </div>
+
+          {/* Footnote on the hidden-treasure saying. Same pattern as
+              the systems-generated-trauma footnote on About: a small
+              ★-anchored aside set off with a hairline above. */}
+          <aside
+            id="footnote-hidden-treasure"
+            className="mt-10 border-t border-hairline/60 pt-5"
+            aria-label="Footnote on the hidden-treasure saying"
+          >
+            <p className="font-serif text-xs leading-relaxed text-ink-soft">
+              <span aria-hidden className="mr-1 text-amber">★</span>
+              The hidden-treasure saying is held within Sufi tradition,
+              particularly through Ibn Arabi’s lineage; its standing as
+              an authenticated hadith is debated among scholars, but I
+              hold it as spiritually true regardless of its formal
+              chain.
+            </p>
+          </aside>
         </div>
 
         {/* Inspiring the Sufi — the demonstrated example.

@@ -57,6 +57,7 @@ This site is not a portfolio, generic blog, or shop. It should feel like enterin
 | Content & Platform Foundations | done (M12 — Vercel build path corrected) | `specs/platform-foundations/document.md` |
 | Editing pass — SEO, consistency, voice | done (M13) | — |
 | Homepage consolidation — places + strands merged, Substack CTA collision fixed | done (M14) | — |
+| Spiritual Parallel Play rewrite, homepage cards, About consolidation | done (M15) | — |
 
 ## Current phase
 
@@ -216,6 +217,32 @@ Milestone 14 (homepage consolidation — places + strands merged, Substack CTA c
 - **Verification:**
   - `bun run build` succeeds. All 22 routes generate as static. `/sitemap.xml` and `/robots.txt` still register cleanly. JSON-LD on Sanctuary posts unaffected.
   - Browser-tested at desktop 1280×900 and mobile 375×812. Walked the full homepage scroll: Welcome → Sufi Punk three-spaces → Map (now ends at the illustrated overview, no place grid below) → merged Across the Garden (kicker, heading, framing line, Golden Door hero, three resident cards each with strand name / "Found at …" / one paragraph / "Enter X →" link) → Book ("Follow the book's progress →") → Patronage → Quiet Letters ("Sanctuary First on Substack →") → Footer ("Sanctuary First on Substack" link). Confirmed: the two Substack buttons are now visibly different on both viewports; no in-page repetition of the same atmospheric phrases.
+
+Milestone 15 (Spiritual Parallel Play rewrite, homepage cards, About consolidation): complete in code. Includes:
+
+- **Spiritual Underground — Spiritual Parallel Play definition replaced.** The earlier short summary on `/underground` ("Spiritual Parallel Play is a practice that grew out of a decade of community arts work…") is replaced with the author's settled four-paragraph version, supplied verbatim in the M15 brief. The four paragraphs cover: (1) following monotropic curiosity all the way down and discovering God already there in parallel-play presence; (2) the world calling that depth a deficiency, while God designed it — including the hidden-treasure clause; (3) the growth as noticing, permeating outward into a way of finding God anywhere; (4) the relationship to ritual: same destination, different road, only one of the roads has infrastructure built for it.
+
+- **Hidden-treasure footnote** added at the bottom of the Spiritual Parallel Play section. Marked with the same ★ pattern used on the About page in M13: a small inline `<sup>` after "A hidden treasure" in paragraph 2, anchored to a small `<aside id="footnote-hidden-treasure">` set off with a hairline above. Footnote text reproduced verbatim from the brief: *"The hidden-treasure saying is held within Sufi tradition, particularly through Ibn Arabi's lineage; its standing as an authenticated hadith is debated among scholars, but I hold it as spiritually true regardless of its formal chain."*
+
+- **Homepage resident cards — Sanctuary First and Spiritual Underground rewritten.** The single tightened paragraph for each of those two cards (in the merged Across the Garden section, M14) is replaced with the M15-supplied wording, both verbatim.
+  - Sanctuary First card: *"Witness writing that lives low-demand faith in practice — attention allowed to follow itself, in ordinary moments as much as formal ones. An open, ongoing collection of arrival, threshold, and practice."* Photo and "Found at The Lantern Library" preserved.
+  - Spiritual Underground card: *"Spiritual Parallel Play in practice — following curiosity all the way down and finding God already there. A low-pressure field for people practising faith, creativity, and survival outside traditional expectations."* Photo and "Found at The Devotional Corner" preserved.
+  - Safe Passage card: deliberately untouched per the M15 brief.
+  - Implementation: edited the `description` field for `the-lantern-library` and `the-devotional-corner` in `src/content/site/zawiya.ts`. The card layout in `AcrossTheGarden.tsx` is unchanged — same data flow as M14.
+
+- **About page — consolidation, four edits.**
+  1. Intersection sentence updated. Was: *"I live at the intersection of low-demand parenting, neurodivergence and refusal, faith without coercion, and culture, art, and sovereignty."* Now: *"I live at the intersection of low-demand parenting, neurodivergence, faith, and art."*
+  2. *"I built Sanctuary First so safety could come first"* → *"I built this zawiya so safety could come first."* The rest of the sentence and surrounding paragraph are unchanged.
+  3. New passage added immediately after *"This is sanctuary for those who were never meant to comply."*: *"This is what makes this zawiya different from any other: it accepts anyone who wants to remember God, including those who could not find belonging in their own religion. You can find validation here — and you can return to your faith with clarity, where ritual no longer defines your relationship with God."*
+  4. Four-item strip replaced entirely. The previous booklet-derived strip (*"Low-demand parenting / Neurodivergence and refusal / Faith without coercion / Culture, art, and sovereignty"*) is now four bare words: **Epistemic injustice. Monotropic attention. Bridge. Translation.** Same visual styling — four-column grid, same italic-display treatment, same hairline separators. Per the brief: no explanation, definition, or footnote is added for any of these four words anywhere on the site. They stand undefined the same way *"Devotion. Refusal. Sanctuary. Return."* already does on this page.
+  5. The M13 explanatory paragraph that previously sat below the strip ("That fourth current — *culture, art, and sovereignty* — is not abstract. I have spent a decade as an Artistic Director…") is removed in M15, since the new four words must stand bare with no explanation anywhere. The Artistic Director context still exists on the page above, in the personal-voice body ("I am a Muslim PDA parent, AuDHD writer, and Artistic Director.").
+  6. The closing line *"Devotion. Refusal. Sanctuary. Return."* and its tail (*"This is how I make meaning. This is how I stay connected."*) are preserved unchanged, positioned after the new four bare words.
+
+- **Explicit non-additions** per M15 brief paragraph 4. No new card, section, or standalone definition has been added for "ND Devotion", "Devotion Without Demand", or "Monotropic Attention" anywhere on the site. The single bare appearance of *"Monotropic attention"* in the four-word strip on About is the only place that phrase exists on the site, and it is intentionally undefined.
+
+- **Verification:**
+  - `bun run build` succeeds. All 22 routes generate as static. Sitemap, robots, JSON-LD, and per-page OG images carried over from M13/M14 are unaffected.
+  - Browser-tested at desktop 1280×900 and mobile 375×812. Walked: home (homepage cards) → about (intersection sentence, "this zawiya" line, new passage, four bare words, closing line) → underground (full SPP section, ★ marker on "A hidden treasure" in paragraph 2, hidden-treasure footnote rendering after paragraph 4, "The demonstrated example" section following intact). Confirmed: SPP definition reads as four paragraphs in order; both footnotes (★) on `/underground` and `/about` render correctly on both viewports; the four bare words stack to one column on mobile and form four columns on desktop, with no explanatory copy anywhere; "Safe Passage" card is identical to M14.
 
 Up next:
 - Decide PDA expansion placement (flagged in M13).

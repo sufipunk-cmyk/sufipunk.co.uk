@@ -107,8 +107,7 @@ export function AboutIntro() {
             </p>
             <p>
               I live at the intersection of low-demand parenting,
-              neurodivergence and refusal, faith without coercion, and
-              culture, art, and sovereignty.
+              neurodivergence, faith, and art.
             </p>
             <p>This work grew out of necessity — and rebellion.</p>
             <p>When systems could not hold my child.</p>
@@ -145,13 +144,23 @@ export function AboutIntro() {
           {/* Continued personal-voice body */}
           <div className="prose-zawiya sanctuary-prose mt-12">
             <p>
-              I built Sanctuary First so safety could come first. This is
+              I built this zawiya so safety could come first. This is
               not about forcing mosques or institutions to accommodate
               us. It is about accepting — gently — that some spaces were
               never built with us in mind.
             </p>
             <p>
               This is sanctuary for those who were never meant to comply.
+            </p>
+            {/* M15 — added immediately after the "never meant to
+                comply" line, per author brief. No surrounding edits. */}
+            <p>
+              This is what makes this zawiya different from any other:
+              it accepts anyone who wants to remember God, including
+              those who could not find belonging in their own religion.
+              You can find validation here — and you can return to your
+              faith with clarity, where ritual no longer defines your
+              relationship with God.
             </p>
           </div>
 
@@ -163,17 +172,28 @@ export function AboutIntro() {
           </figure>
         </div>
 
-        {/* Four-item strip — verbatim from the booklet card */}
+        {/* Four-item strip — M15 replacement.
+            The previous four-item strip ("Low-demand parenting /
+            Neurodivergence and refusal / Faith without coercion /
+            Culture, art, and sovereignty") was a verbatim lift from
+            the print booklet's "About Me" card.
+            The author has now replaced the strip entirely with four
+            bare words and explicitly instructed: no explanation
+            added anywhere on the site. They are meant to stand
+            undefined, in the same way the closing line below
+            ("Devotion. Refusal. Sanctuary. Return.") already does.
+            The M13 paragraph that previously explained the fourth
+            current is removed for the same reason. */}
         <div className="mt-16">
           <ul
             className="grid gap-px bg-hairline/60 sm:grid-cols-4"
-            aria-label="The four currents this work lives at the intersection of"
+            aria-label="Four words held alongside this work, undefined."
           >
             {[
-              "Low-demand parenting",
-              "Neurodivergence and refusal",
-              "Faith without coercion",
-              "Culture, art, and sovereignty",
+              "Epistemic injustice",
+              "Monotropic attention",
+              "Bridge",
+              "Translation",
             ].map((label) => (
               <li
                 key={label}
@@ -183,12 +203,6 @@ export function AboutIntro() {
               </li>
             ))}
           </ul>
-          <p className="mx-auto mt-6 max-w-xl text-center font-serif text-sm leading-relaxed text-ink-soft">
-            That fourth current — <em>culture, art, and sovereignty</em> —
-            is not abstract. I have spent a decade as an Artistic Director,
-            and the discipline of building accessible creative space sits
-            inside everything written here.
-          </p>
         </div>
 
         {/* Closing — verbatim from the booklet card */}

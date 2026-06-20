@@ -115,7 +115,7 @@ export const places: Place[] = [
     echo:
       "A place to pause. A place to see clearly. A place to remember what matters most.",
     description:
-      "A lamp-lit terrace high enough to hold the whole valley — a hanging chair, an open book, a coffee cup, a telescope angled toward the snow-capped mountains. Witness writing happens here, slowly, where attention is allowed to follow itself instead of productivity.",
+      "Witness writing that lives low-demand faith in practice — attention allowed to follow itself, in ordinary moments as much as formal ones. An open, ongoing collection of arrival, threshold, and practice.",
     image: "/images/places/the-lantern-library.jpg",
     imageAlt:
       "A green-and-white mosaic lantern arched over a carved white stone pedestal, with a stack of books beside it and daisies and pink cosmos in the surrounding garden.",
@@ -127,7 +127,7 @@ export const places: Place[] = [
     resident: "underground",
     echo: "You do not join this. You recognise yourself in it.",
     description:
-      "Stone archways draped in wisteria, a small fountain audible through them, terrace seating that overlooks the valley. A low-pressure cultural and spiritual field for people practising faith, creativity, and survival outside traditional expectations.",
+      "Spiritual Parallel Play in practice — following curiosity all the way down and finding God already there. A low-pressure field for people practising faith, creativity, and survival outside traditional expectations.",
     image: "/images/places/the-devotional-corner.jpg",
     imageAlt:
       "A cut-glass vase of pussy-willow stems threaded with small lights, two golden domed lanterns with crescent-moon finials, votive candles and prayer beads spilled across a deep-red carpet — a candle-lit, evening scene.",
