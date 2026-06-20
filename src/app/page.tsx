@@ -41,24 +41,28 @@ export const metadata: Metadata = {
 /**
  * Homepage — the digital zawiya itself.
  *
- * Section order (M13 experiment — Book moved down)
+ * Section order (M14 — places + strands merged into one section)
  *
  *   1. The Welcome — atmospheric, no nav clutter.
- *   2. Sufi Punk / three spaces — short clarifying line so the map
- *      below reads as the conceptual key for a named whole, not an
- *      orphaned diagram. (M13 draft, flagged for author review.)
- *   3. The Map — the conceptual key. Carries the historical grounding
- *      for the word "zawiya" and names the places along the path
- *      (the Golden Door, the Lantern Library, the Devotional Corner,
- *      the Gathering Place) before the next section presents the
- *      strands that live there.
- *   4. Across the Garden — the strands as the activities that happen
- *      at the places named in the map.
- *   5. The Book — Low-Demand Faith, sitting near the outward-facing
- *      Safe Passage area rather than the top of the page. (M13
- *      experiment — to be evaluated once live.)
+ *   2. Sufi Punk / three spaces — short clarifying line. (M13 draft,
+ *      flagged for author review.)
+ *   3. The Map — historical grounding for the word "zawiya" and the
+ *      illustrated overview map. The previous "Places along the
+ *      path" grid that lived at the bottom of this section moved
+ *      into Across the Garden in M14, since the two sections were
+ *      describing the same four places independently.
+ *   4. Across the Garden — the merged places-and-strands section.
+ *      Golden Door as the wide hero (no strand attached); the three
+ *      resident places sit shoulder-to-shoulder underneath, each
+ *      stating its strand once with a single direct "Enter …" link.
+ *   5. The Book — Low-Demand Faith, near the outward-facing Safe
+ *      Passage area rather than the top. (M13 experiment.) The
+ *      Substack CTA here now reads "Follow the book's progress →"
+ *      so it does not collide with the Quiet Letters CTA below.
  *   6. The Patronage Ask — the Fountain.
- *   7. Quiet Letters — the email signup.
+ *   7. Quiet Letters — the email signup. CTA stays
+ *      "Sanctuary First on Substack →" because that is the
+ *      subscribe action.
  */
 export default function HomePage() {
   return (
@@ -193,6 +197,12 @@ export default function HomePage() {
               </p>
             </div>
 
+            {/* M14 — the Book CTA and the Quiet Letters CTA both
+                used to read "Sanctuary First on Substack →", which
+                collided on the same page. The Book CTA now names the
+                book-specific action ("Follow the book's progress")
+                and the Quiet Letters CTA keeps the subscribe wording.
+                Wording flagged for the author's review. */}
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <a
                 href={SUBSTACK_SUBSCRIBE}
@@ -200,7 +210,7 @@ export default function HomePage() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 border border-green bg-green px-6 py-3 font-serif text-sm uppercase tracking-[0.18em] text-parchment transition hover:bg-green-soft"
               >
-                Sanctuary First on Substack
+                Follow the book&apos;s progress
                 <span aria-hidden>→</span>
               </a>
               <span className="font-serif text-sm text-ink-soft">

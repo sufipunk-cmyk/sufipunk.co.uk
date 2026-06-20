@@ -56,6 +56,7 @@ This site is not a portfolio, generic blog, or shop. It should feel like enterin
 | About | done (M11 — full page replacing the StrandStub) | `specs/about/document.md` |
 | Content & Platform Foundations | done (M12 — Vercel build path corrected) | `specs/platform-foundations/document.md` |
 | Editing pass — SEO, consistency, voice | done (M13) | — |
+| Homepage consolidation — places + strands merged, Substack CTA collision fixed | done (M14) | — |
 
 ## Current phase
 
@@ -181,7 +182,42 @@ Milestone 13 (editing pass — SEO, consistency, hierarchy clarity, voice): comp
   - JSON-LD payload curl-verified on `/sanctuary/sufi-punk`.
   - All M13 visual changes browser-tested at desktop 1280×900 and mobile 375×812 across home, about, underground, passage, and one sanctuary post. Mobile screenshots confirm: three-spaces line renders cleanly, footer Substack text reads "Sanctuary First on Substack", About footnote ★ marker resolves to the bottom-of-page footnote, Underground "Visit Inspiring the Sufi →" portal block displays as a prominent button, Safe Passage SEND expansion renders correctly, Book section sits below "Across the Garden".
 
+Milestone 14 (homepage consolidation — places + strands merged, Substack CTA collision fixed): complete in code. Includes:
+
+- **Two homepage sections merged into one.** Until M14 the homepage carried two adjacent sections that each described the same four places independently — "Places Along the Path" inside the map, and "Across the Garden" as the strands index. The same atmospheric phrases ("a lamp-lit terrace", "attention is allowed to follow itself", "stone archways draped in wisteria", "stone bridge over a stream") appeared twice on the same scroll. The two sections are now one merged section.
+
+- **Visual layout** carries over from the previous "Places Along the Path" grid: The Golden Door is the wide hero (no strand attached, no restructuring), and the three resident places sit shoulder-to-shoulder underneath it.
+
+- **Resident-card content order** restructured per the M14 brief:
+  1. Photo (unchanged — same hero crops as before).
+  2. Strand name as the prominent header (matches the nav: "Sanctuary First", "Spiritual Underground", "Safe Passage").
+  3. Place name as a smaller italic secondary line ("Found at The Lantern Library" / "Found at The Devotional Corner" / "Found at The Gathering Place").
+  4. One tightened paragraph (atmosphere + function combined). The "Home of X." opening was stripped from each resident place's `description` in `src/content/site/zawiya.ts`, since the strand name is now the header above; the paragraph reads cleanly without it.
+  5. One direct link ("Enter Sanctuary First →" / "Enter Spiritual Underground →" / "Enter Safe Passage →"). The whole card is wrapped in `<Link>` so the photograph is itself an affordance, but the visible "Enter …" line is the labelled action.
+
+- **Framing line carried over verbatim** from the previous Across the Garden section as the intro to the merged section: *"Different voices along the path. Each strand has its own place in the map above; move between them as your capacity allows. None is more important than the others."* Load-bearing for the site's non-hierarchical posture.
+
+- **Section heading / kicker (draft, flagged):** kicker "WHAT HAPPENS HERE", heading "Across the Garden". Inherited from the previous Across the Garden section. Flagged in the M14 handoff for the author to ratify or rename — the merged section now contains both places (with photos) and strands (as residents), so the heading sits on a slightly different fulcrum than before.
+
+- **Map section untouched in scope, trimmed in implementation.** The Map (zawiya history + the illustrated overview map) stays where it was on the page and keeps its content. Implementation cleanup: the per-place card grid that previously rendered at the bottom of `SanctuaryMap.tsx` (lines 80–106) has been removed, since that grid is now the merged section. The Map component is now strictly: kicker → heading → historical paragraph → illustrated overview image with caption. All place-card / strand-pairing logic moved to `AcrossTheGarden.tsx`.
+
+- **Substack CTA collision fixed.** The Book section's CTA and the Quiet Letters / Join the Zawiya CTA both used to read "SANCTUARY FIRST ON SUBSTACK →" — identical button text for two different invitations on the same page. The two are now differentiated:
+  - Book section CTA → **"Follow the book's progress →"** (flagged for the author to ratify the wording). Both `href` values still point to the same `/subscribe` URL — the difference is purely in the visible label, since "follow the book's progress" is the actual reason a reader would subscribe from inside the Book section.
+  - Quiet Letters CTA → kept as **"Sanctuary First on Substack →"** (the literal subscribe action).
+  - The inline support line under the Book CTA still reads "Updates arrive via Sanctuary First on Substack." with the underline link unchanged.
+
+- **Content data changes** in `src/content/site/zawiya.ts`: the `description` field on the three resident places (`the-lantern-library`, `the-devotional-corner`, `the-gathering-place`) had its leading "Home of <Strand>." sentence removed, since the strand name is now the card header. Golden Door's description is unchanged.
+
+- **Component changes** summary:
+  - `src/components/site/SanctuaryMap.tsx` — trimmed. No longer renders place cards; only the historical text and the illustrated overview map.
+  - `src/components/site/AcrossTheGarden.tsx` — rewritten as the merged section. Renders the threshold hero (`PlaceHero`) plus the three resident strand cards (`ResidentCard` + `ResidentCardInner`). The previous strand-row layout (text-only rows with kicker + name + paragraph + arrow) is gone, replaced by photo cards.
+  - `src/app/page.tsx` — Book section CTA wording changed from "Sanctuary First on Substack" to "Follow the book's progress". Section comment block updated to reflect the M14 ordering.
+
+- **Verification:**
+  - `bun run build` succeeds. All 22 routes generate as static. `/sitemap.xml` and `/robots.txt` still register cleanly. JSON-LD on Sanctuary posts unaffected.
+  - Browser-tested at desktop 1280×900 and mobile 375×812. Walked the full homepage scroll: Welcome → Sufi Punk three-spaces → Map (now ends at the illustrated overview, no place grid below) → merged Across the Garden (kicker, heading, framing line, Golden Door hero, three resident cards each with strand name / "Found at …" / one paragraph / "Enter X →" link) → Book ("Follow the book's progress →") → Patronage → Quiet Letters ("Sanctuary First on Substack →") → Footer ("Sanctuary First on Substack" link). Confirmed: the two Substack buttons are now visibly different on both viewports; no in-page repetition of the same atmospheric phrases.
+
 Up next:
-- Decide PDA expansion placement (flagged above).
-- Author review of (a) book-section move and (b) three-spaces clarifying line draft.
+- Decide PDA expansion placement (flagged in M13).
+- Author review of (a) book-section move (M13), (b) three-spaces clarifying line draft (M13), (c) merged section heading/kicker (M14: "WHAT HAPPENS HERE / Across the Garden"), (d) Book CTA wording (M14: "Follow the book's progress →").
 - Continue migrating any further Sanctuary posts as they're written.
