@@ -49,8 +49,15 @@ export function FlowerDivider({ label }: { label?: string }) {
 }
 
 /**
- * Pointed-arch SVG outline. Drawn as a soft hairline so it reads as
- * an alcove rather than a heavy frame.
+ * Pointed-arch SVG outline — Moroccan / Andalusian profile.
+ *
+ * Reshaped in M20 to match the silhouette of the Golden Door
+ * photograph used elsewhere on the site (the pointed Moroccan arch).
+ * The earlier rounded shape met flat at the apex; this profile lets
+ * the two halves meet at a clear cusp, which is what reads visually
+ * as "pointed". Drawn as a soft hairline (still faint, still an
+ * alcove rather than a heavy frame), with an inner ghost line at
+ * lower opacity for the same gentle double-line treatment as before.
  */
 export function ArchOutline({ className = "" }: { className?: string }) {
   return (
@@ -61,14 +68,14 @@ export function ArchOutline({ className = "" }: { className?: string }) {
       aria-hidden
     >
       <path
-        d="M20 256 L20 110 Q20 20 100 20 Q180 20 180 110 L180 256"
+        d="M20 256 L20 130 Q30 40 100 8 Q170 40 180 130 L180 256"
         fill="none"
         stroke="currentColor"
         strokeWidth="1"
         strokeLinecap="round"
       />
       <path
-        d="M30 256 L30 112 Q30 30 100 30 Q170 30 170 112 L170 256"
+        d="M30 256 L30 132 Q38 50 100 20 Q162 50 170 132 L170 256"
         fill="none"
         stroke="currentColor"
         strokeWidth="0.5"

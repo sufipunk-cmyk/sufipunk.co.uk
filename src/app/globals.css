@@ -257,6 +257,24 @@
     line-height: 1.2;
   }
 
+  /* M20 — Map hover zoom.
+     Subtle 1.04× scale on the homepage overview-map illustration when a
+     real pointer hovers over it. The transition is always present so the
+     image animates back to rest when the pointer leaves; the scale itself
+     is gated behind `@media (hover: hover)` so touch-only devices (which
+     emulate hover by tap-and-hold) never get a stuck zoomed state. The
+     wrapping element should also carry `overflow-hidden` so the scaled
+     image is clipped cleanly to its frame. */
+  .map-hover-zoom img {
+    transition: transform 0.3s ease;
+    will-change: transform;
+  }
+  @media (hover: hover) {
+    .map-hover-zoom:hover img {
+      transform: scale(1.04);
+    }
+  }
+
   /* Subtle textured background for atmospheric sections. */
   .bg-parchment-grain {
     background-color: hsl(var(--parchment));

@@ -62,6 +62,7 @@ This site is not a portfolio, generic blog, or shop. It should feel like enterin
 | Email swap to icloud, Sanctuary First post-date respacing, header mosaic-door icon | done (M17) | — |
 | Sanctuary First post-date correction (no future dates) + visible date hidden site-wide | done (M18) | — |
 | Header trailing flower glyph removed (mosaic-door icon now carries the decorative-mark role alone) | done (M19) | — |
+| Map hover-zoom (homepage overview map) + arch silhouettes reshaped to Moroccan pointed-cusp profile matching the Golden Door photo | done (M20) | — |
 
 ## Current phase
 
@@ -351,6 +352,37 @@ Milestone 19 (header trailing flower glyph removed): complete in code. Includes:
 - **Verification:**
   - `bun run build` succeeds. All 22 static routes generate. No TypeScript or import diffs (the removal is purely a JSX line).
   - Browser-tested at desktop 1280×900 and mobile 375×812. Walked: home (header reads `[icon] Sufi Punk` then nav, no trailing glyph; the welcome section's two FlowerDividers — one before "Come as you are" and one before "The roots are Islamic" — both render with their flower glyphs intact) → /sanctuary (twelve-card post list intact, post cards unchanged from M18) → /underground (page closes with `❁ FROM THE DEVOTIONAL CORNER ❁` divider showing both glyphs) → /passage (page closes with `❁ FROM THE GATHERING PLACE ❁` divider showing both glyphs, M16 closing line and footer above it intact). Footer elegant lockup, `sufipunk@icloud.com`, and Ko-fi line all preserved across both viewports.
+
+Milestone 20 (homepage overview-map hover-zoom + arch silhouettes reshaped to Moroccan pointed profile): complete in code. Includes:
+
+- **Homepage overview map — subtle hover-zoom (`@media (hover: hover)` gated).** The illustrated overview-map figure inside `SanctuaryMap` (the "A small place, set apart." section, `id="the-map"`) now scales subtly on pointer hover. Implementation:
+  - `src/components/site/SanctuaryMap.tsx` — added `map-hover-zoom` class to the existing `<div>` wrapping the `<Image>`. The wrapper already carried `relative w-full overflow-hidden border border-hairline bg-parchment shadow-…`, which is correct: `overflow-hidden` clips the scaled image cleanly to the parchment frame; `relative` is preserved.
+  - `src/app/globals.css` — new component-layer rule:
+    ```css
+    .map-hover-zoom img { transition: transform 0.3s ease; will-change: transform; }
+    @media (hover: hover) {
+      .map-hover-zoom:hover img { transform: scale(1.04); }
+    }
+    ```
+    The transition is always present so the image animates back to rest when the pointer leaves; the scale itself is gated behind `(hover: hover)` so touch-only devices (phones, tablets — which emulate hover by tap-and-hold) never get a stuck zoomed state.
+  - Settled on `1.04×` (within the 1.03–1.05× range the brief named) and `0.3s ease` exactly as specified.
+  - Verified with a forced-transform side-test in the dev browser that the zoomed state visibly fits inside the parchment frame with no overflow leakage; confirmed with `matchMedia('(hover: hover)')` returning `false` in the headless touch-emulating test browser that the zoom does *not* fire there — proving the gate works as intended for phones/tablets. On a real desktop with a mouse, `(hover: hover)` evaluates true and the rule fires normally.
+
+- **Arch silhouettes reshaped — Moroccan pointed-cusp profile traced from the Golden Door photo.** The shared `ArchOutline` SVG component in `src/components/site/Ornaments.tsx` had a rounded apex (the two halves met smoothly with horizontal tangents). Its quadratic-Bezier control points have been moved so the two halves now meet at a clear cusp at the apex — the visual signature of a pointed/keel Moroccan arch matching the silhouette of the real Golden Door photograph (`public/images/places/the-golden-door.jpg`). Outer path:
+  ```
+  M20 256 L20 130 Q30 40 100 8 Q170 40 180 130 L180 256
+  ```
+  Inner ghost path (lower opacity, same offset pattern as before):
+  ```
+  M30 256 L30 132 Q38 50 100 20 Q162 50 170 132 L170 256
+  ```
+  Stroke widths and opacities (1px outer, 0.5px / 0.4 opacity inner) preserved from the prior shape; `strokeLinecap="round"` preserved. Same `viewBox="0 0 200 260"` so every existing class-based size on the component (`h-44 w-32`, `h-[480px] w-[280px]`, `h-[420px] w-[260px]`, etc.) renders cleanly without recomputed dimensions.
+
+- **Why this propagates beyond the welcome (intentional, but flagged).** `ArchOutline` is a single shared component imported in three places: the welcome section in `src/app/page.tsx` (the two faint silhouettes flanking the headline — the brief's named target), the Patronage / Fountain section also in `src/app/page.tsx` (the two faint amber silhouettes behind the Supporting Sanctuary copy), and `src/components/site/AcrossTheGarden.tsx` (a small decorative corner accent on the Golden Door hero card and on the threshold-place card). Updating the shared component propagates the new pointed-cusp profile to all of these. This was a deliberate call: the pointed Moroccan arch is the silhouette of the actual Golden Door photo on the homepage, so reshaping all four sites to match the door produces strong visual coherence — the small ArchOutline corner accent on the Golden Door card now visibly mirrors the real door's profile in the photograph directly above it. The shape is identical, the placements and opacities are unchanged, and the overall reading is "more in tune with the photograph", not "different in a noticeable way". Flagged in the M20 handoff so the author can ratify the propagation or ask for the welcome arches to use one shape and the others a different one.
+
+- **Verification:**
+  - `bun run build` succeeds. All 22 static routes generate. CSS rule is present in the compiled stylesheet (verified by walking `document.styleSheets` in the live browser).
+  - Browser-tested at desktop 1280×900 and mobile 375×812. Walked: home (welcome section now shows pointed Moroccan arches flanking the headline on both viewports — visibly different from the prior rounded shape; same faint green/10 opacity) → map section (figure renders normally at rest; `getComputedStyle(img).transition` reports `transform 0.3s` as expected; forced `transform: scale(1.04)` confirms the zoomed state is clipped cleanly inside the parchment frame, with the "This is Your Map" tag and place names becoming subtly more readable; `matchMedia('(hover: hover)').matches` is false in the headless test browser, so no zoom fires there — the gate works as intended for touch devices) → Across the Garden (Golden Door hero card now shows the pointed corner accent mirroring the real door above it) → Patronage / Fountain (faint amber pointed arches behind the heading copy). M19 carryover (header icon + wordmark, no trailing glyph) and footer M16/M17 lockup + email all preserved.
 
 Up next:
 - Decide PDA expansion placement (flagged in M13).
