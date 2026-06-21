@@ -9,7 +9,10 @@ import Link from "next/link";
  *
  * The mosaic-door icon (M17) sits immediately to the left of the
  * "Sufi Punk" wordmark — small and quiet, roughly text-height. The
- * existing flower glyph (❁) stays alongside, on the trailing side.
+ * trailing flower glyph (❁) was removed in M19: the mosaic-door icon
+ * now carries the decorative-mark role on its own, and having both
+ * read as one too many. Flower dividers (`<FlowerDivider />`) on
+ * every other page are untouched.
  */
 export function SiteHeader() {
   return (
@@ -30,7 +33,6 @@ export function SiteHeader() {
             className="mr-2 h-8 w-auto sm:h-9"
           />
           <span>Sufi Punk</span>
-          <span className="ml-2 align-middle text-amber">❁</span>
         </Link>
         <nav
           aria-label="Primary"

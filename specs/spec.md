@@ -61,6 +61,7 @@ This site is not a portfolio, generic blog, or shop. It should feel like enterin
 | Safe Passage rewrite, bold-badge on strand intros, elegant lockup in footer | done (M16) | — |
 | Email swap to icloud, Sanctuary First post-date respacing, header mosaic-door icon | done (M17) | — |
 | Sanctuary First post-date correction (no future dates) + visible date hidden site-wide | done (M18) | — |
+| Header trailing flower glyph removed (mosaic-door icon now carries the decorative-mark role alone) | done (M19) | — |
 
 ## Current phase
 
@@ -332,6 +333,24 @@ Milestone 18 (Sanctuary First post-date correction + visible date hidden site-wi
 - **Verification:**
   - `bun run build` succeeds. All 22 static routes generate. `/sanctuary` renders cleanly.
   - Browser-tested at desktop 1280×900 and mobile 375×812. Walked: /sanctuary post list (top-of-list shows Sufi Punk first with `ARRIVAL · 5 min read`, bottom-of-list shows The Sound of Allah last with `PRACTICE · 7 min read`, no date strings anywhere on either viewport) → /sanctuary/sufi-punk individual post page (header reads `ARRIVAL → Sufi Punk → 5 min read`, no date, body and prev/next nav unchanged). Ko-fi line in footer ("Ko-fi — Sanctuary First Patron") and `sufipunk@icloud.com` (M17) preserved.
+
+Milestone 19 (header trailing flower glyph removed): complete in code. Includes:
+
+- **Single-line removal in `src/components/site/SiteHeader.tsx`.** The trailing `<span className="ml-2 align-middle text-amber">❁</span>` that sat after the "Sufi Punk" wordmark inside the homepage `<Link>` is removed. The header now reads, left-to-right: mosaic-door icon (M17, `header_icon_transparent.png` at `h-8 w-auto sm:h-9`) → wordmark "Sufi Punk" → primary nav. The mosaic-door icon now carries the decorative-mark role on its own; the doubled mark (icon + glyph) read as one too many.
+
+- **Component header comment updated** to record the M19 removal and explicitly note that `<FlowerDivider />` and every other `❁` glyph elsewhere on the site is intentionally untouched.
+
+- **Site-wide `❁` audit (post-edit grep on `src/`):** seven remaining occurrences, all preserved as before:
+  - `src/components/site/Ornaments.tsx` lines 40 & 46 — the two `<span aria-hidden>❁</span>` glyphs that flank the label inside the shared `<FlowerDivider />` component (used by /sanctuary, /underground, /passage, /about, every Sanctuary post page, and the homepage Welcome section).
+  - `src/components/sanctuary/PostList.tsx` — the small "❁ awaiting migration" pill on cards flagged with `awaitingMigration`.
+  - `src/app/sanctuary/[slug]/page.tsx` — the corresponding "❁ Awaiting migration" callout in the post header for those same posts.
+  - `src/components/about/AboutIntro.tsx` — header-comment reference describing the plain `❁` divider that closes the About page (rendered through the same `<FlowerDivider />`).
+  - `src/app/globals.css` — comment reference inside the prose-zawiya stylesheet documenting the ornament motif.
+  - `src/components/site/SiteHeader.tsx` — header comment recording the M19 removal (the only mention of the glyph in this file; no glyph rendered).
+
+- **Verification:**
+  - `bun run build` succeeds. All 22 static routes generate. No TypeScript or import diffs (the removal is purely a JSX line).
+  - Browser-tested at desktop 1280×900 and mobile 375×812. Walked: home (header reads `[icon] Sufi Punk` then nav, no trailing glyph; the welcome section's two FlowerDividers — one before "Come as you are" and one before "The roots are Islamic" — both render with their flower glyphs intact) → /sanctuary (twelve-card post list intact, post cards unchanged from M18) → /underground (page closes with `❁ FROM THE DEVOTIONAL CORNER ❁` divider showing both glyphs) → /passage (page closes with `❁ FROM THE GATHERING PLACE ❁` divider showing both glyphs, M16 closing line and footer above it intact). Footer elegant lockup, `sufipunk@icloud.com`, and Ko-fi line all preserved across both viewports.
 
 Up next:
 - Decide PDA expansion placement (flagged in M13).
