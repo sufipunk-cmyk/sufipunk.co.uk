@@ -1,4 +1,4 @@
-import { FlowerDivider } from "@/components/site/Ornaments";
+import { FlowerDivider, ZawiyaBadge } from "@/components/site/Ornaments";
 
 /**
  * Safe Passage intro — the strand whose home on the overview map is
@@ -24,11 +24,33 @@ import { FlowerDivider } from "@/components/site/Ornaments";
  *    sufipunkmusic@gmail.com, which is included below as a single
  *    quiet line.
  *
+ *  - M16: the third paragraph of "Before you enter" (the older
+ *    "this strand is younger than the others" framing, including
+ *    the SEND first-use expansion added in M13) was replaced with
+ *    a settled three-paragraph offer in the author's voice. The
+ *    SEND acronym no longer appears in the body, so the M13 first-
+ *    use expansion is no longer needed. A new closing block was
+ *    added at the end of the page, before the flower divider,
+ *    inviting support through patronage and the book.
+ *
+ *    Implementation note (M16): the M16 brief instructs that the
+ *    closing line sit "after the existing patronage/Ko-fi
+ *    material". This page does not currently carry any patronage /
+ *    Ko-fi block of its own — the Fountain (Ko-fi) lives on the
+ *    homepage. The closing block is therefore placed at the
+ *    natural close of the page, with the words "patronage" and
+ *    "the book's progress" hyperlinked to the homepage Fountain
+ *    and Book sections respectively (`/#patronage`, `/#the-book`).
+ *    Flagged in the M16 handoff for the author to correct if a
+ *    different shape was intended.
+ *
  *  - The closing flower divider names the place this strand lives
  *    at on the overview map: The Gathering Place.
  */
 
 const CONTACT_EMAIL = "sufipunkmusic@gmail.com";
+const HOMEPAGE_PATRONAGE = "/#patronage";
+const HOMEPAGE_BOOK = "/#the-book";
 
 export function SafePassageIntro() {
   return (
@@ -51,6 +73,8 @@ export function SafePassageIntro() {
 
         {/* Before you enter — verbatim from the master brief, Version A. */}
         <div className="mt-14">
+          {/* M16 — bold-badge stamp above the threshold heading. */}
+          <ZawiyaBadge className="mb-6" />
           <h2 className="font-display text-2xl italic text-green sm:text-3xl">
             Before you enter
           </h2>
@@ -67,14 +91,25 @@ export function SafePassageIntro() {
               faith communities that families have to pass through, often
               without being met with safety or understanding.
             </p>
+            {/* M16 — replaces the older "this strand is younger" para. */}
             <p>
-              This strand is younger than the others. What’s offered here
-              is still forming. But the lived experience underneath it —
-              parenting through SEND (Special Educational Needs and
-              Disabilities) tribunals, navigating statutory systems,
-              holding a child through institutions not built for him — is
-              not theoretical, and it is not waiting to be finished
-              before it’s real.
+              There’s something in here for you too. You’re trying to
+              find something — to name something that’s been hard to
+              name. That’s what I can hold space for.
+            </p>
+            <p>
+              The same monotropic depth that lets me find God inside a
+              single curious thread is the depth I bring to a problem
+              you haven’t solved yet. I think strategically. I think
+              outside the box. I plan ahead — plus a decade of creative
+              practice, finding ways through when the conventional path
+              doesn’t work.
+            </p>
+            <p>
+              This is consultancy, training, and strategic support for
+              professionals, schools, services, and faith communities
+              navigating systems that weren’t built for the people
+              inside them.
             </p>
           </div>
         </div>
@@ -126,6 +161,34 @@ export function SafePassageIntro() {
               </a>
             </p>
           </div>
+        </div>
+
+        {/* M16 — closing line. The brief asked for this to sit
+            "after the existing patronage/Ko-fi material"; this page
+            does not currently host its own patronage block, so the
+            line is placed as the page's natural close, with
+            "patronage" and "the book's progress" linked to the
+            homepage Fountain and Book sections. Flagged. */}
+        <div className="mt-12 border-t border-hairline/60 pt-8">
+          <p className="font-serif text-[1rem] leading-relaxed text-ink-soft">
+            This part of the work is still developing. If you want to
+            help it grow — into training, into resources, into something
+            more people can lean on — you can support it now through{" "}
+            <a
+              href={HOMEPAGE_PATRONAGE}
+              className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
+            >
+              patronage
+            </a>
+            , or by{" "}
+            <a
+              href={HOMEPAGE_BOOK}
+              className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
+            >
+              following the book’s progress
+            </a>
+            .
+          </p>
         </div>
       </div>
 

@@ -1,4 +1,4 @@
-import { FlowerDivider } from "@/components/site/Ornaments";
+import { FlowerDivider, ZawiyaBadge } from "@/components/site/Ornaments";
 
 /**
  * Spiritual Underground intro — the strand whose home on the
@@ -62,6 +62,8 @@ export function SpiritualUndergroundIntro() {
 
         {/* Before you enter — threshold framing in the site's voice. */}
         <div className="mt-14">
+          {/* M16 — bold-badge stamp above the threshold heading. */}
+          <ZawiyaBadge className="mb-6" />
           <h2 className="font-display text-2xl italic text-green sm:text-3xl">
             Before you enter
           </h2>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const SUBSTACK = "https://sufipunksanctuaryfirst.substack.com/subscribe";
@@ -9,11 +10,18 @@ export function SiteFooter() {
       <div className="container py-12">
         <div className="grid gap-10 sm:grid-cols-3">
           <div>
-            <h3 className="font-display text-xl text-green">Sufi Punk</h3>
-            <p className="mt-2 max-w-sm font-serif text-sm leading-relaxed text-ink-soft">
-              A digital zawiya. Witness writing for low-demand faith,
-              neurodivergence, and the sacred.
-            </p>
+            {/* M16 — elegant lockup replaces the plain text "Sufi Punk"
+                heading + tagline paragraph. The lockup carries the
+                wordmark "Sufi Punk · Digital Zawiya" inside the
+                artwork, so no surrounding heading text is needed. */}
+            <Image
+              src="/images/logo/sufipunk_logo_elegant_lockup_FINAL.png"
+              alt="Sufi Punk · Digital Zawiya — a refined mosaic gateway above the wordmark Sufi Punk in deep-green serif, with Digital Zawiya set beneath in small caps."
+              width={500}
+              height={500}
+              sizes="240px"
+              className="h-auto w-[200px] sm:w-[240px]"
+            />
           </div>
           <div>
             <h4 className="font-display text-sm uppercase tracking-[0.2em] text-ink-soft">

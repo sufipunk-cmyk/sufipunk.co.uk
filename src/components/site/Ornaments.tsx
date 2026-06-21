@@ -1,8 +1,38 @@
+import Image from "next/image";
+
 /**
  * Quiet ornamental flourishes traced from the brief's vocabulary —
  * the ❁ flower motif and the pointed-arch silhouette taken from
  * the real handmade door.
  */
+
+/**
+ * The bold "stamp" badge that opens each strand intro page (M16).
+ *
+ * The badge image already carries the SUFI PUNK / DIGITAL ZAWIYA
+ * wordmark inside the artwork, so this component is just a sized,
+ * centered, accessibly-labelled wrapper. Used above the "Before you
+ * enter" heading on Sanctuary First, Spiritual Underground, and
+ * Safe Passage. Same treatment on each, per the M16 brief.
+ *
+ * Sizing: the brief asked for "roughly 180–220px wide". Settled on
+ * 200px, with `priority={false}` since the badge sits below the page
+ * title and is not the LCP element.
+ */
+export function ZawiyaBadge({ className = "" }: { className?: string }) {
+  return (
+    <div className={`flex justify-center ${className}`}>
+      <Image
+        src="/images/logo/sufipunk_logo_bold_badge_FINAL.png"
+        alt="Sufi Punk · Digital Zawiya — a hand-painted mosaic gateway in deep green, gold, red, navy, and teal, with a small wall-fountain spout, set above the wordmark SUFI PUNK · DIGITAL ZAWIYA in a distressed serif."
+        width={400}
+        height={400}
+        sizes="200px"
+        className="h-auto w-[200px]"
+      />
+    </div>
+  );
+}
 
 export function FlowerDivider({ label }: { label?: string }) {
   return (
