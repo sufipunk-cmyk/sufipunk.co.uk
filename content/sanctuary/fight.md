@@ -1,7 +1,7 @@
 ---
 title: "Fight"
 slug: "fight"
-date: "2025-04-03"
+date: "2026-07-15"
 excerpt: "On a courtesy car, a fifteen-year-old's gentle voice, and what the fight response is actually trying to protect — the thread back to the self."
 arc: "practice"
 experience:

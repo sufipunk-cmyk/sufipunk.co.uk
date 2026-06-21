@@ -77,10 +77,10 @@ export function SiteFooter() {
               </li>
               <li>
                 <a
-                  href="mailto:sufipunkmusic@gmail.com"
+                  href="mailto:sufipunk@icloud.com"
                   className="text-green hover:text-amber"
                 >
-                  sufipunkmusic@gmail.com
+                  sufipunk@icloud.com
                 </a>
               </li>
             </ul>

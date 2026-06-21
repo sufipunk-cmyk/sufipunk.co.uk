@@ -58,6 +58,8 @@ This site is not a portfolio, generic blog, or shop. It should feel like enterin
 | Editing pass — SEO, consistency, voice | done (M13) | — |
 | Homepage consolidation — places + strands merged, Substack CTA collision fixed | done (M14) | — |
 | Spiritual Parallel Play rewrite, homepage cards, About consolidation | done (M15) | — |
+| Safe Passage rewrite, bold-badge on strand intros, elegant lockup in footer | done (M16) | — |
+| Email swap to icloud, Sanctuary First post-date respacing, header mosaic-door icon | done (M17 — closes out sufipunk.co.uk build round) | — |
 
 ## Current phase
 
@@ -104,10 +106,10 @@ Milestone 9 (real visual assets): complete in code. Includes:
 
 Milestone 10 (Spiritual Underground + Safe Passage full pages): complete in code. Includes:
 - `/underground` rebuilt as a full-content page replacing the M3 `StrandStub`. Renders the two confirmed concepts from the master brief in this order: a short "Before you enter" framing in the site voice, the Low-Demand Faith definition as a quotation in Naz's voice, the Spiritual Parallel Play definition as plain copy with the brief's exact wording, an "Inspiring the Sufi" demonstrated-example block linking out to inspiringthesufi.com with the brief-specified link text "This is where it started. Come and see.", and a restrained "An invitation" block opening expressions of interest from faith, arts, and cultural organisations with the project email and a Substack tail. Closes with a "From the Devotional Corner" flower divider.
-- `/passage` rebuilt as a full-content page replacing the M3 `StrandStub`. Renders the master brief's confirmed Version A text verbatim — both the "Before you enter" and "Welcome Note" sections — with the author override applied (the words "a family member" removed from the Welcome Note's welcome list). Closes with a quiet `sufipunkmusic@gmail.com` contact line and a "From the Gathering Place" flower divider.
+- `/passage` rebuilt as a full-content page replacing the M3 `StrandStub`. Renders the master brief's confirmed Version A text verbatim — both the "Before you enter" and "Welcome Note" sections — with the author override applied (the words "a family member" removed from the Welcome Note's welcome list). Closes with a quiet `sufipunk@icloud.com` contact line and a "From the Gathering Place" flower divider.
 - Both pages mirror the existing `SanctuaryIntro` pattern: header kicker, display title, sectioned body using `prose-zawiya sanctuary-prose`, a place-named flower divider that ties the strand back to its home on the overview map.
 - Page routes are kept thin; component bodies live in `src/components/underground/SpiritualUndergroundIntro.tsx` and `src/components/passage/SafePassageIntro.tsx`. `StrandStub` is retained for `/about`, which is still in stub state per its spec.
-- Two flagged ambiguities recorded in `specs/spiritual-underground/document.md` for the author to settle when she's ready: (a) whether to swap the Spiritual Parallel Play definition to the longer first-person passage that exists in `ITS_Master_Brief.md`, and (b) whether organisational expressions-of-interest should remain at `sufipunkmusic@gmail.com` or move to a different inbox.
+- Two flagged ambiguities recorded in `specs/spiritual-underground/document.md` for the author to settle when she's ready: (a) whether to swap the Spiritual Parallel Play definition to the longer first-person passage that exists in `ITS_Master_Brief.md`, and (b) whether organisational expressions-of-interest should remain at `sufipunk@icloud.com` or move to a different inbox.
 
 Milestone 11 (About page): complete in code. Includes:
 - `/about` rebuilt as a full-content page replacing the M3 `StrandStub`. Same `SanctuaryIntro` pattern as the strand pages — kicker, display title, sectioned body using `prose-zawiya sanctuary-prose` — but consciously not tied to a named place on the overview map, since this page sits slightly behind the whole garden rather than at one of the four micro-sanctuaries.
@@ -260,7 +262,7 @@ Milestone 16 (Safe Passage rewrite, bold-badge stamp on strand intros, elegant l
   - `src/components/passage/SafePassageIntro.tsx`
   Identical treatment on each — same component, same wrapper class, same vertical spacing — so the three intros share the same stamp at the same point in their reading flow.
 
-- **Elegant lockup logo placed in footer first column.** New asset `public/images/logo/sufipunk_logo_elegant_lockup_FINAL.png` (1254×1254, RGBA with real alpha, ~1.30MB) — the same mosaic gateway with the wordmark and "DIGITAL ZAWIYA" tagline in elegant lockup form. In `src/components/site/SiteFooter.tsx`, the first column's previous plain `<h3>Sufi Punk</h3>` heading + tagline `<p>` is replaced by an `<Image>` of the lockup at `w-[200px] sm:w-[240px]` (responsive: smaller on mobile, larger from `sm:` up), `h-auto`, with `next/image` width/height/sizes. The "Visit" and "Elsewhere" link columns are preserved exactly as they were in M13/M14 (Sanctuary First, Spiritual Underground, Safe Passage, About / Sanctuary First on Substack, Ko-fi, sufipunkmusic@gmail.com).
+- **Elegant lockup logo placed in footer first column.** New asset `public/images/logo/sufipunk_logo_elegant_lockup_FINAL.png` (1254×1254, RGBA with real alpha, ~1.30MB) — the same mosaic gateway with the wordmark and "DIGITAL ZAWIYA" tagline in elegant lockup form. In `src/components/site/SiteFooter.tsx`, the first column's previous plain `<h3>Sufi Punk</h3>` heading + tagline `<p>` is replaced by an `<Image>` of the lockup at `w-[200px] sm:w-[240px]` (responsive: smaller on mobile, larger from `sm:` up), `h-auto`, with `next/image` width/height/sizes. The "Visit" and "Elsewhere" link columns are preserved exactly as they were in M13/M14 (Sanctuary First, Spiritual Underground, Safe Passage, About / Sanctuary First on Substack, Ko-fi, sufipunk@icloud.com).
 
 - **No header changes this round.** Per the M16 brief — header lockup change deliberately deferred.
 
@@ -268,9 +270,42 @@ Milestone 16 (Safe Passage rewrite, bold-badge stamp on strand intros, elegant l
   - All routes return 200 after restart. Stale `.next` cache cleared twice during development to keep Turbopack honest. `bun run build` produces all 22 static routes cleanly with the new image assets.
   - Browser-tested at desktop 1280×900 and mobile 375×812. Walked: `/sanctuary` (badge above "Before you enter") → `/underground` (same badge, identical treatment) → `/passage` (same badge, plus M16 rewrite paragraphs visible below, plus closing line with hyperlinks rendering green-underlined) → footer on `/passage` (elegant lockup in first column, Visit and Elsewhere columns intact, "The roots are Islamic. The language is human. The gate is open." preserved). On mobile the footer columns stack vertically as expected; the lockup sits centered above the Visit and Elsewhere lists. All four logo placements render at the intended size on both viewports.
 
+Milestone 17 (email swap, post-date respacing, header mosaic-door icon — closes out sufipunk.co.uk build round): complete in code. Includes:
+
+- **Email swap — every occurrence of `sufipunkmusic@gmail.com` replaced with `sufipunk@icloud.com`.** Source files updated:
+  - `src/components/site/SiteFooter.tsx` — both the `mailto:` href and the visible link text in the Elsewhere column.
+  - `src/components/underground/SpiritualUndergroundIntro.tsx` — the `CONTACT_EMAIL` constant feeding the "An invitation" block on `/underground`.
+  - `src/components/passage/SafePassageIntro.tsx` — the `CONTACT_EMAIL` constant feeding the "To get in touch:" line on `/passage`, plus the code-comment reference at the top of the file.
+  - `specs/spec.md` and the historical references inside `specs/spiritual-underground/document.md` and `specs/safe-passage/document.md` (per the M17 brief: "including specs/").
+  Verified: project-wide grep for `sufipunkmusic@gmail.com` across `src/`, `specs/`, `content/`, and `public/` returns zero matches in any source file (`.ts`, `.tsx`, `.md`, `.mdx`, `.json`, `.html`). The new `sufipunk@icloud.com` renders correctly in the footer, on `/underground` (invitation block), and on `/passage` (To-get-in-touch line) on both viewports.
+
+- **Sanctuary First post dates respaced — weekly Mar–Jun 2025 → monthly Jun 2026 → May 2027.** All twelve posts kept in their existing relative order (arrival → threshold → practice). New dates use the 15th of each month for an even monthly cadence. Final mapping:
+  1. The Sound of Allah — `2025-03-27` → `2026-06-15`
+  2. Fight — `2025-04-03` → `2026-07-15`
+  3. Winter in June — `2025-04-10` → `2026-08-15`
+  4. A Heart Large Enough to Live In — `2025-04-17` → `2026-09-15`
+  5. The Digital Zawiya — `2025-04-24` → `2026-10-15`
+  6. What Now — `2025-05-01` → `2026-11-15`
+  7. Game On — Safe Passage — `2025-05-08` → `2026-12-15`
+  8. The Shape of Safety — `2025-05-15` → `2027-01-15`
+  9. When the Ground Would Not Hold — `2025-05-22` → `2027-02-15`
+  10. Faith as Stewardship — `2025-05-29` → `2027-03-15`
+  11. Low-Demand Faith — The Liturgy of Fascination — `2025-06-05` → `2027-04-15`
+  12. Sufi Punk — `2025-06-12` → `2027-05-15`
+  Implementation: `sed -i` on `^date:` line in each `content/sanctuary/*.md` frontmatter. Verified browser-side: `/sanctuary` post list renders newest-first (15 March 2027 at top through 15 June 2026 at the bottom), arc kickers (Arrival / Threshold / Practice) and taxonomy chips intact, sitemap `lastModified` values regenerated automatically from frontmatter on next build.
+
+- **Header mosaic-door icon added** to `src/components/site/SiteHeader.tsx`. New asset `public/images/logo/header_icon_transparent.png` (950×860, RGBA with real alpha transparency confirmed via PIL, mosaic-door glyph only — no text — already background-removed by the author so no round-trip cleanup was needed). Inserted as a `next/image` immediately before the "Sufi Punk" wordmark inside the homepage `<Link>`, with `aria-hidden="true"` and `alt=""` (decorative — the wordmark text supplies the accessible name), `width={64}` `height={58}` for intrinsic ratio, `sizes="32px"`, and `priority` since it lives in the always-visible header. Sized via Tailwind: `h-8 w-auto sm:h-9` (32px on mobile, 36px from `sm:` up — within the 28–36px range the brief called for). Right-margined `mr-2` to sit close-but-quiet against the wordmark. The existing flower glyph (❁) on the trailing side of the wordmark is preserved unchanged. The Link wrapper picked up `inline-flex items-center` so the icon, wordmark, and flower glyph all baseline-align cleanly across viewports. No nav changes. No layout changes elsewhere in the header.
+
+- **Verification:**
+  - Stale `.next` cache cleared and dev server restarted to flush the previous build's email references from compiled chunks. All routes return 200.
+  - Project-wide grep on the old email returns zero matches across all source files.
+  - Browser-tested at desktop 1280×900 and mobile 375×812. Walked: home (header icon flanks "Sufi Punk" wordmark on both viewports, flower glyph still on trailing side, icon scales 32→36px between mobile and desktop) → `/sanctuary` (twelve post list shows the new monthly cadence, ordered newest-first; arc kickers and taxonomy untouched) → `/passage` ("To get in touch: sufipunk@icloud.com" line correct, footer email correct) → footer on every page (Elsewhere column reads `sufipunk@icloud.com`, both as mailto target and visible text).
+
+- **This closes out the sufipunk.co.uk build round.** Project moves next to `inspiringthesufi.com`. M17 is the final tarball for this site under the current scope.
+
 Up next:
 - Decide PDA expansion placement (flagged in M13).
 - Author review of (a) book-section move (M13), (b) three-spaces clarifying line draft (M13), (c) merged section heading/kicker (M14: "WHAT HAPPENS HERE / Across the Garden"), (d) Book CTA wording (M14: "Follow the book's progress →"), (e) M16 Safe Passage closing-line placement (flagged above — page's natural close vs. somewhere else, since brief said "after Ko-fi material" but page has no Ko-fi block), (f) M16 Safe Passage closing-line link targets (currently `/#patronage` and `/#the-book` — confirm these are the intended anchors).
-- Post-dates change deferred from M16 batch per author note ("not blocking anything, can go in on its own whenever you're ready to confirm it").
-- Header lockup change deferred from M16 — pending author direction on whether the elegant lockup or a different treatment should appear in the header.
+- Post-dates change ✓ done in M17 (June 2026 → May 2027 monthly cadence).
+- Header mosaic-door icon ✓ done in M17 (small standalone glyph, not the elegant lockup — author chose a quieter treatment for the header).
 - Continue migrating any further Sanctuary posts as they're written.

@@ -1,7 +1,7 @@
 ---
 title: "The Shape of Safety"
 slug: "the-shape-of-safety"
-date: "2025-05-15"
+date: "2027-01-15"
 excerpt: "On two years housebound, on Transformers returning one by one, and on what it means for a child to come home to himself when safety is finally allowed to hold."
 arc: "arrival"
 experience:

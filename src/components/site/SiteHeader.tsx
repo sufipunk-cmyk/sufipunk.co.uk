@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 /**
@@ -5,6 +6,10 @@ import Link from "next/link";
  * Brief: "no navigation clutter. Just the words and the world."
  * So the header carries only the wordmark and one small set of
  * inline links to the named strands. No menu icon, no banner.
+ *
+ * The mosaic-door icon (M17) sits immediately to the left of the
+ * "Sufi Punk" wordmark — small and quiet, roughly text-height. The
+ * existing flower glyph (❁) stays alongside, on the trailing side.
  */
 export function SiteHeader() {
   return (
@@ -12,9 +17,19 @@ export function SiteHeader() {
       <div className="container flex flex-col items-center gap-3 py-5 sm:flex-row sm:items-end sm:justify-between sm:py-6">
         <Link
           href="/"
-          className="font-display text-2xl tracking-tight text-green sm:text-[1.75rem]"
+          className="inline-flex items-center font-display text-2xl tracking-tight text-green sm:text-[1.75rem]"
         >
-          Sufi Punk
+          <Image
+            src="/images/logo/header_icon_transparent.png"
+            alt=""
+            width={64}
+            height={58}
+            priority
+            sizes="32px"
+            aria-hidden="true"
+            className="mr-2 h-8 w-auto sm:h-9"
+          />
+          <span>Sufi Punk</span>
           <span className="ml-2 align-middle text-amber">❁</span>
         </Link>
         <nav

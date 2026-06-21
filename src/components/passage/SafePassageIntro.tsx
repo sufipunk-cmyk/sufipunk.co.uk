@@ -21,7 +21,7 @@ import { FlowerDivider, ZawiyaBadge } from "@/components/site/Ornaments";
  *    the brief and is not built here.
  *
  *  - The brief specifies a simple contact link to
- *    sufipunkmusic@gmail.com, which is included below as a single
+ *    sufipunk@icloud.com, which is included below as a single
  *    quiet line.
  *
  *  - M16: the third paragraph of "Before you enter" (the older
@@ -48,7 +48,7 @@ import { FlowerDivider, ZawiyaBadge } from "@/components/site/Ornaments";
  *    at on the overview map: The Gathering Place.
  */
 
-const CONTACT_EMAIL = "sufipunkmusic@gmail.com";
+const CONTACT_EMAIL = "sufipunk@icloud.com";
 const HOMEPAGE_PATRONAGE = "/#patronage";
 const HOMEPAGE_BOOK = "/#the-book";
 

@@ -1,7 +1,7 @@
 ---
 title: "Low-Demand Faith — The Liturgy of Fascination"
 slug: "low-demand-faith"
-date: "2025-06-05"
+date: "2027-04-15"
 excerpt: "On finding God through the back door — through music, fascination, special interests — and on the long discovery that wonder was always the path."
 arc: "arrival"
 experience:

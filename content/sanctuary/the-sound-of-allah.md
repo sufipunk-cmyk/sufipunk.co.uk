@@ -1,7 +1,7 @@
 ---
 title: "The Sound of Allah"
 slug: "the-sound-of-allah"
-date: "2025-03-27"
+date: "2026-06-15"
 excerpt: "On a teenage boy and a fan heater, on four occupational therapy reports, and on the still small voice that no assessment will ever capture."
 arc: "practice"
 experience:

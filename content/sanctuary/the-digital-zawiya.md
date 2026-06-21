@@ -1,7 +1,7 @@
 ---
 title: "The Digital Zawiya"
 slug: "the-digital-zawiya"
-date: "2025-04-24"
+date: "2026-10-15"
 excerpt: "The threshold post. The arrival at the digital zawiya — and the punk move you make at the door: leaving every label behind to enter as a soul."
 arc: "threshold"
 experience:

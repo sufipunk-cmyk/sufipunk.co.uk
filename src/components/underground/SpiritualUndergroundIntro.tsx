@@ -39,7 +39,7 @@ import { FlowerDivider, ZawiyaBadge } from "@/components/site/Ornaments";
 
 const SUBSTACK = "https://sufipunksanctuaryfirst.substack.com/subscribe";
 const ITS_URL = "https://inspiringthesufi.com";
-const CONTACT_EMAIL = "sufipunkmusic@gmail.com";
+const CONTACT_EMAIL = "sufipunk@icloud.com";
 
 export function SpiritualUndergroundIntro() {
   return (
