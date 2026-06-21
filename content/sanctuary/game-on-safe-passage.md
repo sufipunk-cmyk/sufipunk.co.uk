@@ -1,7 +1,7 @@
 ---
 title: "Game On — Safe Passage"
 slug: "game-on-safe-passage"
-date: "2026-12-15"
+date: "2026-01-15"
 excerpt: "On lists and pen and paper and the scaffolding the world never saw, on a late ADHD diagnosis, and on the discernment the Punk grows into when it matures."
 arc: "arrival"
 experience:

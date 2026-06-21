@@ -1,7 +1,7 @@
 ---
 title: "A Heart Large Enough to Live In"
 slug: "a-heart-large-enough-to-live-in"
-date: "2026-09-15"
+date: "2025-10-15"
 excerpt: "On the heart you have to expand because there is nowhere else left to go, on choosing beauty inside nihilism, and on the small lever that calls you back to life."
 arc: "practice"
 experience:

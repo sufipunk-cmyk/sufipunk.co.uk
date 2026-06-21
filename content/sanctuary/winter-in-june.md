@@ -1,7 +1,7 @@
 ---
 title: "Winter in June"
 slug: "winter-in-june"
-date: "2026-08-15"
+date: "2025-09-15"
 excerpt: "On a nervous system in winter while the calendar says June, on the seat of self beneath the noise, and on loving yourself in the moment you most want to leave yourself behind."
 arc: "practice"
 experience:

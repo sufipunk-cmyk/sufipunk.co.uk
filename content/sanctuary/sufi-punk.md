@@ -1,7 +1,7 @@
 ---
 title: "Sufi Punk"
 slug: "sufi-punk"
-date: "2027-05-15"
+date: "2026-06-15"
 excerpt: "On standing outside a mosque door, on tears that were a language, and on building doorways when the ones you were given would not open."
 arc: "arrival"
 experience:

@@ -26,16 +26,11 @@ function parseList(v: string | null): string[] {
   return v ? v.split(",").filter(Boolean) : [];
 }
 
-function formatDate(iso: string): string {
-  // Brief tone is reverent and library-like — long-form date suits.
-  const d = new Date(iso + "T00:00:00Z");
-  return d.toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  });
-}
+// M18: visible date intentionally removed from post cards. The Arrival /
+// Threshold / Practice arc kicker carries the sequence-telling role for
+// the reader; the underlying `date` frontmatter is still present and still
+// drives sort order, sitemap lastModified, and Article JSON-LD
+// datePublished — none of that is visible UI.
 
 export function PostList({ posts }: { posts: PostListEntry[] }) {
   const params = useSearchParams();
@@ -104,9 +99,6 @@ export function PostList({ posts }: { posts: PostListEntry[] }) {
               <div className="sm:col-span-3">
                 <p className="font-serif text-xs uppercase tracking-[0.3em] text-amber">
                   {labelFor("arc", p.arc) ?? p.arc}
-                </p>
-                <p className="mt-1 font-serif text-sm text-ink-soft">
-                  {formatDate(p.date)}
                 </p>
                 <p className="mt-1 font-serif text-xs text-ink-soft">
                   {p.readingMinutes} min read

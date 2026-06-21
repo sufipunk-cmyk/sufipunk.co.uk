@@ -1,7 +1,7 @@
 ---
 title: "What Now"
 slug: "what-now"
-date: "2026-11-15"
+date: "2025-12-15"
 excerpt: "On the threshold between surviving and living — on what comes back from the dark, on choosing a spacious God-idea, and on the gold that cannot be taken."
 arc: "arrival"
 experience:

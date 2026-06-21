@@ -59,7 +59,8 @@ This site is not a portfolio, generic blog, or shop. It should feel like enterin
 | Homepage consolidation — places + strands merged, Substack CTA collision fixed | done (M14) | — |
 | Spiritual Parallel Play rewrite, homepage cards, About consolidation | done (M15) | — |
 | Safe Passage rewrite, bold-badge on strand intros, elegant lockup in footer | done (M16) | — |
-| Email swap to icloud, Sanctuary First post-date respacing, header mosaic-door icon | done (M17 — closes out sufipunk.co.uk build round) | — |
+| Email swap to icloud, Sanctuary First post-date respacing, header mosaic-door icon | done (M17) | — |
+| Sanctuary First post-date correction (no future dates) + visible date hidden site-wide | done (M18) | — |
 
 ## Current phase
 
@@ -302,6 +303,35 @@ Milestone 17 (email swap, post-date respacing, header mosaic-door icon — close
   - Browser-tested at desktop 1280×900 and mobile 375×812. Walked: home (header icon flanks "Sufi Punk" wordmark on both viewports, flower glyph still on trailing side, icon scales 32→36px between mobile and desktop) → `/sanctuary` (twelve post list shows the new monthly cadence, ordered newest-first; arc kickers and taxonomy untouched) → `/passage` ("To get in touch: sufipunk@icloud.com" line correct, footer email correct) → footer on every page (Elsewhere column reads `sufipunk@icloud.com`, both as mailto target and visible text).
 
 - **This closes out the sufipunk.co.uk build round.** Project moves next to `inspiringthesufi.com`. M17 is the final tarball for this site under the current scope.
+
+Milestone 18 (Sanctuary First post-date correction + visible date hidden site-wide): complete in code. Includes:
+
+- **Bug fix — twelve post dates re-shifted backward.** M17 had respaced the twelve already-finished essays into a future window (Jun 2026 → May 2027), which read as "scheduled posts" rather than archive content. The same relative order is preserved (Sufi Punk newest, The Sound of Allah oldest), but the whole span shifts back so nothing is future-dated. New mapping, on the 15th of each month for a clean monthly cadence:
+  - `sufi-punk.md` → `2026-06-15` (newest, top of /sanctuary)
+  - `low-demand-faith.md` → `2026-05-15`
+  - `faith-as-stewardship.md` → `2026-04-15`
+  - `when-the-ground-would-not-hold.md` → `2026-03-15`
+  - `the-shape-of-safety.md` → `2026-02-15`
+  - `game-on-safe-passage.md` → `2026-01-15`
+  - `what-now.md` → `2025-12-15`
+  - `the-digital-zawiya.md` → `2025-11-15`
+  - `a-heart-large-enough-to-live-in.md` → `2025-10-15`
+  - `winter-in-june.md` → `2025-09-15`
+  - `fight.md` → `2025-08-15`
+  - `the-sound-of-allah.md` → `2025-07-15` (oldest, bottom of /sanctuary)
+  Implementation: `sed -i` on the `^date:` frontmatter line in each `content/sanctuary/*.md`. No other frontmatter fields touched. Browser-verified: /sanctuary now reads top-to-bottom Sufi Punk → Low-Demand Faith → Faith as Stewardship → … → The Sound of Allah, on both desktop and mobile.
+
+- **Visible date removed from post cards on /sanctuary.** Until M18 each card showed `ARRIVAL · 15 March 2027 · 9 min read`. The arc kicker (Arrival / Threshold / Practice) is the real sequence-telling element — calendar dates running backward in time read as contradictory next to a "scroll down to move forward" sequence. The date line is now removed; the card metadata column carries the arc kicker plus reading time only.
+  - File: `src/components/sanctuary/PostList.tsx`. The `formatDate(p.date)` `<p>` line is removed. The `formatDate` helper is removed. A code-comment in its place explains that the underlying `date` frontmatter is still present and still drives sort order, sitemap `lastModified`, and Article JSON-LD `datePublished` — none of which are visible UI.
+
+- **Visible date removed from individual post header.** Same treatment on `/sanctuary/[slug]`: the post header now reads `ARRIVAL → Title → 5 min read`. The date line is removed; the arc kicker carries the sequence-telling role.
+  - File: `src/app/sanctuary/[slug]/page.tsx`. The `formatDate(post.date) · ` prefix is removed from the meta line. The `formatDate` helper is removed. The Article JSON-LD object's `datePublished: post.date` is preserved unchanged — it remains in the page's structured data, just not in the visible header.
+
+- **What stayed unchanged on purpose:** the `date` field in every post's frontmatter (drives sort order via `getAllSanctuaryPosts()` which sorts newest-first), the `lastModified` per post in `src/app/sitemap.ts` (still pulled from frontmatter `date`), the Article JSON-LD `datePublished` on each `/sanctuary/[slug]` page (still emitted from frontmatter `date`). The change is display-only — readers see no calendar dates; sort order, sitemap, and structured-data metadata still carry them.
+
+- **Verification:**
+  - `bun run build` succeeds. All 22 static routes generate. `/sanctuary` renders cleanly.
+  - Browser-tested at desktop 1280×900 and mobile 375×812. Walked: /sanctuary post list (top-of-list shows Sufi Punk first with `ARRIVAL · 5 min read`, bottom-of-list shows The Sound of Allah last with `PRACTICE · 7 min read`, no date strings anywhere on either viewport) → /sanctuary/sufi-punk individual post page (header reads `ARRIVAL → Sufi Punk → 5 min read`, no date, body and prev/next nav unchanged). Ko-fi line in footer ("Ko-fi — Sanctuary First Patron") and `sufipunk@icloud.com` (M17) preserved.
 
 Up next:
 - Decide PDA expansion placement (flagged in M13).

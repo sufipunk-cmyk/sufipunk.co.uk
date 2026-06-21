@@ -1,7 +1,7 @@
 ---
 title: "Faith as Stewardship"
 slug: "faith-as-stewardship"
-date: "2027-03-15"
+date: "2026-04-15"
 excerpt: "On parenting four prayers from four traditions during lockdown, on the difference between transmission and invitation, and on tending the ground rather than forcing the seed."
 arc: "arrival"
 experience:

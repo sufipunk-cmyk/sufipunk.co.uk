@@ -31,14 +31,11 @@ export async function generateMetadata({
   };
 }
 
-function formatDate(iso: string): string {
-  return new Date(iso + "T00:00:00Z").toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  });
-}
+// M18: visible date intentionally removed from the post header. The arc
+// kicker (Arrival / Threshold / Practice) is the sequence-telling element
+// for readers; the underlying `date` frontmatter is still present and
+// continues to drive sort order, sitemap lastModified, and the Article
+// JSON-LD `datePublished` below — none of that is visible UI.
 
 export default async function SanctuaryPostPage({
   params,
@@ -98,7 +95,7 @@ export default async function SanctuaryPostPage({
             {post.title}
           </h1>
           <p className="mt-5 font-serif text-sm text-ink-soft">
-            {formatDate(post.date)} · {post.readingMinutes} min read
+            {post.readingMinutes} min read
           </p>
 
           {post.awaitingMigration ? (

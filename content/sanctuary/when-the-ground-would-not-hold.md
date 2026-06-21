@@ -1,7 +1,7 @@
 ---
 title: "When the Ground Would Not Hold"
 slug: "when-the-ground-would-not-hold"
-date: "2027-02-15"
+date: "2026-03-15"
 excerpt: "On fourteen years inside the SEND system, on the cumulative grief of a PDA journey, and on the night-by-night ground that love builds when nothing else can."
 arc: "arrival"
 experience:
