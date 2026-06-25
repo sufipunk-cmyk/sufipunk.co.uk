@@ -585,13 +585,23 @@ export function SpiritualUndergroundIntro() {
             An invitation
           </h2>
           <div className="prose-zawiya sanctuary-prose mt-6">
+            <p>The Hidden Treasure is never exhausted.</p>
             <p>
-              If you work in faith, the arts, or culture — and any of this meets
-              something you are already trying to make room for — I am open to
-              expressions of interest. Programming, residencies, collaborations,
-              conversation. No pitch deck, no form. A short, plain note is
-              enough.
+              Every conversation, collaboration, commission and friendship
+              becomes another place to keep looking.
             </p>
+            <p>
+              Most of this work has grown through shared curiosity, quiet
+              recognition and the simple act of beginning a conversation. It
+              has rarely followed a plan. It has usually begun with someone
+              recognising a question they were already carrying.
+            </p>
+            <p>
+              If something here has met a question you have been carrying
+              too — within faith, the arts, education, culture or community —
+              I would be delighted to continue the search together.
+            </p>
+            <p>Wherever the path begins is enough.</p>
             <p>
               <a
                 href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
@@ -603,8 +613,8 @@ export function SpiritualUndergroundIntro() {
               </a>
             </p>
             <p>
-              For quieter contact — reflections, occasional letters, news about
-              the book —{" "}
+              For quieter companionship, reflections and news about the book,
+              you are warmly invited to join{" "}
               <a
                 href={SUBSTACK}
                 target="_blank"
