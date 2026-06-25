@@ -63,6 +63,7 @@ This site is not a portfolio, generic blog, or shop. It should feel like enterin
 | Sanctuary First post-date correction (no future dates) + visible date hidden site-wide | done (M18) | — |
 | Header trailing flower glyph removed (mosaic-door icon now carries the decorative-mark role alone) | done (M19) | — |
 | Map hover-zoom (homepage overview map) + arch silhouettes reshaped to Moroccan pointed-cusp profile matching the Golden Door photo | done (M20) | — |
+| Spiritual Underground — "Before it had a name" lineage section (four projects 2008–2010) inserted between Spiritual Parallel Play and The demonstrated example, plus a count-phrasing correction on the demonstrated-example block to mirror the sister site `inspiringthesufi.com` | done (M21) | — |
 
 ## Current phase
 
@@ -383,6 +384,54 @@ Milestone 20 (homepage overview-map hover-zoom + arch silhouettes reshaped to Mo
 - **Verification:**
   - `bun run build` succeeds. All 22 static routes generate. CSS rule is present in the compiled stylesheet (verified by walking `document.styleSheets` in the live browser).
   - Browser-tested at desktop 1280×900 and mobile 375×812. Walked: home (welcome section now shows pointed Moroccan arches flanking the headline on both viewports — visibly different from the prior rounded shape; same faint green/10 opacity) → map section (figure renders normally at rest; `getComputedStyle(img).transition` reports `transform 0.3s` as expected; forced `transform: scale(1.04)` confirms the zoomed state is clipped cleanly inside the parchment frame, with the "This is Your Map" tag and place names becoming subtly more readable; `matchMedia('(hover: hover)').matches` is false in the headless test browser, so no zoom fires there — the gate works as intended for touch devices) → Across the Garden (Golden Door hero card now shows the pointed corner accent mirroring the real door above it) → Patronage / Fountain (faint amber pointed arches behind the heading copy). M19 carryover (header icon + wordmark, no trailing glyph) and footer M16/M17 lockup + email all preserved.
+
+Milestone 21 ("Before it had a name" lineage section on `/underground` + count-phrasing correction on the demonstrated-example block): complete in code. Includes:
+
+- **New section "Before it had a name" inserted between Spiritual Parallel Play and The demonstrated example.** Per the M21 brief, lineage comes BEFORE the demonstrated example so `inspiringthesufi.com` reads as the culmination of the practice this section documents, not an aside revisited afterwards. Page order is now: Before you enter → Low-demand faith → Spiritual Parallel Play → **Before it had a name (new)** → The demonstrated example → An invitation.
+
+- **Four cards, in this fixed order:**
+  1. **Too Punk to Pray? (2008)** — art installation performance piece; later picked up by RE Today as a classroom resource for ages 11–16. Image: a flat-scan magazine spread (`too-punk-to-pray-spread.webp`).
+  2. **The Mysteries: In Our Own Words (2009)** — Belgrade Theatre Coventry's second community festival, pairing Qur'an and Bible stories for the first time. Image: programme cover only (`cover-for-mysteries.webp`). **Safeguarding (firm rule):** no photograph showing an identifiable child from this project is reproduced on the page, regardless of copyright status — the original production involved 200+ young people aged 9+. Programme cover, the foreword/welcome text, and Naz's own credited role are the only Mysteries materials used.
+  3. **Sacred Qur'an (2009)** — National Trust commission at Wightwick Manor; foreword co-written with the Trust's Regional Director. Two-up image grid: booklet cover + library interior spread (`sacred-quran-cover.webp`, `sacred-quran-library-spread.webp`).
+  4. **Hakawatiyyah — The Storyteller (2010)** — Ulfah Arts UK × DAM Festival Kosovo, supported by the British Council. Three programme images (`hakawatiyyah-cover.webp`, `hakawatiyyah-foreword.webp`, `hakawatiyyah-artistic-team.webp`), the 3:46 archival trailer as an HTML5 `<video>` with `preload="metadata"` and the cover as poster (`Hakawatiyyah_-_The_Storyteller.mp4`, 12 MB, h.264 / aac), and the full 24-page souvenir programme as a downloadable archive document (`ULFAH_HAKA_24PP_PROG_AW.pdf`, 12.5 MB) presented exactly as printed — full scan, unedited, advertisements and all — labelled "Read the full souvenir programme (PDF, 2010)" inside a small parchment-deep aside.
+
+- **Each card carries a small amber kicker, an italic H3 title, an italic driving question, and prose body**, matching the existing essayistic register on this page (the hidden-treasure / monotropic-depth passages). The reference text in `before-it-had-a-name.md` is *not* pasted verbatim — facts/names/dates are preserved but phrasing is flexed for voice consistency.
+
+- **Closing tercet uses explicit `<br />` line breaks** so the three lines render as three lines, not collapse into one paragraph under default flow:
+
+  > The projects changed.\
+  > The search remained beautifully constant.\
+  > Spiritual Parallel Play simply gave that lifelong practice a name.
+
+- **Count phrasing on the demonstrated-example block — corrected to mirror the live sister site.** Two strings in `SpiritualUndergroundIntro.tsx` were updated per the M21 brief, since the live `inspiringthesufi.com` had already been corrected and the two sites must agree:
+  - Body paragraph: previously *"fifty Names of Allah, each paired with a song from somewhere in the world, each held alongside a written reflection. One practice, fully documented, freely available to wander."* Now reads *"fifty Names of Allah, surrounded by songs from around the world, each held alongside a written reflection (one entry pairs two Names under a single reflection). One practice, fully documented, freely available to wander."*
+  - Portal badge italic line: previously *"Fifty Names of Allah. Fifty songs. Fifty written reflections."* Now reads *"Fifty Names of Allah, surrounded by songs. Written reflections."*
+  - This is the only place on `sufipunk.co.uk` where the count phrasing was user-facing (verified via a full repo grep). The earlier in-flight M21 markdown briefs proposed a "Fifty / Forty-nine / Forty-nine" variant; that variant is superseded by the live-site phrasing, per author confirmation during the M21 build.
+
+- **Media stored under** `public/images/underground/m21/` (seven `.webp` files, total ~1.1 MB) and `public/media/underground/m21/` (the 12 MB MP4 trailer and the 12.5 MB PDF programme). The PDF/MP4 are deliberately served as static assets rather than bundled — the page payload is unchanged (the route still ships at 184 B on top of the 110 kB shared chunks, identical to M20).
+
+- **Safeguarding implementation, line-by-line:**
+  - Only the Mysteries programme cover is rendered (`cover-for-mysteries.webp`). No production photographs are included.
+  - A source-level comment on the Mysteries card spells out the rule for any future maintainer.
+  - The Mysteries figcaption is descriptive of the programme cover only ("Souvenir programme cover — Belgrade Theatre Coventry, 2009.") — it does not invoke or describe any of the young performers.
+
+- **Accessibility / performance notes:**
+  - All seven `<Image>` components carry descriptive alt text identifying the source material, the year, and the imprint.
+  - Images are `loading="lazy"` (Next.js default) and use responsive `sizes` matched to the column layout (single column on mobile, two-up on `sm:` for the Sacred Qur'an pair and the Hakawatiyyah cover+foreword pair, full-width for the Hakawatiyyah artistic-team page).
+  - The trailer `<video>` uses `preload="metadata"` so it does not pull 12 MB until a viewer presses play; the Hakawatiyyah cover doubles as the video `poster` so the first paint is a still image, not a black box.
+  - `useMediaCaption` is suppressed on the trailer with an explicit reason note: this is a 2010 archival trailer with no caption file produced at the time. A transcript / WebVTT pass is flagged as a follow-up.
+
+- **Verification:**
+  - `bunx tsc --noEmit` clean.
+  - `bunx biome check` clean (one suppression on the archival trailer, documented above).
+  - `bun run build:local` succeeds. All 22 static routes generate. `/underground` payload unchanged at 184 B + 110 kB shared.
+  - Browser-tested at desktop 1280×900 and mobile 375×812. Walked: `/underground` page order verified by enumerating H2/H3s in document order — `Before you enter / Low-demand faith / Spiritual Parallel Play / Before it had a name → Too Punk to Pray? / The Mysteries: In Our Own Words / Sacred Qur'an / Hakawatiyyah — The Storyteller / The demonstrated example / An invitation` (correct, lineage before demonstrated example, four cards in fixed order). All seven `<Image>` elements load with non-zero `naturalWidth` after scroll; no broken images. PDF and MP4 both serve 200 with `Accept-Ranges: bytes` so the browser can range-fetch the trailer. Closing tercet renders as three separate lines on both viewports. Demonstrated-example body and badge both show the updated count phrasing. Footer M16/M17 lockup, `sufipunk@icloud.com`, and Ko-fi line all preserved.
+
+- **Author follow-ups / open items recorded by M21:**
+  - **Transcript / WebVTT for the Hakawatiyyah trailer** — the 2010 archival file has no captions. A future pass can add `<track kind="captions" srclang="en" src="…vtt" default>` and lift the biome suppression.
+  - **Sister-site `inspiringthesufi.com` count-phrasing audit** — out of scope for this repo. The M21 brief notes the same pattern may also need to be applied on `inspiringthesufi.com` (homepage banner, footer, meta descriptions, archive standfirst) if not already corrected there. That repo is separate and was not edited as part of M21.
+  - **"Sufi Punk — The Story" short film** — out of scope per the M21 brief, pending Naz's own rewatch.
+  - **Safe Passage's "decade of designing accessible, belonging-centred spaces" line** — out of scope per the M21 brief; flagged for a later pass.
 
 Up next:
 - Decide PDA expansion placement (flagged in M13).
