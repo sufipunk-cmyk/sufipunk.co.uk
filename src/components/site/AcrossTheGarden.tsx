@@ -28,10 +28,12 @@ import {
  * combining atmosphere and function, and a single direct link
  * ("Enter Sanctuary First →").
  *
- * The framing line "Different voices along the path… None is more
- * important than the others" carries over from the previous Across
- * the Garden section: it is load-bearing for the site's
- * non-hierarchical posture.
+ * The framing line "Different voices along the path…" carries over
+ * from the previous Across the Garden section: it is load-bearing for
+ * the site's non-hierarchical posture. In M22 its muted closing
+ * sentence was replaced by a second, emphasised line ("Three places.
+ * One refusal — to perform belonging instead of living it.") to give
+ * the section a single moment of conviction.
  *
  * The section is data-driven — adding a new place or strand to
  * `src/content/site/zawiya.ts` flows through here without code
@@ -57,13 +59,26 @@ export function AcrossTheGarden() {
             Across the Garden
           </h2>
 
-          {/* Framing line — load-bearing. Carried over verbatim from
-              the previous Across the Garden section because it sets
-              the non-hierarchical posture of the whole site. */}
+          {/* Framing line — load-bearing. Sets the non-hierarchical
+              posture of the whole site.
+
+              M22 — the muted closing sentence was replaced with a
+              second, stronger line: "Three places. One refusal — to
+              perform belonging instead of living it." Per
+              homepage-and-about-micro-edits.md, this is the one moment
+              of conviction the section was missing. "One refusal"
+              surfaces Sanctuary's own definition ("Punk: for the
+              refusal") one level up to the homepage, so it is given the
+              site's emphasis treatment rather than the muted body
+              tone. */}
           <p className="mx-auto mt-5 max-w-xl font-serif text-[1.02rem] text-ink-soft">
             Different voices along the path. Each strand has its own
             place in the map above; move between them as your capacity
-            allows. None is more important than the others.
+            allows.
+          </p>
+          <p className="mx-auto mt-4 max-w-xl font-display text-[1.15rem] italic leading-snug text-green sm:text-[1.25rem]">
+            Three places. One refusal — to perform belonging instead of
+            living it.
           </p>
         </header>
 

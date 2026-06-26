@@ -1,8 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { useMemo } from "react";
 import { labelFor } from "@/content/sanctuary/taxonomies";
 
 /**
@@ -22,54 +18,103 @@ export type PostListEntry = {
   awaitingMigration?: boolean;
 };
 
-function parseList(v: string | null): string[] {
-  return v ? v.split(",").filter(Boolean) : [];
-}
-
-// M18: visible date intentionally removed from post cards. The Arrival /
-// Threshold / Practice arc kicker carries the sequence-telling role for
-// the reader; the underlying `date` frontmatter is still present and still
-// drives sort order, sitemap lastModified, and Article JSON-LD
+// M22 bug fix — Sanctuary library "Preparing the library… (N posts)" stuck
+// in production for weeks. Root cause: this list and the FilterBar were both
+// `"use client"` components reading `useSearchParams`, wrapped in a Suspense
+// boundary in the page. During static build on Netlify the Suspense fallback
+// was rendered into the HTML and the client hydration that should have
+// swapped in the real list never resolved for visitors — so all twelve
+// posts were JavaScript-dependent and invisible to anyone who never made it
+// past hydration (including search engines).
+//
+// Fix: PostList is now a Server Component. All twelve posts render directly
+// into the HTML at build time, with `data-*` attributes on each <li>
+// describing the post's arc / experience / theme / tradition. The empty
+// state is also pre-rendered into the HTML (hidden by default). The
+// FilterBar reads `useSearchParams` on the client and toggles the `hidden`
+// attribute on the list items + the empty-state block. If JS fails, all
+// twelve posts still show in their natural sort order, and the page is
+// fully crawlable.
+//
+// M18 still applies: visible date intentionally removed from post cards.
+// The Arrival / Threshold / Practice arc kicker carries the sequence-telling
+// role for the reader; the underlying `date` frontmatter is still present
+// and still drives sort order, sitemap lastModified, and Article JSON-LD
 // datePublished — none of that is visible UI.
 
 export function PostList({ posts }: { posts: PostListEntry[] }) {
-  const params = useSearchParams();
+  return (
+    <>
+      <ul
+        id="sanctuary-post-list"
+        data-total={posts.length}
+        className="container divide-y divide-hairline/60 border-y border-hairline/60"
+      >
+        {posts.map((p) => (
+          <li
+            key={p.slug}
+            data-post-slug={p.slug}
+            data-arc={p.arc}
+            data-experience={p.experience.join(" ")}
+            data-theme={p.theme.join(" ")}
+            data-tradition={p.tradition.join(" ")}
+          >
+            <Link
+              href={`/sanctuary/${p.slug}`}
+              className="group block py-8 transition-colors hover:bg-parchment-deep/30 sm:py-10"
+            >
+              <article className="grid gap-3 sm:grid-cols-12 sm:items-baseline sm:gap-8">
+                <div className="sm:col-span-3">
+                  <p className="font-serif text-xs uppercase tracking-[0.3em] text-amber">
+                    {labelFor("arc", p.arc) ?? p.arc}
+                  </p>
+                  <p className="mt-1 font-serif text-xs text-ink-soft">
+                    {p.readingMinutes} min read
+                  </p>
+                </div>
+                <div className="sm:col-span-9">
+                  <h3 className="font-display text-2xl text-green transition-colors group-hover:text-amber sm:text-3xl">
+                    {p.title}
+                    {p.awaitingMigration ? (
+                      <span
+                        title="Canonical text being migrated"
+                        className="ml-3 inline-flex translate-y-[-2px] items-center gap-1 rounded-full border border-amber/60 bg-amber/10 px-2 py-0.5 align-middle font-serif text-[0.65rem] uppercase tracking-[0.18em] text-amber"
+                      >
+                        ❁ awaiting migration
+                      </span>
+                    ) : null}
+                  </h3>
+                  {p.excerpt ? (
+                    <p className="mt-3 font-serif text-[1.02rem] leading-relaxed text-ink">
+                      {p.excerpt}
+                    </p>
+                  ) : null}
+                  {(p.theme.length > 0 || p.experience.length > 0) && (
+                    <p className="mt-3 font-serif text-xs uppercase tracking-[0.18em] text-ink-soft">
+                      {[
+                        ...p.experience.slice(0, 2).map((id) => labelFor("experience", id)),
+                        ...p.theme.slice(0, 2).map((id) => labelFor("theme", id)),
+                      ]
+                        .filter(Boolean)
+                        .join(" · ")}
+                    </p>
+                  )}
+                </div>
+              </article>
+            </Link>
+          </li>
+        ))}
+      </ul>
 
-  const filters = useMemo(
-    () => ({
-      experience: parseList(params.get("experience")),
-      theme: parseList(params.get("theme")),
-      tradition: parseList(params.get("tradition")),
-      arc: parseList(params.get("arc")),
-    }),
-    [params]
-  );
-
-  const visible = useMemo(() => {
-    return posts.filter((p) => {
-      if (
-        filters.experience.length &&
-        !filters.experience.some((id) => p.experience.includes(id))
-      )
-        return false;
-      if (
-        filters.theme.length &&
-        !filters.theme.some((id) => p.theme.includes(id))
-      )
-        return false;
-      if (
-        filters.tradition.length &&
-        !filters.tradition.some((id) => p.tradition.includes(id))
-      )
-        return false;
-      if (filters.arc.length && !filters.arc.includes(p.arc)) return false;
-      return true;
-    });
-  }, [posts, filters]);
-
-  if (visible.length === 0) {
-    return (
-      <div className="container py-16 text-center">
+      {/* Empty-state block. Pre-rendered hidden; FilterBar reveals it on the
+          client when active filters narrow the visible set to zero. Lives
+          inside the HTML so the markup matches between server and client
+          and no hydration mismatch can occur. */}
+      <div
+        id="sanctuary-empty-state"
+        hidden
+        className="container py-16 text-center"
+      >
         <p className="font-display text-2xl italic text-green">
           Nothing matches that combination — yet.
         </p>
@@ -84,58 +129,6 @@ export function PostList({ posts }: { posts: PostListEntry[] }) {
           .
         </p>
       </div>
-    );
-  }
-
-  return (
-    <ul className="container divide-y divide-hairline/60 border-y border-hairline/60">
-      {visible.map((p) => (
-        <li key={p.slug}>
-          <Link
-            href={`/sanctuary/${p.slug}`}
-            className="group block py-8 transition-colors hover:bg-parchment-deep/30 sm:py-10"
-          >
-            <article className="grid gap-3 sm:grid-cols-12 sm:items-baseline sm:gap-8">
-              <div className="sm:col-span-3">
-                <p className="font-serif text-xs uppercase tracking-[0.3em] text-amber">
-                  {labelFor("arc", p.arc) ?? p.arc}
-                </p>
-                <p className="mt-1 font-serif text-xs text-ink-soft">
-                  {p.readingMinutes} min read
-                </p>
-              </div>
-              <div className="sm:col-span-9">
-                <h3 className="font-display text-2xl text-green transition-colors group-hover:text-amber sm:text-3xl">
-                  {p.title}
-                  {p.awaitingMigration ? (
-                    <span
-                      title="Canonical text being migrated"
-                      className="ml-3 inline-flex translate-y-[-2px] items-center gap-1 rounded-full border border-amber/60 bg-amber/10 px-2 py-0.5 align-middle font-serif text-[0.65rem] uppercase tracking-[0.18em] text-amber"
-                    >
-                      ❁ awaiting migration
-                    </span>
-                  ) : null}
-                </h3>
-                {p.excerpt ? (
-                  <p className="mt-3 font-serif text-[1.02rem] leading-relaxed text-ink">
-                    {p.excerpt}
-                  </p>
-                ) : null}
-                {(p.theme.length > 0 || p.experience.length > 0) && (
-                  <p className="mt-3 font-serif text-xs uppercase tracking-[0.18em] text-ink-soft">
-                    {[
-                      ...p.experience.slice(0, 2).map((id) => labelFor("experience", id)),
-                      ...p.theme.slice(0, 2).map((id) => labelFor("theme", id)),
-                    ]
-                      .filter(Boolean)
-                      .join(" · ")}
-                  </p>
-                )}
-              </div>
-            </article>
-          </Link>
-        </li>
-      ))}
-    </ul>
+    </>
   );
 }

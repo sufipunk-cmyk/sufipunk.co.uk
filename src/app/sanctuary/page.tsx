@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -25,6 +24,11 @@ export const metadata: Metadata = {
   },
 };
 
+// M22 — Posts are read here in the Server Component so the full library
+// is included in the static HTML at build time. SanctuaryLibrary renders
+// the FilterBar inside a Suspense boundary (needed for useSearchParams)
+// and the PostList outside it, so a hydration failure on the bar can
+// never hide the posts again (see BUG-sanctuary-posts-not-loading.md).
 export default function SanctuaryPage() {
   const posts: PostListEntry[] = getAllSanctuaryPosts().map((p) => ({
     slug: p.slug,
@@ -45,35 +49,9 @@ export default function SanctuaryPage() {
 
       <SanctuaryIntro />
 
-      {/*
-        SanctuaryLibrary uses useSearchParams; per Next 15 client
-        components reading search params must sit inside <Suspense>.
-      */}
-      <Suspense fallback={<LibraryFallback count={posts.length} />}>
-        <SanctuaryLibrary posts={posts} />
-      </Suspense>
-
-      {posts.length === 0 ? (
-        <div className="container py-20 text-center">
-          <p className="font-display text-2xl italic text-green">
-            The library is being prepared.
-          </p>
-          <p className="mt-3 font-serif text-ink-soft">
-            Markdown posts go in <code>/content/sanctuary/</code>. See{" "}
-            <code>_README.md</code> there for the frontmatter schema.
-          </p>
-        </div>
-      ) : null}
+      <SanctuaryLibrary posts={posts} />
 
       <SiteFooter />
-    </div>
-  );
-}
-
-function LibraryFallback({ count }: { count: number }) {
-  return (
-    <div className="container py-12 text-center font-serif text-sm text-ink-soft">
-      Preparing the library… ({count} {count === 1 ? "post" : "posts"})
     </div>
   );
 }

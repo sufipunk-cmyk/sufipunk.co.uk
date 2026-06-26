@@ -4,48 +4,33 @@ import { FlowerDivider, ZawiyaBadge } from "@/components/site/Ornaments";
  * Safe Passage intro — the strand whose home on the overview map is
  * The Gathering Place.
  *
- * Voice / sourcing notes
+ * M22 — Full page copy replaced from
+ * safe-passage-FINAL-agent-ready.md (source of truth for the text).
  *
- *  - The page text below is the Version A text confirmed in the
- *    master brief on 18 June 2026 (SufiPunk_Master_Brief.md, "SAFE
- *    PASSAGE" section), reproduced verbatim with one author override
- *    documented in specs/safe-passage/document.md:
+ *  - "Before you enter" is rewritten to the FINAL copy: the "out of
+ *    this world / night stars" framing, the "both sides of this door"
+ *    paragraph, the three italic questions, and the closing
+ *    "honoured first as a human being" line.
  *
- *      Override: remove "a family member" from the Welcome Note
- *      welcome list. Reasoning (from the author): Safe Passage is
- *      aimed at professionals and institutions, not families;
- *      including "a family member" disrupts the flow and miscasts
- *      the audience.
+ *  - "Welcome Note" is rewritten to the FINAL copy: now addressed to
+ *    those who walk alongside someone ("you belong here too"), with
+ *    the stewardship / initial-consultation line.
  *
- *  - Version B (the more institutional pitch) is held in reserve per
- *    the brief and is not built here.
+ *  - The contact line uses the FINAL email link, with the subject
+ *    "Safe Passage" exactly as the FINAL file encodes it.
  *
- *  - The brief specifies a simple contact link to
- *    sufipunk@icloud.com, which is included below as a single
- *    quiet line.
+ *  - The closing block is the FINAL copy about training other
+ *    practitioners. As in earlier milestones, the words "patronage"
+ *    and "the book's progress" are linked to the homepage Fountain
+ *    (`/#patronage`) and Book (`/#the-book`) sections, since this
+ *    page hosts no patronage block of its own. (No exact link target
+ *    is specified in the FINAL file; this preserves the existing site
+ *    convention.)
  *
- *  - M16: the third paragraph of "Before you enter" (the older
- *    "this strand is younger than the others" framing, including
- *    the SEND first-use expansion added in M13) was replaced with
- *    a settled three-paragraph offer in the author's voice. The
- *    SEND acronym no longer appears in the body, so the M13 first-
- *    use expansion is no longer needed. A new closing block was
- *    added at the end of the page, before the flower divider,
- *    inviting support through patronage and the book.
+ *  - No image changes on this page (none present, none added).
  *
- *    Implementation note (M16): the M16 brief instructs that the
- *    closing line sit "after the existing patronage/Ko-fi
- *    material". This page does not currently carry any patronage /
- *    Ko-fi block of its own — the Fountain (Ko-fi) lives on the
- *    homepage. The closing block is therefore placed at the
- *    natural close of the page, with the words "patronage" and
- *    "the book's progress" hyperlinked to the homepage Fountain
- *    and Book sections respectively (`/#patronage`, `/#the-book`).
- *    Flagged in the M16 handoff for the author to correct if a
- *    different shape was intended.
- *
- *  - The closing flower divider names the place this strand lives
- *    at on the overview map: The Gathering Place.
+ *  - The closing flower divider names the place this strand lives at
+ *    on the overview map: The Gathering Place.
  */
 
 const CONTACT_EMAIL = "sufipunk@icloud.com";
@@ -71,7 +56,7 @@ export function SafePassageIntro() {
           </h1>
         </div>
 
-        {/* Before you enter — verbatim from the master brief, Version A. */}
+        {/* Before you enter — FINAL copy. */}
         <div className="mt-14">
           {/* M16 — bold-badge stamp above the threshold heading. */}
           <ZawiyaBadge className="mb-6" />
@@ -79,43 +64,66 @@ export function SafePassageIntro() {
             Before you enter
           </h2>
           <div className="prose-zawiya sanctuary-prose mt-6">
+            <p>Safe Passage is where this work turns outward.</p>
             <p>
-              Safe Passage is where this work turns outward — toward the
-              people supporting a neurodivergent person, not just the
-              person themselves.
+              If you have found your way here, you are someone out of this
+              world — above ego, above worldly status. You are here because you
+              can see how much work there still is to do: stewardship of the
+              earth, stewardship of the people living on it.
             </p>
             <p>
-              It comes from a decade of designing accessible,
-              belonging-centred spaces in community arts, now applied to
-              a different kind of system: the schools, services, and
-              faith communities that families have to pass through, often
-              without being met with safety or understanding.
+              You are the night stars — the ones who shine brightest exactly
+              when the systems you belong to stop working, or start causing
+              harm. You see it. You feel it. And you want to know what you can
+              do.
             </p>
-            {/* M16 — replaces the older "this strand is younger" para. */}
-            <p>
-              There’s something in here for you too. You’re trying to
-              find something — to name something that’s been hard to
-              name. That’s what I can hold space for.
+            <p className="font-display italic text-green-soft">
+              You can help create safe passage.
             </p>
             <p>
-              The same monotropic depth that lets me find God inside a
-              single curious thread is the depth I bring to a problem
-              you haven’t solved yet. I think strategically. I think
-              outside the box. I plan ahead — plus a decade of creative
-              practice, finding ways through when the conventional path
-              doesn’t work.
+              It grows from a decade of designing accessible, belonging-centred
+              spaces in community arts, now turned toward a harder kind of
+              room: the schools, services, and faith communities that families
+              have to pass through, often without being met with safety or
+              understanding.
             </p>
             <p>
-              This is consultancy, training, and strategic support for
-              professionals, schools, services, and faith communities
-              navigating systems that weren’t built for the people
-              inside them.
+              The people who arrive in these rooms are human beings trying to
+              find safe passage through systems that often ask them to wait for
+              judgement before they are recognised, understood, or supported.
+            </p>
+            <p>
+              I have stood on both sides of this door — creating spaces where
+              overlooked people could finally participate, and now navigating
+              these same systems as a neurodivergent person and parent,
+              learning where they hold, and where they harm.
+            </p>
+            <p className="font-display italic text-green-soft">
+              Where does autonomy quietly disappear?
+            </p>
+            <p className="font-display italic text-green-soft">
+              Where does a whole human life become reduced to a form, a
+              diagnosis, a score, or a box to fit?
+            </p>
+            <p className="font-display italic text-green-soft">
+              What changes when we honour the human being before the system’s
+              judgement?
+            </p>
+            <p>
+              These questions live in real rooms: classrooms, waiting rooms,
+              mosques, churches, community centres, assessments, meetings — the
+              everyday places where someone’s sense of belonging can quietly
+              change.
+            </p>
+            <p>
+              Safe Passage is what becomes possible when someone is honoured
+              first as a human being while moving through the systems meant to
+              support them.
             </p>
           </div>
         </div>
 
-        {/* Welcome Note — verbatim from the brief, with the author override
-            applied: "a family member" removed from the welcome list. */}
+        {/* Welcome Note — FINAL copy. */}
         <div className="mt-16">
           <h2 className="font-display text-2xl italic text-green sm:text-3xl">
             Welcome Note
@@ -125,55 +133,50 @@ export function SafePassageIntro() {
               We are in the world, but not of it.
             </p>
             <p>
-              If you are a professional, a faith leader, or part of a
-              wider community trying to walk alongside someone — you are
-              welcome here too. This is not only a space for those living
-              the experience directly. It is also for the people trying
-              to do right by them, inside systems that don’t always make
-              that easy.
+              If you have walked alongside someone through any of these rooms,
+              you already know what it costs. You belong here too.
             </p>
             <p>
-              We move with presence, not pressure. We engage, but we do
-              not move out of the seat of self.
+              We move with presence. We engage while staying seated in
+              ourselves.
             </p>
             <p>
-              What this becomes — training, consultancy, resources for
-              institutions — will grow as the work grows. For now: if you
-              are trying to support someone well, you are not alone in
-              trying, and there is something here for you already, even
-              in this early form.
+              Supporting someone well is its own kind of stewardship. Time
+              given here carries the same weight as everywhere else in this
+              work — an initial consultation begins the crossing, booked
+              directly.
             </p>
           </div>
         </div>
 
-        {/* Simple contact link, per brief. */}
+        {/* Contact link — FINAL copy, subject "Safe Passage". */}
         <div className="mt-14">
           <div className="prose-zawiya sanctuary-prose">
             <p>
-              To get in touch:{" "}
-              <a
-                href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-                  "Safe Passage",
-                )}`}
-                className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
-              >
-                {CONTACT_EMAIL}
-              </a>
+              <strong className="font-serif font-semibold not-italic">
+                To get in touch:{" "}
+                <a
+                  href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+                    "Safe Passage",
+                  )}`}
+                  className="font-normal text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
+                >
+                  {CONTACT_EMAIL}
+                </a>
+              </strong>
             </p>
           </div>
         </div>
 
-        {/* M16 — closing line. The brief asked for this to sit
-            "after the existing patronage/Ko-fi material"; this page
-            does not currently host its own patronage block, so the
-            line is placed as the page's natural close, with
-            "patronage" and "the book's progress" linked to the
-            homepage Fountain and Book sections. Flagged. */}
+        {/* Closing block — FINAL copy about training other practitioners.
+            "patronage" and "the book's progress" linked to the homepage
+            Fountain and Book sections (existing site convention). */}
         <div className="mt-12 border-t border-hairline/60 pt-8">
           <p className="font-serif text-[1rem] leading-relaxed text-ink-soft">
-            This part of the work is still developing. If you want to
-            help it grow — into training, into resources, into something
-            more people can lean on — you can support it now through{" "}
+            This strand is growing toward something beyond one consultancy at a
+            time: training other practitioners to carry this approach into more
+            rooms than I could ever reach alone. You can help shape where it
+            goes — through{" "}
             <a
               href={HOMEPAGE_PATRONAGE}
               className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"

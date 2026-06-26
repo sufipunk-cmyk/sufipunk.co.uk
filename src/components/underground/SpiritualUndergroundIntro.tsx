@@ -5,34 +5,32 @@ import Image from "next/image";
  * Spiritual Underground intro — the strand whose home on the
  * overview map is The Devotional Corner.
  *
- * Voice / sourcing notes
+ * M22 — Full page copy replaced from
+ * spiritual-underground-FINAL-agent-ready.md (source of truth for the
+ * text). Notable structural changes in this pass:
  *
- *  - The two confirmed concepts are reproduced from the master brief
- *    (SufiPunk_Master_Brief.md, "SPIRITUAL UNDERGROUND" section).
+ *  - "Before you enter", "Spiritual Parallel Play", "Before it had a
+ *    name" (and its four project cards), and "An invitation" are all
+ *    rewritten to the FINAL copy. "Low-demand faith" keeps the same
+ *    quotation it already carried (unchanged in the FINAL file).
  *
- *  - The Low-Demand Faith definition is given in Naz's own voice in
- *    the master brief, in quotation marks. It is reproduced here
- *    verbatim and presented as a quotation, attributed to her.
+ *  - The "Inspiring the Sufi" portal is renamed "Come and see" and
+ *    MOVED to sit BEFORE "Before it had a name" (FINAL ordering),
+ *    rather than after the lineage section.
  *
- *  - The Spiritual Parallel Play definition is given in the master
- *    brief as a third-person summary, not in quotation marks. It is
- *    reproduced here verbatim per the brief's instruction "Use them
- *    exactly as given," but rendered as plain page copy rather than
- *    a quotation, because the wording is the brief's summary rather
- *    than Naz's first-person words. (The Inspiring the Sufi brief
- *    carries a longer first-person version of this same definition
- *    if a switch is preferred later.)
+ *  - Hakawatiyyah (2010) card now shows the PROGRAMME COVER ONLY.
+ *    The foreword-spread image and artistic-team-spread image are
+ *    removed, and the 2010 archival trailer <video> embed is removed
+ *    entirely, per the M22 media notes. The full-programme PDF archive
+ *    link is kept.
  *
- *  - "Inspiring the Sufi" is named as the demonstrated example, with
- *    the exact link text the brief specifies: "This is where it
- *    started. Come and see."
+ *  - A new video embed is added near the end of "Before it had a
+ *    name" — the Sufi Punk show reel, embedded from YouTube
+ *    (https://youtu.be/oX8m6UikQ98), where the FINAL file marks it.
  *
- *  - The expressions-of-interest invitation is described in the
- *    brief but no exact wording is given. The wording used here is
- *    the spec's authorised bridging copy ("exact wording for
- *    expressions-of-interest block can be composed around the
- *    confirmed definitions during implementation"), kept short and
- *    in the same voice as the rest of the site.
+ *  - All other project images (Too Punk to Pray, The Mysteries,
+ *    Sacred Qur'an) are kept exactly as they were — same files, alt
+ *    text, and captions.
  *
  *  - The closing flower divider names the place this strand lives
  *    at on the overview map: The Devotional Corner.
@@ -41,6 +39,7 @@ import Image from "next/image";
 const SUBSTACK = "https://sufipunksanctuaryfirst.substack.com/subscribe";
 const ITS_URL = "https://inspiringthesufi.com";
 const CONTACT_EMAIL = "sufipunk@icloud.com";
+const SHOWREEL_YOUTUBE_ID = "oX8m6UikQ98";
 
 export function SpiritualUndergroundIntro() {
   return (
@@ -61,7 +60,7 @@ export function SpiritualUndergroundIntro() {
           </h1>
         </div>
 
-        {/* Before you enter — threshold framing in the site's voice. */}
+        {/* Before you enter — FINAL copy. */}
         <div className="mt-14">
           {/* M16 — bold-badge stamp above the threshold heading. */}
           <ZawiyaBadge className="mb-6" />
@@ -71,22 +70,24 @@ export function SpiritualUndergroundIntro() {
           <div className="prose-zawiya sanctuary-prose mt-6">
             <p>
               The Spiritual Underground is the art, culture, and creative
-              practice strand of this work — the place for people whose faith,
+              practice strand of this work — a place for people whose faith,
               attention, and making live a little outside the standard rooms.
             </p>
             <p>
-              It is built around two ideas that arrived slowly and deliberately,
-              in conversation, over years of trying to find language for a way
-              of being with God that didn’t require performance, certainty, or
-              fluency in inherited forms.
+              It grew slowly, over many years, as I searched for language to
+              describe a way of being with God that felt spacious, honest and
+              deeply alive. Long before these ideas had names, they were
+              already shaping the way I moved through the world.
             </p>
             <p className="font-display italic text-green-soft">
-              You do not join this. You recognise yourself in it.
+              You do not join this.
+              <br />
+              You recognise yourself in it.
             </p>
           </div>
         </div>
 
-        {/* Low-demand faith — quoted, Naz's exact words. */}
+        {/* Low-demand faith — quoted, Naz's exact words (unchanged). */}
         <div className="mt-16">
           <h2 className="font-display text-2xl italic text-green sm:text-3xl">
             Low-demand faith
@@ -105,27 +106,27 @@ export function SpiritualUndergroundIntro() {
           </figure>
         </div>
 
-        {/* Spiritual Parallel Play — M15 fuller definition.
-            Replaces the earlier short summary with the author's
-            settled four-paragraph version. The hidden-treasure
+        {/* Spiritual Parallel Play — FINAL copy. The hidden-treasure
             footnote sits at the bottom of this section, marked with
-            the same ★ pattern used on the About page in M13. */}
+            the same ★ pattern used on the About page. */}
         <div className="mt-14">
           <h2 className="font-display text-2xl italic text-green sm:text-3xl">
             Spiritual Parallel Play
           </h2>
           <div className="prose-zawiya sanctuary-prose mt-6">
             <p>
-              Spiritual Parallel Play is following your own curiosity into
-              something with monotropic depth — going all the way down into one
-              thing — and discovering God already there, beside you. Not
-              directing the search. Not correcting it. Just present, the way one
-              child is present beside another in parallel play: each absorbed in
-              their own thing, recognised simply by being near.
+              Spiritual Parallel Play is following your own curiosity with
+              monotropic depth — allowing yourself to go all the way into one
+              thing and discovering that God is already there, beside you.
             </p>
             <p>
-              The world calls this kind of depth a deficiency. God made it. A
-              hidden treasure
+              Like children absorbed in parallel play, there is no need to
+              direct or control the encounter. Each remains fully themselves,
+              sharing presence rather than performance.
+            </p>
+            <p>
+              Within Sufi tradition there is a saying that God is a Hidden
+              Treasure who created the universe to be found.
               <sup className="ml-1 align-super font-serif text-[0.7em] not-italic text-amber">
                 <a
                   href="#footnote-hidden-treasure"
@@ -135,35 +136,67 @@ export function SpiritualUndergroundIntro() {
                   ★
                 </a>
               </sup>{" "}
-              who created the whole world to be found knows exactly what the joy
-              of finding feels like — better than a world that never built the
-              hiding place. The recognition this work deserves was never the
-              world’s to withhold. It belongs to the One who designed the
-              capacity for it, and who delights in what gets excavated and
-              carried back into the light.
+              Whether or not its chain of transmission is accepted by every
+              scholar, that image has shaped my devotional life.
+            </p>
+            <p>The child in me heard that invitation literally.</p>
+            <p className="font-display italic text-green-soft">
+              A treasure invites searching.
+            </p>
+            <p>So I searched.</p>
+            <p className="font-display italic text-green-soft">
+              In music.
+              <br />
+              In scripture.
+              <br />
+              In stories.
+              <br />
+              In gardens.
+              <br />
+              In art.
+              <br />
+              In places.
+              <br />
+              In conversations.
+              <br />
+              In people.
             </p>
             <p>
-              At first, this is simply lived — immersed in the fascination, not
-              yet named as devotion at all. The growth is in the noticing:
-              learning to recognise, inside the depth, that the relationship was
-              there the whole time. And once that noticing is learned in one
-              place, it doesn’t stay there. It permeates outward, until
-              attention itself becomes a way of finding God anywhere, not only
-              in the original interest.
+              Each fascination became another landscape to wander. Each
+              question became another doorway through which I hoped to glimpse
+              the Divine.
+            </p>
+            <p>Over time, something beautiful revealed itself.</p>
+            <p className="font-display italic text-green-soft">
+              The searching became the practice.
+              <br />
+              The curiosity became the prayer.
+              <br />
+              The attention became the place of meeting.
             </p>
             <p>
-              This is not the opposite of ritual. Ritual repeats the same form
-              many times until awareness of God becomes constant. Spiritual
-              Parallel Play goes deep into one thing until that same awareness
-              is reached by a different road. Both are trying to arrive at the
-              same place. The world built infrastructure for one of these roads,
-              and forgot the other one existed.
+              Years later, after my autism diagnosis, I recognised this
+              movement as monotropic attention — the capacity to remain with
+              one question, one beauty, one thread until it opens into
+              something larger. Spiritual Parallel Play is the name I
+              eventually gave to that way of seeking.
+            </p>
+            <p>
+              Ritual follows a well-worn path towards continual awareness of
+              God.
+            </p>
+            <p>
+              Spiritual Parallel Play follows deep curiosity until that same
+              awareness begins to bloom.
+            </p>
+            <p className="font-display italic text-green-soft">
+              The destination is shared.
+              <br />
+              The paths are different.
             </p>
           </div>
 
-          {/* Footnote on the hidden-treasure saying. Same pattern as
-              the systems-generated-trauma footnote on About: a small
-              ★-anchored aside set off with a hairline above. */}
+          {/* Footnote on the hidden-treasure saying. */}
           <aside
             id="footnote-hidden-treasure"
             className="mt-10 border-t border-hairline/60 pt-5"
@@ -181,26 +214,62 @@ export function SpiritualUndergroundIntro() {
           </aside>
         </div>
 
-        {/* Before it had a name — M21 lineage section.
+        {/* Come and see — the demonstrated example. FINAL ordering puts
+            this BEFORE "Before it had a name", so Inspiring the Sufi
+            reads as the open, living practice the lineage points toward. */}
+        <div className="mt-16">
+          <h2 className="font-display text-2xl italic text-green sm:text-3xl">
+            Come and see
+          </h2>
+          <div className="prose-zawiya sanctuary-prose mt-6">
+            <p>
+              <em>
+                Inspiring the Sufi: A Neurodivergent Practice in Parallel Play
+              </em>{" "}
+              is where this practice lives in the open.
+            </p>
+            <p>Fifty Names of Allah, surrounded by songs. Written reflections.</p>
+            <p>Ten years of practice, freely shared, freely wandered.</p>
+          </div>
 
-            Four projects (2008–2010) from Naz's decade as an
-            artistic director, placed BEFORE the demonstrated example
-            so Inspiring the Sufi reads as the culmination of this
-            practice rather than an aside. Locked facts (names,
-            dates, partners, quotations) per before-it-had-a-name.md
-            and build-instruction-brief.md (M21). Phrasing flexed to
-            match the page's essayistic register; the reference
-            documents are not pasted verbatim.
+          <aside className="mt-8 border border-hairline bg-parchment-deep/30 px-6 py-7 sm:px-8 sm:py-8">
+            <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
+              A portal · Ten years of practice
+            </p>
+            <p className="mt-2 font-display text-2xl leading-snug text-green sm:text-3xl">
+              Inspiring the Sufi
+            </p>
+            <p className="mt-2 font-display text-[1rem] italic leading-snug text-green-soft sm:text-[1.1rem]">
+              Fifty Names of Allah, surrounded by songs. Written reflections.
+            </p>
+            <div className="mt-6">
+              <a
+                href={ITS_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 border border-green bg-green px-6 py-3 font-serif text-sm uppercase tracking-[0.18em] text-parchment transition hover:bg-green-soft"
+              >
+                Visit Inspiring the Sufi
+                <span aria-hidden>→</span>
+              </a>
+              <p className="mt-3 font-display text-[1rem] italic text-green-soft">
+                This is where it started. Come and see for yourself.
+              </p>
+            </div>
+          </aside>
+        </div>
+
+        {/* Before it had a name — lineage section, FINAL copy.
+
+            Four projects (2008–2010) from Naz's decade as an artistic
+            director.
 
             SAFEGUARDING — firm rule: The Mysteries (2009) involved
             over 200 young people aged 9+. No image showing an
-            identifiable child from this project is reproduced here,
-            regardless of copyright. The programme cover and
-            welcome-note text are the only Mysteries materials used.
+            identifiable child from this project is reproduced here.
+            The programme cover is the only Mysteries image used.
 
-            Closing tercet uses explicit <br /> line breaks so the
-            three lines render as three lines, not collapse into one
-            paragraph (per the brief's rendering note). */}
+            M22 media notes applied within the Hakawatiyyah card below. */}
         <div className="mt-16">
           <h2 className="font-display text-2xl italic text-green sm:text-3xl">
             Before it had a name
@@ -209,13 +278,6 @@ export function SpiritualUndergroundIntro() {
             <p>
               Looking back, I can see one thread running quietly through
               everything I have made.
-            </p>
-            <p>
-              For more than a decade before any of this had language, I worked
-              as an artistic director — designing projects, commissioning
-              artists, and bringing people, traditions and forms together. I was
-              already working under the name Sufi Punk the whole time. It didn’t
-              arrive afterwards; it was there from the start.
             </p>
             <p>
               As a young Muslim woman, I longed to know God in ways that felt
@@ -230,7 +292,7 @@ export function SpiritualUndergroundIntro() {
             </p>
           </div>
 
-          {/* Card 1 — Too Punk to Pray? (2008) */}
+          {/* Card 1 — Too Punk to Pray? (2008). Image kept as is. */}
           <article className="mt-14 border-t border-hairline/60 pt-10">
             <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
               2008 · Public art
@@ -247,13 +309,7 @@ export function SpiritualUndergroundIntro() {
                 prayer, the answer kept arriving in the same shape — letting go.
                 A sigh, a silence, a piece of music, a wave of longing or
                 gratitude. Prayer was already happening in places no one had
-                named as prayer. The piece was later picked up by{" "}
-                <span className="whitespace-nowrap">RE Today</span> as a
-                classroom resource for ages 11 to 16, opening the same question
-                for a new generation. The original magazine billed it plainly:
-                an art installation performance piece, made with
-                Birmingham-based arts and faith social enterprise Ulfah Arts,
-                inspired by the notion of prayer.
+                named as prayer.
               </p>
             </div>
             <figure className="mt-6">
@@ -272,8 +328,7 @@ export function SpiritualUndergroundIntro() {
           </article>
 
           {/* Card 2 — The Mysteries: In Our Own Words (2009).
-              Safeguarding: programme cover only. No photographs of
-              the 200+ young people in the production are reproduced. */}
+              Safeguarding: programme cover only. Image kept as is. */}
           <article className="mt-14 border-t border-hairline/60 pt-10">
             <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
               2009 · Community festival
@@ -287,15 +342,10 @@ export function SpiritualUndergroundIntro() {
                 side?
               </p>
               <p>
-                Belgrade Theatre Coventry’s second community festival (27 July –
-                1 August 2009) paired stories from the Qur’an with stories from
-                the Bible for the first time — scripted plays, spoken word, film
-                and dance, performed by community members and more than two
-                hundred young people. The Guardian’s theatre blog called it “an
-                admirably ambitious project.” Working alongside the Belgrade as
-                Director of Ulfah Arts, I helped bring the Qur’an stories into a
-                shared stage with the Bible’s — not as comparison, but as a
-                shared inheritance, retold in people’s own words.
+                Belgrade Theatre Coventry’s community festival paired stories
+                from the Qur’an with stories from the Bible for the first
+                time — scripted plays, spoken word, film and dance, performed
+                by community members and more than two hundred young people.
               </p>
             </div>
             <figure className="mt-6 max-w-md">
@@ -313,7 +363,7 @@ export function SpiritualUndergroundIntro() {
             </figure>
           </article>
 
-          {/* Card 3 — Sacred Qur'an (2009) */}
+          {/* Card 3 — Sacred Qur'an (2009). Both images kept as is. */}
           <article className="mt-14 border-t border-hairline/60 pt-10">
             <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
               2009 · National Trust commission
@@ -328,13 +378,8 @@ export function SpiritualUndergroundIntro() {
               <p>
                 Working with the National Trust at Wightwick Manor, I invited
                 people to pair rooms inside the house with verses from the
-                Qur’an that echoed what each space already carried — the
-                library’s long pleasure-in-learning, the gardens’ careful
-                tending, the contentment of remembrance. The foreword to the
-                published guide was co-written with the Trust’s Regional
-                Director: a partnership, not simply a commission. The work
-                became an act of noticing. Scripture became another way of
-                recognising what was already there before any of us arrived.
+                Qur’an that echoed what each space already carried. The work
+                became an act of noticing.
               </p>
             </div>
             <div className="mt-6 grid gap-6 sm:grid-cols-2">
@@ -368,9 +413,10 @@ export function SpiritualUndergroundIntro() {
           </article>
 
           {/* Card 4 — Hakawatiyyah — The Storyteller (2010).
-              Includes three programme images, the trailer video, and
-              the full 24-page souvenir programme as a downloadable
-              archive document (PDF, presented as printed). */}
+              M22: PROGRAMME COVER ONLY. The foreword-spread image and
+              artistic-team-spread image are removed, and the 2010
+              archival trailer <video> embed is removed entirely. The
+              full 24-page souvenir programme PDF archive link is kept. */}
           <article className="mt-14 border-t border-hairline/60 pt-10">
             <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
               2010 · Ulfah Arts UK × DAM Festival Kosovo
@@ -384,21 +430,9 @@ export function SpiritualUndergroundIntro() {
                 else, and remain itself?
               </p>
               <p>
-                Through Ulfah Arts — the organisation I founded and directed —
-                and supported by the British Council’s Creative Collaboration
-                programme, I led a year-long partnership with the DAM Festival
-                in Kosovo. Stories from the Qur’an, drawn from conversations
-                with Muslim women across Britain, travelled into music composed
-                in Kosovo and performed across two countries. The world premiere
-                took place at the DAM Festival on 31 March 2010, and the work
-                then toured five UK cities, carried by storyteller Alia Al
-                Zougbi alongside Kosovan composers and pianist Rosalind Parker.
-              </p>
-              <p>
-                Three stories rose to the surface — Asiya, who walked away from
-                a palace to keep her faith intact; Maryam, alone in the desert
-                with a newborn; Fatima, a child who would not let her father be
-                humiliated.
+                Stories from the Qur’an, drawn from conversations with Muslim
+                women across Britain, travelled into music composed in Kosovo
+                and performed across two countries.
               </p>
               <p>
                 The stories remained the same. The form changed. The meeting
@@ -406,88 +440,22 @@ export function SpiritualUndergroundIntro() {
               </p>
             </div>
 
-            <div className="mt-6 grid gap-6 sm:grid-cols-2">
-              <figure>
-                <Image
-                  src="/images/underground/m21/hakawatiyyah-cover.webp"
-                  alt="Programme cover for ‘Hakawatiyyah — The Storyteller’, presented by Ulfah Arts UK and Dam Festival Kosovo: a deep magenta field with the Arabic word حكواتية in teal above the English title in white, and a silhouette of an upraised hand emerging from drapery printed with Arabic calligraphy."
-                  width={1283}
-                  height={1771}
-                  sizes="(min-width: 768px) 17rem, 100vw"
-                  className="h-auto w-full border border-hairline"
-                />
-                <figcaption className="mt-3 font-serif text-xs leading-relaxed text-ink-soft">
-                  Programme cover — Ulfah Arts UK & DAM Festival Kosovo, 2010.
-                </figcaption>
-              </figure>
-              <figure>
-                <Image
-                  src="/images/underground/m21/hakawatiyyah-foreword.webp"
-                  alt="Programme page headed ‘FOREWORD — from Naz Koser, Artistic Director Ulfah Arts’, with a portrait photograph of Naz Koser alongside the welcome note describing the project as a union of two distinct artistic genres, a collaboration between tradition and culture, made to unite contradictions, break stereotypes and nurture harmony."
-                  width={1283}
-                  height={1771}
-                  sizes="(min-width: 768px) 17rem, 100vw"
-                  className="h-auto w-full border border-hairline"
-                />
-                <figcaption className="mt-3 font-serif text-xs leading-relaxed text-ink-soft">
-                  Foreword by Naz Koser, Artistic Director of Ulfah Arts.
-                </figcaption>
-              </figure>
-            </div>
-
-            <figure className="mt-6">
+            {/* Programme cover only. */}
+            <figure className="mt-6 max-w-md">
               <Image
-                src="/images/underground/m21/hakawatiyyah-artistic-team.webp"
-                alt="Programme page headed ‘ULFAH ARTS UK & DAM FESTIVAL KOSOVO — THE ARTISTIC TEAM’, with portrait photographs and biographies of Naz Koser (UK Tour Artistic Director and Founder of Ulfah Arts) and Alia Al Zougbi (Storyteller and Original Writer for the UK Tour in 2010). The bio notes that Naz also works as an artist under the name Sufi Punk."
+                src="/images/underground/m21/hakawatiyyah-cover.webp"
+                alt="Programme cover for ‘Hakawatiyyah — The Storyteller’, presented by Ulfah Arts UK and Dam Festival Kosovo: a deep magenta field with the Arabic word حكواتية in teal above the English title in white, and a silhouette of an upraised hand emerging from drapery printed with Arabic calligraphy."
                 width={1283}
                 height={1771}
-                sizes="(min-width: 768px) 36rem, 100vw"
+                sizes="(min-width: 768px) 28rem, 100vw"
                 className="h-auto w-full border border-hairline"
               />
               <figcaption className="mt-3 font-serif text-xs leading-relaxed text-ink-soft">
-                The artistic team — Naz Koser and Alia Al Zougbi. Naz is named
-                in the bio as already working under the name Sufi Punk at this
-                time.
+                Programme cover — Ulfah Arts UK & DAM Festival Kosovo, 2010.
               </figcaption>
             </figure>
 
-            {/* Trailer — Naz's own Ulfah Arts file, kept lazy.
-                preload="metadata" so it doesn't pull the whole 12MB
-                until the user actually presses play.
-
-                useMediaCaption is suppressed below: this is a 2010
-                archival trailer with no caption file produced at
-                the time. A transcript / VTT pass is flagged as a
-                follow-up. */}
-            <figure className="mt-8">
-              {/* biome-ignore lint/a11y/useMediaCaption: archival 2010 trailer; transcript/VTT to follow in a later pass */}
-              <video
-                controls
-                preload="metadata"
-                playsInline
-                poster="/images/underground/m21/hakawatiyyah-cover.webp"
-                className="block h-auto w-full border border-hairline bg-ink"
-              >
-                <source
-                  src="/media/underground/m21/Hakawatiyyah_-_The_Storyteller.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support embedded video. You can download
-                the file directly at{" "}
-                <a href="/media/underground/m21/Hakawatiyyah_-_The_Storyteller.mp4">
-                  Hakawatiyyah — The Storyteller (MP4)
-                </a>
-                .
-              </video>
-              <figcaption className="mt-3 font-serif text-xs leading-relaxed text-ink-soft">
-                Trailer — Ulfah Arts, 2010 (3:46, h.264 / aac).
-              </figcaption>
-            </figure>
-
-            {/* Full programme as archival document.
-                Presented exactly as printed — full scan, unedited.
-                Sits alongside (not instead of) the three extracted
-                images above. */}
+            {/* Full programme as archival document — kept. */}
             <aside className="mt-8 border border-hairline bg-parchment-deep/30 px-6 py-6 sm:px-8 sm:py-7">
               <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
                 Archive document
@@ -510,8 +478,45 @@ export function SpiritualUndergroundIntro() {
             </aside>
           </article>
 
-          {/* Closing tercet — explicit <br /> per brief: three
-              lines, not one paragraph. */}
+          {/* Sufi Punk show reel — M22 new video embed, placed near the
+              end of "Before it had a name" where the FINAL file marks
+              it. Embedded from YouTube (privacy-enhanced domain). */}
+          <div className="mt-14 border-t border-hairline/60 pt-10">
+            <div className="prose-zawiya sanctuary-prose">
+              <p>
+                To see this throughline in motion, across more projects than
+                any single page could hold, here’s the Sufi Punk show reel:
+              </p>
+            </div>
+            <figure className="mt-6">
+              <div
+                className="relative w-full overflow-hidden border border-hairline bg-ink"
+                style={{ aspectRatio: "16 / 9" }}
+              >
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${SHOWREEL_YOUTUBE_ID}`}
+                  title="Sufi Punk show reel"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full"
+                />
+              </div>
+              <figcaption className="mt-3 font-serif text-xs leading-relaxed text-ink-soft">
+                <a
+                  href={`https://youtu.be/${SHOWREEL_YOUTUBE_ID}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
+                >
+                  Watch the Sufi Punk show reel →
+                </a>
+              </figcaption>
+            </figure>
+          </div>
+
+          {/* Closing tercet — explicit <br /> so three lines render as
+              three lines. */}
           <div className="prose-zawiya sanctuary-prose mt-14">
             <p>
               Looking back now, I see one practice unfolding through many
@@ -527,80 +532,40 @@ export function SpiritualUndergroundIntro() {
           </div>
         </div>
 
-        {/* Inspiring the Sufi — the demonstrated example.
-            M13: promoted from a buried in-paragraph link to a proper
-            portal block, since this is a decade-plus body of work and
-            should not read as an afterthought. */}
-        <div className="mt-16">
-          <h2 className="font-display text-2xl italic text-green sm:text-3xl">
-            The demonstrated example
-          </h2>
-          <div className="prose-zawiya sanctuary-prose mt-6">
-            <p>
-              <em>
-                Inspiring the Sufi: A Neurodivergent Practice in Parallel Play
-              </em>{" "}
-              is the named, public example of this work — fifty Names of Allah,
-              surrounded by songs from around the world, each held alongside a
-              written reflection (one entry pairs two Names under a single
-              reflection). One practice, fully documented, freely available to
-              wander.
-            </p>
-          </div>
-
-          <aside className="mt-8 border border-hairline bg-parchment-deep/30 px-6 py-7 sm:px-8 sm:py-8">
-            <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
-              A portal · Ten years of practice
-            </p>
-            <p className="mt-2 font-display text-2xl leading-snug text-green sm:text-3xl">
-              Inspiring the Sufi
-            </p>
-            <p className="mt-2 font-display text-[1rem] italic leading-snug text-green-soft sm:text-[1.1rem]">
-              Fifty Names of Allah, surrounded by songs. Written reflections.
-            </p>
-            <p className="mt-4 font-serif text-[0.95rem] leading-relaxed text-ink">
-              Spiritual Parallel Play, fully documented and freely available to
-              wander — the demonstrated form this strand points back to.
-            </p>
-            <div className="mt-6">
-              <a
-                href={ITS_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 border border-green bg-green px-6 py-3 font-serif text-sm uppercase tracking-[0.18em] text-parchment transition hover:bg-green-soft"
-              >
-                Visit Inspiring the Sufi
-                <span aria-hidden>→</span>
-              </a>
-              <p className="mt-3 font-display text-[1rem] italic text-green-soft">
-                This is where it started. Come and see.
-              </p>
-            </div>
-          </aside>
-        </div>
-
-        {/* Invitation — expressions of interest, kept restrained. */}
+        {/* An invitation — FINAL copy. */}
         <div className="mt-16">
           <h2 className="font-display text-2xl italic text-green sm:text-3xl">
             An invitation
           </h2>
           <div className="prose-zawiya sanctuary-prose mt-6">
-            <p>The Hidden Treasure is never exhausted.</p>
             <p>
-              Every conversation, collaboration, commission and friendship
-              becomes another place to keep looking.
+              Most of this work has grown through conversation, shared
+              curiosity and quiet recognition — the same way the treasure was
+              always there, waiting for the searching that would know how to
+              find it.
             </p>
             <p>
-              Most of this work has grown through shared curiosity, quiet
-              recognition and the simple act of beginning a conversation. It
-              has rarely followed a plan. It has usually begun with someone
-              recognising a question they were already carrying.
+              If you are a neurodivergent person finding your own way to the
+              divine — or a parent or carer wanting that same space for
+              yourself or your child — you are welcome to write. This is simply
+              an open door.
             </p>
             <p>
-              If something here has met a question you have been carrying
-              too — within faith, the arts, education, culture or community —
-              I would be delighted to continue the search together.
+              If you work in faith, the arts, or culture, and something here
+              meets work you are already doing — or simply opens a question you
+              have been carrying yourself — I would be delighted to hear from
+              you.
             </p>
+            <p className="font-display italic text-green-soft">
+              Programming.
+              <br />
+              Residencies.
+              <br />
+              Collaborations.
+              <br />
+              Conversation.
+            </p>
+            <p>A short, plain note, in your own words, is enough.</p>
             <p>Wherever the path begins is enough.</p>
             <p>
               <a

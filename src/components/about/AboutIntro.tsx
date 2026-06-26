@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FlowerDivider } from "@/components/site/Ornaments";
 
 /**
@@ -104,6 +105,25 @@ export function AboutIntro() {
             <p>
               I am a Muslim PDA parent, AuDHD writer, and Artistic
               Director.
+            </p>
+            {/* M22 — single low-friction line pointing to the
+                "Before it had a name" track record on Spiritual
+                Underground, per homepage-and-about-micro-edits.md.
+                The reference doc gives the absolute production URL
+                (https://www.sufipunk.co.uk/underground); rendered here
+                as an internal next/link to /underground — same
+                destination, but proper same-site client navigation
+                consistent with the rest of the site. */}
+            <p>
+              The fuller story behind that title — what it looked like
+              before it had this name — lives in{" "}
+              <Link
+                href="/underground"
+                className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
+              >
+                Spiritual Underground →
+              </Link>
+              .
             </p>
             <p>
               I live at the intersection of low-demand parenting,
