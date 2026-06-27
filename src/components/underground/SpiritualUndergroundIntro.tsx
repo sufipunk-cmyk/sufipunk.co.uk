@@ -1,5 +1,5 @@
 import { FlowerDivider, ZawiyaBadge } from "@/components/site/Ornaments";
-import Image from "next/image";
+import { ZoomableImage } from "@/components/site/ZoomableImage";
 
 /**
  * Spiritual Underground intro — the strand whose home on the
@@ -49,7 +49,7 @@ export function SpiritualUndergroundIntro() {
     >
       <div className="container max-w-3xl">
         <div className="text-center">
-          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber">
+          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber-text">
             Parallel Play
           </p>
           <h1
@@ -127,7 +127,7 @@ export function SpiritualUndergroundIntro() {
             <p>
               Within Sufi tradition there is a saying that God is a Hidden
               Treasure who created the universe to be found.
-              <sup className="ml-1 align-super font-serif text-[0.7em] not-italic text-amber">
+              <sup className="ml-1 align-super font-serif text-[0.7em] not-italic text-amber-text">
                 <a
                   href="#footnote-hidden-treasure"
                   aria-label="See footnote on the hidden-treasure saying"
@@ -203,7 +203,7 @@ export function SpiritualUndergroundIntro() {
             aria-label="Footnote on the hidden-treasure saying"
           >
             <p className="font-serif text-xs leading-relaxed text-ink-soft">
-              <span aria-hidden className="mr-1 text-amber">
+              <span aria-hidden className="mr-1 text-amber-text">
                 ★
               </span>
               The hidden-treasure saying is held within Sufi tradition,
@@ -233,12 +233,17 @@ export function SpiritualUndergroundIntro() {
           </div>
 
           <aside className="mt-8 border border-hairline bg-parchment-deep/30 px-6 py-7 sm:px-8 sm:py-8">
-            <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
+            <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber-text">
               A portal · Ten years of practice
             </p>
-            <p className="mt-2 font-display text-2xl leading-snug text-green sm:text-3xl">
+            {/* M-A11y (Phase 1, Section B) — this card title was a styled
+                <p> at h2 size; WAVE flagged it as a "possible heading".
+                It genuinely titles the Inspiring-the-Sufi portal card, so
+                it is now a real <h3> (correctly nested under the "Come and
+                see" <h2> above). Visual styling unchanged via className. */}
+            <h3 className="mt-2 font-display text-2xl leading-snug text-green sm:text-3xl">
               Inspiring the Sufi
-            </p>
+            </h3>
             <p className="mt-2 font-display text-[1rem] italic leading-snug text-green-soft sm:text-[1.1rem]">
               Fifty Names of Allah, surrounded by songs. Written reflections.
             </p>
@@ -294,7 +299,7 @@ export function SpiritualUndergroundIntro() {
 
           {/* Card 1 — Too Punk to Pray? (2008). Image kept as is. */}
           <article className="mt-14 border-t border-hairline/60 pt-10">
-            <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
+            <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber-text">
               2008 · Public art
             </p>
             <h3 className="mt-2 font-display text-xl italic text-green sm:text-2xl">
@@ -313,13 +318,16 @@ export function SpiritualUndergroundIntro() {
               </p>
             </div>
             <figure className="mt-6">
-              <Image
+              <ZoomableImage
                 src="/images/underground/m21/too-punk-to-pray-spread.webp"
                 alt="REtoday magazine, Spring 2009 — a two-page spread headed ‘Too Punk to Pray? What is praying anyway?’, with photographs of Sufi Punk performing and three reflective questions for classroom discussion."
                 width={1024}
                 height={768}
                 sizes="(min-width: 768px) 36rem, 100vw"
-                className="h-auto w-full border border-hairline"
+                className="border border-hairline"
+                zoomLabel="Zoom the RE Today spread"
+                downloadName="sufipunk-re-today-too-punk-to-pray-2009.webp"
+                caption="RE Today, Spring 2009 — classroom spread, ages 11–16."
               />
               <figcaption className="mt-3 font-serif text-xs leading-relaxed text-ink-soft">
                 RE Today, Spring 2009 — classroom spread, ages 11–16.
@@ -330,7 +338,7 @@ export function SpiritualUndergroundIntro() {
           {/* Card 2 — The Mysteries: In Our Own Words (2009).
               Safeguarding: programme cover only. Image kept as is. */}
           <article className="mt-14 border-t border-hairline/60 pt-10">
-            <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
+            <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber-text">
               2009 · Community festival
             </p>
             <h3 className="mt-2 font-display text-xl italic text-green sm:text-2xl">
@@ -349,13 +357,16 @@ export function SpiritualUndergroundIntro() {
               </p>
             </div>
             <figure className="mt-6 max-w-md">
-              <Image
+              <ZoomableImage
                 src="/images/underground/m21/cover-for-mysteries.webp"
                 alt="Souvenir programme cover for ‘The Mysteries: In Our Own Words — Unravelling the Mystery: Stories inspired by the Bible and the Qur’an’, Belgrade Theatre Coventry, 27 July – 1 August 2009. A silhouetted figure on a parchment-textured ground layered with Arabic calligraphy and ink-splatter graphics."
                 width={1463}
                 height={1800}
                 sizes="(min-width: 768px) 28rem, 100vw"
-                className="h-auto w-full border border-hairline"
+                className="border border-hairline"
+                zoomLabel="Zoom the Mysteries programme cover"
+                downloadName="sufipunk-the-mysteries-programme-cover-2009.webp"
+                caption="Souvenir programme cover — Belgrade Theatre Coventry, 2009."
               />
               <figcaption className="mt-3 font-serif text-xs leading-relaxed text-ink-soft">
                 Souvenir programme cover — Belgrade Theatre Coventry, 2009.
@@ -365,7 +376,7 @@ export function SpiritualUndergroundIntro() {
 
           {/* Card 3 — Sacred Qur'an (2009). Both images kept as is. */}
           <article className="mt-14 border-t border-hairline/60 pt-10">
-            <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
+            <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber-text">
               2009 · National Trust commission
             </p>
             <h3 className="mt-2 font-display text-xl italic text-green sm:text-2xl">
@@ -384,26 +395,32 @@ export function SpiritualUndergroundIntro() {
             </div>
             <div className="mt-6 grid gap-6 sm:grid-cols-2">
               <figure>
-                <Image
+                <ZoomableImage
                   src="/images/underground/m21/sacred-quran-cover.webp"
                   alt="Booklet cover: ‘Wightwick Manor and Gardens — Sacred Quran’, with a circular illustration of intertwined leaves and Qur’anic verses, beneath the line ‘Enjoy Wightwick Manor and Gardens through the verses of the Quran.’ National Trust / Whose Story? imprint."
                   width={1024}
                   height={768}
                   sizes="(min-width: 768px) 17rem, 100vw"
-                  className="h-auto w-full border border-hairline"
+                  className="border border-hairline"
+                  zoomLabel="Zoom the Sacred Qur’an booklet cover"
+                  downloadName="sufipunk-sacred-quran-booklet-cover-2009.webp"
+                  caption="Booklet cover — National Trust / Whose Story?, 2009."
                 />
                 <figcaption className="mt-3 font-serif text-xs leading-relaxed text-ink-soft">
                   Booklet cover — National Trust / Whose Story?, 2009.
                 </figcaption>
               </figure>
               <figure>
-                <Image
+                <ZoomableImage
                   src="/images/underground/m21/sacred-quran-library-spread.webp"
                   alt="Interior spread headed ‘THE LIBRARY’, with a contributor’s reflection on remembrance and a Qur’anic verse from Surah Ra’ad — ‘Verily, in the remembrance of God do hearts find contentment’ — set facing a photograph of the Manor’s leather-armchaired library with floor-to-ceiling shelves."
                   width={1024}
                   height={768}
                   sizes="(min-width: 768px) 17rem, 100vw"
-                  className="h-auto w-full border border-hairline"
+                  className="border border-hairline"
+                  zoomLabel="Zoom the Sacred Qur’an library spread"
+                  downloadName="sufipunk-sacred-quran-library-spread-2009.webp"
+                  caption="Interior spread — The Library, paired with Surah Ra’ad."
                 />
                 <figcaption className="mt-3 font-serif text-xs leading-relaxed text-ink-soft">
                   Interior spread — The Library, paired with Surah Ra’ad.
@@ -418,7 +435,7 @@ export function SpiritualUndergroundIntro() {
               archival trailer <video> embed is removed entirely. The
               full 24-page souvenir programme PDF archive link is kept. */}
           <article className="mt-14 border-t border-hairline/60 pt-10">
-            <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
+            <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber-text">
               2010 · Ulfah Arts UK × DAM Festival Kosovo
             </p>
             <h3 className="mt-2 font-display text-xl italic text-green sm:text-2xl">
@@ -442,13 +459,16 @@ export function SpiritualUndergroundIntro() {
 
             {/* Programme cover only. */}
             <figure className="mt-6 max-w-md">
-              <Image
+              <ZoomableImage
                 src="/images/underground/m21/hakawatiyyah-cover.webp"
                 alt="Programme cover for ‘Hakawatiyyah — The Storyteller’, presented by Ulfah Arts UK and Dam Festival Kosovo: a deep magenta field with the Arabic word حكواتية in teal above the English title in white, and a silhouette of an upraised hand emerging from drapery printed with Arabic calligraphy."
                 width={1283}
                 height={1771}
                 sizes="(min-width: 768px) 28rem, 100vw"
-                className="h-auto w-full border border-hairline"
+                className="border border-hairline"
+                zoomLabel="Zoom the Hakawatiyyah programme cover"
+                downloadName="sufipunk-hakawatiyyah-programme-cover-2010.webp"
+                caption="Programme cover — Ulfah Arts UK & DAM Festival Kosovo, 2010."
               />
               <figcaption className="mt-3 font-serif text-xs leading-relaxed text-ink-soft">
                 Programme cover — Ulfah Arts UK & DAM Festival Kosovo, 2010.
@@ -457,7 +477,7 @@ export function SpiritualUndergroundIntro() {
 
             {/* Full programme as archival document — kept. */}
             <aside className="mt-8 border border-hairline bg-parchment-deep/30 px-6 py-6 sm:px-8 sm:py-7">
-              <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
+              <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber-text">
                 Archive document
               </p>
               <p className="mt-2 font-display text-lg italic text-green sm:text-xl">

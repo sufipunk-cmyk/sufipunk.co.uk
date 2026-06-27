@@ -27,6 +27,12 @@
     --green-soft: 153 18% 36%;
     --amber: 38 56% 50%;              /* #C4973A */
     --amber-soft: 38 60% 65%;
+    /* A11y (Phase 1) — darker amber strictly for STATIC TEXT on the
+       parchment background. Same hue/saturation as --amber, lower
+       lightness. 7.4:1 on parchment (#F5F0E8) = WCAG AAA. Do NOT use
+       this on the dark-green Fountain section, where a dark token
+       would fail; light tokens (amber-soft / parchment) belong there. */
+    --amber-text: 38 56% 25%;         /* #634919 */
     --hairline: 36 22% 78%;
 
     /* shadcn aliases mapped to the brief tokens */

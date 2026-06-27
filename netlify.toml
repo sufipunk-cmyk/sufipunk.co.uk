@@ -10,3 +10,14 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# URL canonicalization (Phase 1, Section E).
+# The canonical host is the bare apex, https://sufipunk.co.uk — matching
+# `metadataBase` and every per-page `alternates.canonical`. Force any
+# request that arrives on the www subdomain to a 301 redirect to the apex
+# so visitors and crawlers only ever see one canonical origin.
+[[redirects]]
+  from = "https://www.sufipunk.co.uk/*"
+  to = "https://sufipunk.co.uk/:splat"
+  status = 301
+  force = true

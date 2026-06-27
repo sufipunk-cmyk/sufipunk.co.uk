@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -22,6 +23,9 @@ const KOFI = "https://ko-fi.com/sufipunk";
  * than an empty default.
  */
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     images: [
       {
@@ -64,9 +68,47 @@ export const metadata: Metadata = {
  *      "Sanctuary First on Substack →" because that is the
  *      subscribe action.
  */
+// Site-level JSON-LD (Phase 1, Section E). A WebSite + Person graph on the
+// homepage gives crawlers the canonical site name, URL, language, and the
+// author behind the work (with sameAs links to the publication's external
+// homes). Per-post Article JSON-LD and the /book Book JSON-LD live on their
+// own pages; this is the root-level structured data.
+const siteJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://sufipunk.co.uk/#website",
+      name: "Sufi Punk — A Digital Zawiya",
+      url: "https://sufipunk.co.uk",
+      description:
+        "A low-demand sanctuary for neurodivergent seekers, exhausted believers, and anyone living close to the edges of capacity.",
+      inLanguage: "en-GB",
+      publisher: { "@id": "https://sufipunk.co.uk/#person" },
+    },
+    {
+      "@type": "Person",
+      "@id": "https://sufipunk.co.uk/#person",
+      name: "Sufi Punk",
+      url: "https://sufipunk.co.uk",
+      description:
+        "The creative identity behind Sufi Punk — Sanctuary First, Spiritual Underground, and Safe Passage.",
+      sameAs: [
+        "https://sufipunksanctuaryfirst.substack.com",
+        "https://ko-fi.com/sufipunk",
+      ],
+    },
+  ],
+};
+
 export default function HomePage() {
   return (
     <div className="bg-parchment text-ink">
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD must be injected as a raw <script> body; the object is built from trusted local content and serialised with JSON.stringify, so there is no user input to escape.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
+      />
       <SiteHeader />
 
       {/* 1. THE WELCOME — full-width, atmospheric. No nav clutter. */}
@@ -80,7 +122,7 @@ export default function HomePage() {
         />
 
         <div className="container relative z-10 flex flex-col items-center px-4 py-20 text-center sm:py-28">
-          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber">
+          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber-text">
             Sufi Punk&apos;s Digital Zawiya
           </p>
 
@@ -116,7 +158,7 @@ export default function HomePage() {
           between the welcome and the map. Quiet, not a CTA. */}
       <section className="bg-parchment py-10 sm:py-14" aria-label="Sufi Punk and the three spaces">
         <div className="container max-w-2xl text-center">
-          <p className="font-serif text-xs uppercase tracking-[0.35em] text-amber">
+          <p className="font-serif text-xs uppercase tracking-[0.35em] text-amber-text">
             Sufi Punk
           </p>
           <p className="mt-3 font-display text-[1.25rem] italic leading-snug text-green sm:text-[1.4rem]">
@@ -162,7 +204,7 @@ export default function HomePage() {
           </div>
 
           <div className="md:col-span-7">
-            <p className="font-serif text-xs uppercase tracking-[0.35em] text-amber">
+            <p className="font-serif text-xs uppercase tracking-[0.35em] text-amber-text">
               Coming Soon · A Book
             </p>
             <h2 className="mt-3 font-display text-3xl leading-tight text-green sm:text-5xl">
@@ -204,27 +246,26 @@ export default function HomePage() {
                 and the Quiet Letters CTA keeps the subscribe wording.
                 Wording flagged for the author's review. */}
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              {/* Phase 1 (Section E) — the primary action from the homepage
+                  teaser is now "Read about the book", pointing at the
+                  dedicated /book page (the canonical, fuller description).
+                  The Substack follow remains, named distinctly so the two
+                  do not collide. */}
+              <Link
+                href="/book"
+                className="inline-flex items-center gap-2 border border-green bg-green px-6 py-3 font-serif text-sm uppercase tracking-[0.18em] text-parchment transition hover:bg-green-soft"
+              >
+                Read about the book
+                <span aria-hidden>→</span>
+              </Link>
               <a
                 href={SUBSTACK_SUBSCRIBE}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 border border-green bg-green px-6 py-3 font-serif text-sm uppercase tracking-[0.18em] text-parchment transition hover:bg-green-soft"
+                className="font-serif text-sm text-green underline decoration-amber/60 underline-offset-4 transition hover:text-amber"
               >
-                Follow the book&apos;s progress
-                <span aria-hidden>→</span>
+                Follow its progress on Substack
               </a>
-              <span className="font-serif text-sm text-ink-soft">
-                Updates arrive via{" "}
-                <a
-                  href={SUBSTACK_SUBSCRIBE}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
-                >
-                  Sanctuary First on Substack
-                </a>
-                .
-              </span>
             </div>
           </div>
         </div>
@@ -239,14 +280,14 @@ export default function HomePage() {
         <ArchOutline className="pointer-events-none absolute -right-24 top-10 h-[420px] w-[260px] text-amber/20" />
 
         <div className="container relative z-10 max-w-3xl text-center">
-          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber-soft">
+          <p className="font-serif text-xs uppercase tracking-[0.4em] text-parchment">
             The Fountain
           </p>
           <h2 className="mt-3 font-display text-3xl text-parchment sm:text-5xl">
             Supporting Sanctuary
           </h2>
 
-          <p className="mx-auto mt-6 max-w-xl font-display text-2xl italic leading-snug text-amber-soft sm:text-3xl">
+          <p className="mx-auto mt-6 max-w-xl font-display text-2xl italic leading-snug text-parchment sm:text-3xl">
             Supporting this work is an act of love, invitation, and sacred
             trust.
           </p>
@@ -260,23 +301,21 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          {/* M-A11y (Phase 1, Section B) — this block previously held two
+              CTAs ("Become a patron · $10/month" and "Buy Me a Coffee")
+              that pointed to the same Ko-fi URL, which WAVE flagged as
+              redundant adjacent links. Collapsed to the single primary
+              patron button; Ko-fi's own page already offers the one-off
+              "coffee" option, so no destination is lost. */}
+          <div className="mt-10 flex items-center justify-center">
             <a
               href={KOFI}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 bg-amber px-7 py-3 font-serif text-sm uppercase tracking-[0.18em] text-green transition hover:bg-amber-soft"
+              className="inline-flex items-center gap-2 bg-amber px-7 py-3 font-serif text-sm uppercase tracking-[0.18em] text-ink transition hover:bg-amber-soft"
             >
               Become a patron · $10 / month
               <span aria-hidden>→</span>
-            </a>
-            <a
-              href={KOFI}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 border border-amber/70 px-6 py-3 font-serif text-sm uppercase tracking-[0.18em] text-amber-soft transition hover:bg-amber/10"
-            >
-              Buy Me a Coffee
             </a>
           </div>
         </div>
@@ -285,7 +324,7 @@ export default function HomePage() {
       {/* 7. THE EMAIL SIGNUP — quiet, no pressure. */}
       <section className="bg-parchment py-20 sm:py-28" id="join">
         <div className="container max-w-2xl text-center">
-          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber">
+          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber-text">
             Quiet Letters
           </p>
           <h2 className="mt-3 font-display text-3xl text-green sm:text-4xl">

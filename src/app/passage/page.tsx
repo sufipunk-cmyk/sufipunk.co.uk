@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Safe Passage",
   description:
     "In the world but not of it. Walking alongside neurodivergent people inside systems not built for them.",
+  alternates: {
+    canonical: "/passage",
+  },
   openGraph: {
     images: [
       {
@@ -35,7 +38,7 @@ export default function PassagePage() {
             href="/#the-map"
             className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
           >
-            ← Return to The Gathering Place
+            ← Return to the home page
           </Link>
         </p>
       </div>

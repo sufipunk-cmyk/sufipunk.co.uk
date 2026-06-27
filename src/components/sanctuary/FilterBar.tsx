@@ -169,7 +169,7 @@ export function FilterBar({ totalPosts }: { totalPosts: number }) {
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {FILTER_GROUPS.map((group) => (
             <fieldset key={group.key} className="border-0 p-0">
-              <legend className="font-serif text-xs uppercase tracking-[0.25em] text-amber">
+              <legend className="font-serif text-xs uppercase tracking-[0.25em] text-amber-text">
                 {group.label}
               </legend>
               <ul className="mt-3 flex flex-wrap gap-1.5">

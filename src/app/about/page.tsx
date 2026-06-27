@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "About Sufi Punk — a soul that prepares the ground. Written by a parent navigating PDA, faith, and what researchers have named systems-generated trauma.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {

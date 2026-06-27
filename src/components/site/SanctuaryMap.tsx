@@ -1,4 +1,5 @@
-import Image from "next/image";
+import { Download } from "lucide-react";
+import { ZoomableImage } from "@/components/site/ZoomableImage";
 import { mapImage, mapImageAlt } from "@/content/site/zawiya";
 
 /**
@@ -20,7 +21,7 @@ export function SanctuaryMap() {
     <section className="bg-parchment py-20 sm:py-28" id="the-map">
       <div className="container">
         <header className="mx-auto max-w-2xl text-center">
-          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber">
+          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber-text">
             The Map
           </p>
           <h2 className="mt-3 font-display text-3xl text-green sm:text-5xl">
@@ -52,22 +53,41 @@ export function SanctuaryMap() {
             pointer hover, gated behind `@media (hover: hover)` in
             `globals.css` so touch devices don't get a stuck zoomed
             state. `overflow-hidden` on the wrapper clips the scaled
-            image cleanly to its frame. */}
+            image cleanly to its frame.
+
+            Phase 1 (Section D) — the map is now click-to-zoom via the
+            ZoomableImage lightbox (the source is 1536×1024, larger than
+            its inline display, so a full view helps read the place
+            labels). An explicit, always-visible "Download map" link sits
+            beneath it — it is a plain same-origin <a download>, so it
+            works even if client JS does not. */}
         <figure className="mx-auto mt-14 max-w-4xl">
           <div className="map-hover-zoom relative w-full overflow-hidden border border-hairline bg-parchment shadow-[0_2px_30px_-20px_rgba(0,0,0,0.35)]">
-            <Image
+            <ZoomableImage
               src={mapImage}
               alt={mapImageAlt}
               width={2200}
               height={1467}
               priority
               sizes="(min-width: 1024px) 56rem, 100vw"
-              className="h-auto w-full"
+              zoomLabel="Zoom the overview map"
+              downloadName="sufipunk-zawiya-map.jpg"
+              caption="The overview map of the zawiya — the named places along the path."
             />
           </div>
           <figcaption className="mx-auto mt-4 max-w-xl text-center font-serif text-xs italic text-ink-soft">
             The overview map of the zawiya — the named places along the path.
           </figcaption>
+          <div className="mt-4 text-center">
+            <a
+              href={mapImage}
+              download="sufipunk-zawiya-map.jpg"
+              className="inline-flex items-center gap-2 font-serif text-xs uppercase tracking-[0.18em] text-amber-text underline decoration-amber/60 underline-offset-4 transition hover:text-amber"
+            >
+              <Download className="h-3.5 w-3.5" aria-hidden />
+              Download map
+            </a>
+          </div>
         </figure>
       </div>
     </section>

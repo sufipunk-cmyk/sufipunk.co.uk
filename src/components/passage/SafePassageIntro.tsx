@@ -45,7 +45,7 @@ export function SafePassageIntro() {
     >
       <div className="container max-w-3xl">
         <div className="text-center">
-          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber">
+          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber-text">
             In the world but not of it
           </p>
           <h1

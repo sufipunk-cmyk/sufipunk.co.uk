@@ -43,6 +43,7 @@ export default {
         amber: {
           DEFAULT: "hsl(var(--amber))",
           soft: "hsl(var(--amber-soft))",
+          text: "hsl(var(--amber-text))",
         },
         hairline: "hsl(var(--hairline))",
 

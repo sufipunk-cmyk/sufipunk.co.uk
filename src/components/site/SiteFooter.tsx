@@ -16,7 +16,7 @@ export function SiteFooter() {
                 artwork, so no surrounding heading text is needed. */}
             <Image
               src="/images/logo/sufipunk_logo_elegant_lockup_FINAL.png"
-              alt="Sufi Punk · Digital Zawiya — a refined mosaic gateway above the wordmark Sufi Punk in deep-green serif, with Digital Zawiya set beneath in small caps."
+              alt="Sufi Punk · Digital Zawiya"
               width={500}
               height={500}
               sizes="240px"
@@ -24,9 +24,16 @@ export function SiteFooter() {
             />
           </div>
           <div>
-            <h4 className="font-display text-sm uppercase tracking-[0.2em] text-ink-soft">
+            {/* M-A11y (Phase 1, Section B) — footer section labels were
+                <h4>, the only h4 on the site. On pages whose deepest
+                content heading is an h2 (Home, About, Passage, Underground),
+                that h4 created an h2→h4 jump that WAVE flagged as a skipped
+                heading level on all four. Promoted to <h2> (visual styling
+                unchanged via className): a footer section heading following
+                content of level h1/h2/h3 never skips. */}
+            <h2 className="font-display text-sm uppercase tracking-[0.2em] text-ink-soft">
               Visit
-            </h4>
+            </h2>
             <ul className="mt-3 space-y-1.5 font-serif text-[0.95rem]">
               <li>
                 <Link href="/sanctuary" className="text-green hover:text-amber">
@@ -44,6 +51,11 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <Link href="/book" className="text-green hover:text-amber">
+                  The Book
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="text-green hover:text-amber">
                   About
                 </Link>
@@ -51,9 +63,9 @@ export function SiteFooter() {
             </ul>
           </div>
           <div>
-            <h4 className="font-display text-sm uppercase tracking-[0.2em] text-ink-soft">
+            <h2 className="font-display text-sm uppercase tracking-[0.2em] text-ink-soft">
               Elsewhere
-            </h4>
+            </h2>
             <ul className="mt-3 space-y-1.5 font-serif text-[0.95rem]">
               <li>
                 <a
@@ -93,6 +105,14 @@ export function SiteFooter() {
           </p>
           <p className="mt-2">
             © {new Date().getFullYear()} Sufi Punk. All writing is the author&apos;s own.
+          </p>
+          <p className="mt-2">
+            <Link
+              href="/privacy"
+              className="text-green underline decoration-amber/50 underline-offset-4 hover:text-amber"
+            >
+              Privacy &amp; Ethics
+            </Link>
           </p>
         </div>
       </div>

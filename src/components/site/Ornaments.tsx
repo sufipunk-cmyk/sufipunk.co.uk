@@ -11,20 +11,28 @@ import Image from "next/image";
  *
  * The badge image already carries the SUFI PUNK / DIGITAL ZAWIYA
  * wordmark inside the artwork, so this component is just a sized,
- * centered, accessibly-labelled wrapper. Used above the "Before you
- * enter" heading on Sanctuary First, Spiritual Underground, and
- * Safe Passage. Same treatment on each, per the M16 brief.
+ * centered wrapper. Used above the "Before you enter" heading on
+ * Sanctuary First, Spiritual Underground, and Safe Passage. Same
+ * treatment on each, per the M16 brief.
  *
  * Sizing: the brief asked for "roughly 180–220px wide". Settled on
  * 200px, with `priority={false}` since the badge sits below the page
  * title and is not the LCP element.
+ *
+ * M-A11y (Phase 1, Section B) — this is a decorative brand stamp that
+ * repeats branding already announced by the site header wordmark and
+ * each page's own <h1>. Its previous verbose alt (a full visual
+ * description of the artwork) was flagged by WAVE as long/atmospheric
+ * alt text. Marked decorative (alt="" + aria-hidden) so screen readers
+ * skip the repeated motif rather than reading a paragraph-length
+ * description of a stamp.
  */
 export function ZawiyaBadge({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex justify-center ${className}`}>
+    <div className={`flex justify-center ${className}`} aria-hidden="true">
       <Image
         src="/images/logo/sufipunk_logo_bold_badge_FINAL.png"
-        alt="Sufi Punk · Digital Zawiya — a hand-painted mosaic gateway in deep green, gold, red, navy, and teal, with a small wall-fountain spout, set above the wordmark SUFI PUNK · DIGITAL ZAWIYA in a distressed serif."
+        alt=""
         width={400}
         height={400}
         sizes="200px"

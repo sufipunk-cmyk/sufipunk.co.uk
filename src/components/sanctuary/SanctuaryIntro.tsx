@@ -34,7 +34,7 @@ export function SanctuaryIntro() {
     >
       <div className="container max-w-3xl">
         <div className="text-center">
-          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber">
+          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber-text">
             Witness Writing
           </p>
           <h1
@@ -75,7 +75,7 @@ export function SanctuaryIntro() {
               upon it. I kindly ask you to set that down. I have made my home
               in this word. You are welcome to make yours.
             </p>
-            <p className="text-center text-amber">
+            <p className="text-center text-amber-text">
               <em>Bismillah ir-rahman ir-rahim.</em>
             </p>
           </div>

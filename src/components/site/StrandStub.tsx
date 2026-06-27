@@ -25,7 +25,7 @@ export function StrandStub({
 
       <section className="container py-20 sm:py-28">
         <div className="prose-zawiya text-center">
-          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber">
+          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber-text">
             {kicker}
           </p>
           <h1 className="mt-3 font-display text-4xl text-green sm:text-6xl">

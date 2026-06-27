@@ -28,6 +28,9 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.excerpt ?? `${post.title} — a Sanctuary First post.`,
+    alternates: {
+      canonical: `/sanctuary/${post.slug}`,
+    },
   };
 }
 
@@ -36,6 +39,9 @@ export async function generateMetadata({
 // for readers; the underlying `date` frontmatter is still present and
 // continues to drive sort order, sitemap lastModified, and the Article
 // JSON-LD `datePublished` below — none of that is visible UI.
+//
+// (Phase 1, Section E briefly surfaced a visible <time> here; that was
+// reverted at the author's request — the M18 timeless-feel decision stands.)
 
 export default async function SanctuaryPostPage({
   params,
@@ -79,8 +85,7 @@ export default async function SanctuaryPostPage({
     <div className="bg-parchment text-ink">
       <script
         type="application/ld+json"
-        // The structured-data object is built from trusted local
-        // content; safe to inline.
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD must be injected as a raw <script> body; the object is built from trusted local content and serialised with JSON.stringify, so there is no user input to escape.
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <SiteHeader />
@@ -88,7 +93,7 @@ export default async function SanctuaryPostPage({
       <main>
         {/* Post header */}
         <header className="container max-w-2xl py-16 text-center sm:py-20">
-          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber">
+          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber-text">
             {labelFor("arc", post.arc) ?? post.arc}
           </p>
           <h1 className="mt-4 font-display text-4xl leading-tight text-green sm:text-5xl">
@@ -100,7 +105,7 @@ export default async function SanctuaryPostPage({
 
           {post.awaitingMigration ? (
             <div className="mx-auto mt-8 max-w-xl rounded-sm border border-amber/50 bg-amber/10 px-4 py-3 text-left">
-              <p className="font-serif text-xs uppercase tracking-[0.18em] text-amber">
+              <p className="font-serif text-xs uppercase tracking-[0.18em] text-amber-text">
                 ❁ Awaiting migration
               </p>
               <p className="mt-1.5 font-serif text-sm leading-relaxed text-ink-soft">
@@ -123,7 +128,7 @@ export default async function SanctuaryPostPage({
         {/* Taxonomy chips, rendered as filter shortcuts */}
         {chips.length > 0 ? (
           <div className="container max-w-2xl pb-16">
-            <p className="font-serif text-xs uppercase tracking-[0.25em] text-amber">
+            <p className="font-serif text-xs uppercase tracking-[0.25em] text-amber-text">
               Tagged
             </p>
             <ul className="mt-3 flex flex-wrap gap-1.5">
@@ -166,7 +171,7 @@ export default async function SanctuaryPostPage({
               href="/sanctuary"
               className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
             >
-              ← Return to The Lantern Library
+              ← Return to Sanctuary First
             </Link>
           </div>
         </nav>
@@ -215,7 +220,7 @@ function PrevNextLink({
       href={`/sanctuary/${post.slug}`}
       className={`group block rounded-sm border border-hairline bg-parchment px-5 py-5 transition hover:border-green/60 ${align}`}
     >
-      <span className="font-serif text-xs uppercase tracking-[0.25em] text-amber">
+      <span className="font-serif text-xs uppercase tracking-[0.25em] text-amber-text">
         {isPrev ? "← Older" : "Newer →"}
       </span>
       <span className="mt-1 block font-display text-lg leading-snug text-green transition-colors group-hover:text-amber sm:text-xl">

@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Spiritual Underground",
   description:
     "Low-demand faith and Spiritual Parallel Play. Inspiring the Sufi as the demonstrated example.",
+  alternates: {
+    canonical: "/underground",
+  },
   openGraph: {
     images: [
       {
@@ -35,7 +38,7 @@ export default function UndergroundPage() {
             href="/#the-map"
             className="text-green underline decoration-amber/60 underline-offset-4 hover:text-amber"
           >
-            ← Return to The Devotional Corner
+            ← Return to the home page
           </Link>
         </p>
       </div>

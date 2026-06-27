@@ -56,7 +56,7 @@ export function AboutIntro() {
       <div className="container max-w-3xl">
         {/* Header */}
         <div className="text-center">
-          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber">
+          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber-text">
             About
           </p>
           <h1
@@ -76,7 +76,7 @@ export function AboutIntro() {
             <blockquote className="border-l-2 border-amber/60 pl-5 font-display text-[1.1rem] italic leading-snug text-green sm:text-[1.2rem]">
               “Written by a parent navigating PDA, faith, and what
               researchers have named systems-generated trauma.
-              <sup className="ml-1 align-super font-serif text-[0.7em] not-italic text-amber">
+              <sup className="ml-1 align-super font-serif text-[0.7em] not-italic text-amber-text">
                 <a
                   href="#footnote-systems-generated-trauma"
                   aria-label="See footnote on systems-generated trauma"
@@ -97,7 +97,7 @@ export function AboutIntro() {
           <h2 className="font-display text-2xl italic text-green sm:text-3xl">
             About Me
           </h2>
-          <p className="mt-2 font-serif text-xs uppercase tracking-[0.3em] text-amber">
+          <p className="mt-2 font-serif text-xs uppercase tracking-[0.3em] text-amber-text">
             This is my special interest project.
           </p>
 
@@ -244,7 +244,7 @@ export function AboutIntro() {
           aria-label="Footnote on systems-generated trauma"
         >
           <p className="font-serif text-xs leading-relaxed text-ink-soft">
-            <span aria-hidden className="mr-1 text-amber">★</span>
+            <span aria-hidden className="mr-1 text-amber-text">★</span>
             <em>Systems-generated trauma</em> is drawn from research by
             Clements &amp; Aiello (University of Leeds / Cerebra),
             referenced here in their language, though I apply it more

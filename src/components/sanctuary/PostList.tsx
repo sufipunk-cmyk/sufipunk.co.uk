@@ -41,6 +41,9 @@ export type PostListEntry = {
 // role for the reader; the underlying `date` frontmatter is still present
 // and still drives sort order, sitemap lastModified, and Article JSON-LD
 // datePublished — none of that is visible UI.
+//
+// (Phase 1, Section E briefly surfaced a visible <time> on each card; that
+// was reverted at the author's request — the M18 decision stands.)
 
 export function PostList({ posts }: { posts: PostListEntry[] }) {
   return (
@@ -65,7 +68,7 @@ export function PostList({ posts }: { posts: PostListEntry[] }) {
             >
               <article className="grid gap-3 sm:grid-cols-12 sm:items-baseline sm:gap-8">
                 <div className="sm:col-span-3">
-                  <p className="font-serif text-xs uppercase tracking-[0.3em] text-amber">
+                  <p className="font-serif text-xs uppercase tracking-[0.3em] text-amber-text">
                     {labelFor("arc", p.arc) ?? p.arc}
                   </p>
                   <p className="mt-1 font-serif text-xs text-ink-soft">
@@ -78,7 +81,7 @@ export function PostList({ posts }: { posts: PostListEntry[] }) {
                     {p.awaitingMigration ? (
                       <span
                         title="Canonical text being migrated"
-                        className="ml-3 inline-flex translate-y-[-2px] items-center gap-1 rounded-full border border-amber/60 bg-amber/10 px-2 py-0.5 align-middle font-serif text-[0.65rem] uppercase tracking-[0.18em] text-amber"
+                        className="ml-3 inline-flex translate-y-[-2px] items-center gap-1 rounded-full border border-amber/60 bg-amber/10 px-2 py-0.5 align-middle font-serif text-[0.65rem] uppercase tracking-[0.18em] text-amber-text"
                       >
                         ❁ awaiting migration
                       </span>

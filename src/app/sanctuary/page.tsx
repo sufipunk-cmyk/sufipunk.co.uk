@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Sanctuary First",
   description:
     "Witness writing — an open, ongoing library of arrival, threshold, and practice. Filtered by experience, theme, tradition, and arc.",
+  alternates: {
+    canonical: "/sanctuary",
+  },
   openGraph: {
     images: [
       {

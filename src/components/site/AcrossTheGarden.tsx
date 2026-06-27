@@ -52,7 +52,7 @@ export function AcrossTheGarden() {
     >
       <div className="container">
         <header className="mx-auto max-w-2xl text-center">
-          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber">
+          <p className="font-serif text-xs uppercase tracking-[0.4em] text-amber-text">
             What Happens Here
           </p>
           <h2 className="mt-3 font-display text-3xl text-green sm:text-5xl">
@@ -129,7 +129,7 @@ function PlaceHero({ place }: { place: Place }) {
       </div>
       <div className="relative px-6 py-8 sm:px-10 sm:py-10">
         <ArchOutline className="pointer-events-none absolute -right-10 -top-6 h-44 w-32 text-green/[0.07]" />
-        <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber">
+        <p className="font-serif text-[0.7rem] uppercase tracking-[0.35em] text-amber-text">
           {place.terrain}
         </p>
         <h3 className="mt-2 font-display text-3xl text-green sm:text-[2.25rem]">
@@ -235,7 +235,7 @@ function ResidentCardInner({
             </span>
             <span
               aria-hidden
-              className="ml-2 text-amber transition-transform group-hover:translate-x-1"
+              className="ml-2 text-amber-text transition-transform group-hover:translate-x-1"
             >
               →
             </span>
